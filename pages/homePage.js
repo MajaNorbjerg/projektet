@@ -4,10 +4,10 @@ export default class HomePage {
     }
 
     template() {
-        document.querySelector('#pagesSection').innerHTML = /*html*/ `
+        document.querySelector('#pagesSection').innerHTML += /*html*/ `
             <section id="forside" class="page">
-                <header class="topbar">
-                    <h2>USER CRUD</h2>            
+                <header>
+                    <h2>Arlagården Plus</h2>            
                   
                 </header>
             
