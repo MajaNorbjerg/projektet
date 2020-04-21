@@ -6,12 +6,12 @@ export default class EnterDataPage {
     template() {
         //home page
         document.querySelector('#pagesSection').innerHTML += /*html*/ `
-            <section id="indtast-data" class="page">
+            <article id="indtast-data" class="page">
                 <header>
                     <h2>Indtast data</h2>            
                          
                 </header>
               
-            </section>`
+            </article>`
     }
 }

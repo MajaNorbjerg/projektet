@@ -1,10 +1,15 @@
 /* ---------- root variables ---------- */
 :root {
-  --green: rgb(38, 76, 89);
-  --light-green: rgb(172, 198, 201);
-  --light-grey: #f1f1f4;
-  --text-color-light: #f1f1f1;
-  --text-color-dark: #333;
+  --arlaForrestGreen: #006c3a;
+  --arlaGrassGreen: #4bb131;
+  --arlaSunYellow: #ffcc32;
+  --arlaGraniteGray: #363e42;
+  --arlaSlateGray: #7c8180;
+  --arlaStoneGray: #d1d2ce;
+  --goldMedal: #d1a535;
+  --silverMedal: #8e8c8c;
+  --bronzeMedal: #b57c46;
+  --milkyWhite: #f9f8fa;
 }
 
 /* ---------- general styling ---------- */
@@ -19,6 +24,7 @@ html {
 
 body {
   margin: 0;
+  background-color: var(--milkyWhite);
 }
 
 h1 {
@@ -67,7 +73,7 @@ a {
 
 /* ---------- tabbar styling ---------- */
 .tabbar {
-  background-color: var(--green);
+  background-color: var(--arlaForrestGreen);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -131,8 +137,9 @@ a {
 
 /* ---------- input form stryling ---------- */
 form {
-  background-color: var(--light-green);
-  padding: 2em 1em 2.5em;
+  background-color: var(--arlaGrassGreen);
+  /* padding: 2em 1em 2.5em; */
+  width: 19%;
 }
 
 form button {
@@ -144,7 +151,7 @@ form button {
   font-size: 1em;
   border-radius: 0;
   color: var(--text-color-light);
-  background-color: var(--green);
+  background-color: var(--arlaForrestGreen);
   width: 100%;
   max-width: 350px;
 }
@@ -153,12 +160,12 @@ article button {
   font-weight: 200;
   text-align: center;
   cursor: pointer;
-  border: none;
-  padding: 10px 8px;
-  border-radius: 0;
+  border: solid 1.5px var(--arlaForrestGreen);
+  padding: 5px 0;
+  border-radius: 20px;
   color: var(--text-color-light);
-  background-color: var(--green);
-  width: 40%;
+  background-color: #ffffff;
+  width: 5%;
 }
 
 input {
@@ -168,6 +175,16 @@ input {
   padding: 12px 15px;
   box-sizing: border-box;
   display: block;
+}
+
+#inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#theInputForm input {
+  width: 100%;
 }
 
 /* Grid container */
@@ -189,21 +206,6 @@ input {
   }
 }
 
-.grid-container>article {
-  text-align: center;
-  padding: 10px;
-}
-
-.grid-container>article img {
-  max-width: 300px;
-  width: 100%;
-  margin-bottom: 1em;
-}
-
-.grid-container>article h3 {
-  font-weight: 200;
-}
-
 .image-preview {
   width: 100%;
   height: auto;
@@ -212,4 +214,14 @@ input {
 
 #forside {
   display: block;
+}
+
+/* #entireMap {
+  height: 4001px;
+} */
+
+svg {
+  width: 100%;
+  height: 400px;
+  /* overflow: visible; */
 }

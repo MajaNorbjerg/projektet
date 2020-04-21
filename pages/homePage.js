@@ -5,12 +5,12 @@ export default class HomePage {
 
     template() {
         document.querySelector('#pagesSection').innerHTML += /*html*/ `
-            <section id="forside" class="page">
+            <article id="forside" class="page">
                 <header>
                     <h2>Arlagården Plus</h2>            
                   
                 </header>
             
-            </section>`
+            </article>`
     }
 }
