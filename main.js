@@ -6,6 +6,7 @@ import AddDataPage from "./pages/addDataToFirebase.js"
 
 import SpaService from "./services/spa-service.js";
 import dataService from "./services/addDataService.js"
+import chartService from "./services/chartService.js"
 // // Declare and init pages
 let homePage = new HomePage();
 let enterDataPage = new EnterDataPage();
@@ -22,3 +23,4 @@ window.pageChange = function () {
   _spaService.pageChange();
 }
 window.createFarmer = () => dataService.createFarmer();
+window.appendChart = () => chartService.appendChart();

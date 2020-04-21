@@ -216,7 +216,7 @@ export default class CompareDataPage {
                 </article>
 
                 <article>
-                Graf
+                <canvas id="chartContainer"></canvas>
                 Tabel
                 </article>
 
