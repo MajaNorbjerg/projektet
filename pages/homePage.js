@@ -7,7 +7,7 @@ export default class HomePage {
         document.querySelector('#pagesSection').innerHTML += /*html*/ `
             <article id="forside" class="page">
                 <header>
-                    <h2>Arlagården Plus</h2>            
+                    <h2>Forside</h2>            
                   
                 </header>
             
