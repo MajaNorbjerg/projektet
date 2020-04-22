@@ -14,10 +14,26 @@
   --fontAmatic: 'Amatic SC';
 }
 
+/* ---------- Import font ---------- */
+@font-face {
+  font-family: 'Arla Regular';
+  src: url('Arla/ArlaIF_W_Rg.ttf');
+}
+
+@font-face {
+  font-family: 'Arla Italic';
+  src: url('Arla/ArlaIF_W_It.ttf');
+}
+
+@font-face {
+  font-family: 'Arla Bold';
+  src: url('Arla/ArlaIF_W_Bd.ttf');
+}
+
 /* ---------- general styling ---------- */
 html {
   color: var(--arlaGraniteGray);
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Arla Regular', Arial, sans-serif;
   height: 100%;
   text-align: center;
   width: 100%;
@@ -36,13 +52,24 @@ body {
 h1 {
   font-family: var(--fontAmatic);
   font-size: 3em;
-  font-weight: 300;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+h2 {
+  font-family: var(--fontAmatic);
+  font-size: 3em;
+  font-weight: bold;
   letter-spacing: 3px;
 }
 
 a {
   text-decoration: none;
   color: var(--light-green);
+}
+
+ul {
+  text-align: left;
 }
 
 
@@ -103,11 +130,11 @@ a {
 }
 
 /* ---------- logo styling ---------- */
-.logo {
+/* .logo {
   margin: 2em auto;
   width: 100%;
   max-width: 300px;
-}
+} */
 
 /* ---------- animations ---------- */
 /* fade in */
@@ -127,54 +154,130 @@ a {
   flex-wrap: wrap;
   margin: 0 auto;
   width: 95%;
+  max-height: 10%;
+  overflow: hidden;
 }
 
 .frontPageBoks1,
 .frontPageBoks2 {
   background: var(--gradient);
   display: block;
-  margin: .1%;
 }
 
 .frontPageBoks1 {
-  width: 21.6%;
-  height: 15em;
+  width: 19.8%;
+  height: 16em;
 }
 
-.frontPageBoks2 {
-  width: 28%;
-  height: 15em;
+#boks4,
+#boks1 {
+  margin: 0 .1%;
 }
-
 
 .frontPageCircle {
-  position: absolute;
-  left: 42.7%;
-  margin: .1%;
-  margin-right: 7.5em;
-  background: white;
+  background: var(--milkyWhite);
   border-radius: 50%;
-  width: 15em;
-  height: 15em;
-  z-index: 9;
+  width: 78%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .frontPageCircle img {
-  margin-top: 7%;
+  margin: auto;
 }
 
-.frontPageBoks1 img,
-.frontPageBoks2 img {
-  width: 30%;
-  margin: 10% auto;
+#boks1 img,
+#boks2 img,
+#boks3 img,
+#boks4 img {
+  max-height: 50%;
+  margin: 2em auto 0%;
 }
 
-#boks2 img {
-  margin-right: 20%;
+#frontPageTekst {
+  width: 20%;
+  margin: 2% auto;
 }
 
-#boks3 img {
-  margin-left: 20%;
+.h2Home {
+  font-family: var(--fontAmatic);
+  font-size: 2em;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: var(--milkyWhite);
+}
+
+/* ---------- Compare data page stryling ---------- */
+#fromYear,
+#toYear {
+  border-radius: 10px;
+  background: var(--gradient);
+  color: var(--milkyWhite);
+  padding: 5px 0;
+  width: 70px;
+  cursor: pointer;
+}
+
+option {
+  background-color: var(--arlaForrestGreen);
+  /* font-family: 'Arla Ragular'; */
+}
+
+.tabbarLand {
+  /* background-color: var(--arlaForrestGreen); */
+  position: fixed;
+  font-family: var(--fontAmatic);
+  font-weight: bold;
+}
+
+.tabbarLand a {
+  display: inline-block;
+  color: var(--arlaGraniteGray);
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tabbarLand a:hover {
+  border-bottom: 3px solid var(--arlaForrestGreen);
+}
+
+.tabbarLand a.active {
+  border-bottom: 3px solid var(--arlaForrestGreen);
+  color: var(--milkyWhite);
+}
+
+#timePeriod,
+#buttons {
+  display: inline;
+  margin: 0 5%
+}
+
+#timePeriod p {
+  color: var(--arlaForrestGreen);
+  font-family: 'Arla Bold';
+  display: inline-block;
+  margin: 0 2%;
+}
+
+#buttons button {
+  font-weight: 200;
+  text-align: center;
+  cursor: pointer;
+  background: var(--milkyWhite);
+  width: 60px;
+  border: solid 1px var(--arlaGraniteGray);
+  font-family: var(--fontAmatic);
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.selected {
+  background: red;
+  color: var(--arlaGrassGreen);
+  background-image: url(/img/blomst.svg);
 }
 
 /* ---------- input form stryling ---------- */

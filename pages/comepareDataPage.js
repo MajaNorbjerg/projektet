@@ -7,16 +7,39 @@ export default class CompareDataPage {
         //home page
         document.querySelector('#pagesSection').innerHTML += /*html*/ `
             <article id="comepare-data" class="page">
-            <nav class="tabbar">
+              
+            <header>
+            <nav class="tabbarLand">
             <a href="#regioner">Regioner</a>
             <a href="#lande">Lande</a>
-          </nav>  
-            <header>
-                    <h2>Sammenlign data</h2>            
+          </nav>              
                 </header>
-                <article><p>Tidsperiode</p><select id="fromYear"></select><p>Til</p><select id="toYear"></select></article>
+                <h2>Sammenlign data</h2> 
+                <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear">
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                </select>
+                <p>Til</p>
+                <select id="toYear">
+                <option >2015</option>
+                <option >2016</option>
+                <option >2017</option>
+                <option >2018</option>
+                <option selected>2019</option>
+                </select>
+                </article>
 
-                <article><button type="button" onclick="farveskift1()" >I alt</button><button type="button">Metan</button><button type="button">Diesel</button><button type="button">Foder</button><button type="button">Strøm</button></article>
+                <article id="buttons">
+                <button type="button" class="btn" onclick="farveskift1()" >I alt</button>
+                <button type="button" class="btn selected" onclick="active">Metan</button>
+                <button type="button" class="btn">Diesel</button>
+                <button type="button" class="btn">Foder</button>
+                <button type="button" class="btn">Strøm</button>
+                </article>
+                
                 <article id="entireMap">
                
                 <div id="mapBtns">
@@ -277,15 +300,15 @@ export default class CompareDataPage {
               
             </article>`
     };
-    
-    border (x) {
-        
+
+    border(x) {
+
         x.style.stroke = "#FFCC32";
         x.style.strokeWidth = 4
     };
 
-    ikkeBorder (x) {
-        x.style.stroke ="none"
+    ikkeBorder(x) {
+        x.style.stroke = "none"
     };
 
  farveskift1 () {
@@ -307,4 +330,44 @@ export default class CompareDataPage {
 
 
 }
+
+
+    /*-------------------- active i navbar ---------------------*/
+    active() {
+        // Get the container element
+        let btnContainer = document.getElementById("buttons");
+
+        // Get all buttons with class="btn" inside the container
+        let btns = btnContainer.getElementsByClassName("btn");
+
+        // Loop through the buttons and add the active class to the current/clicked button
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                let current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace("active", "");
+                this.className += "active";
+            });
+        }
+    }
 }
+
+// <
+// ul class = "nav justify-content-center"
+// id = "nav1" >
+//     <
+//     li class = "nav-item" >
+//     <
+//     a class = "nav-link btn active2"
+// href = "#about" > about < /a> < /
+//     li > <
+//     li class = "nav-item" >
+//     <
+//     a class = "nav-link btn"
+// href = "#portfolio" > portfolio < /a> < /
+//     li > <
+//     li class = "nav-item" >
+//     <
+//     a class = "nav-link btn"
+// href = "#contact" > contact < /a> < /
+//     li > <
+//     /ul>
