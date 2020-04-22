@@ -13,17 +13,18 @@ class ChartService {
 
         // Regioner regnes ud fra sealand
 
-        this.dieselData = [];
-        this.energyData = [];
-        this.digestionData = [];
-        this.importedData = [];
-        this.carbonFootprintData = [];
+        this.dieselMyData = [];
+        this.energyMyData = [];
+        this.digestionMyData = [];
+        this.importedMyData = [];
+        this.carbonFootprintMyData = [];
 
-        this.getAllData(7, this.dieselData);
-        this.getAllData(8, this.energyData);
-        this.getAllData(9, this.digestionData);
-        this.getAllData(10, this.importedData);
+        this.getAllData(7, this.dieselMyData);
+        this.getAllData(8, this.energyMyData);
+        this.getAllData(9, this.digestionMyData);
+        this.getAllData(10, this.importedMyData);
 
+        this.appendChart(this.dieselMyData);
 
     }
 
@@ -37,29 +38,86 @@ class ChartService {
                     year: year.propertyArr[0].value,
                     value: year.propertyArr[`${number}`].value
                 }
-                console.log(yearlyDiesel)
-                console.log(number)
+                // console.log(yearlyDiesel)
+                // console.log(number)
                 arr.push(yearlyDiesel);
             }
-            console.log(arr)
+            // console.log(arr)
         })
     }
 
-    // getAllData() {
-    //     console.log(this.farmerData)
-    //     this.farmerData.onSnapshot(snapshotData => {
-    //         this.allFarmersData = [];
-    //         // snapshotData.forEach(doc => {
 
-    //         let user = doc.data();
-    //         user.id = doc.id;
-    //         this.allFarmersData.push(user)
-    //         // })
-    //         console.log(this.allFarmersData);
-    //     });
-    // }
+    // 2: prepare data for chart
+    // seperating the objects to arrays: months and sales
+    // why? that's how chart.js reads the data :)
+    prepareData(data) {
+        // declaring two array to store the data 
+        let years = [];
+        let kgCO2ForKgMilk = [];
+        console.log(data)
+        // looping through the data array
+        for (const object of data) {
+            // adding the values to the different arrays
+            console.log(object)
+            years.push(object.year);
+            kgCO2ForKgMilk.push(object.value);
+        }
+
+        console.log(years, kgCO2ForKgMilk)
+        // returning the two arrays (months & sales) inside and object
+        // we cannot return to values - that's why we have to do it inside an array
+        return {
+            years,
+            kgCO2ForKgMilk
+        };
+    }
+
+    // 3: create and append the chart
+    appendChart(salesData) {
+        console.log(salesData)
+        // using prepareData() to get the excact data we want
+        let data = this.prepareData(salesData);
+        //open the developer console to inspect the result
+        console.log(data);
+        let chartContainer = document.getElementById('chartContainer');
+        let chart = new Chart(chartContainer, {
+            // The type of chart we want to create
+            type: 'line',
+            // The data for our dataset
+            data: {
+                labels: data.years, // refering to the data object, holding data from prepareData()
+                datasets: [{
+                    data: data.kgCO2ForKgMilk, // refering to the data object, holding data from prepareData()
+                    label: 'Kg Co2 pr. kg mælk',
+                    borderColor: '#145823' // Customise the graf color etc. Go to the docs to find more: https://www.chartjs.org/docs/latest/
+                    // borderColor: 'rgb(255, 255, 132)'
 
 
+
+                    // hoverBorderColor: '#006c3a',
+                    // borderWidth: 4
+
+                }]
+
+            },
+
+            // Configuration options goes here
+            // Go to the docs to find more: https://www.chartjs.org/docs/latest/
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 45,
+                            max: 55
+                        }
+                    }]
+                }
+            }
+
+        });
+
+
+    }
 }
 const chartService = new ChartService();
 export default chartService;
