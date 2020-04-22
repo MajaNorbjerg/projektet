@@ -264,3 +264,83 @@ svg {
   height: 400px;
   /* overflow: visible; */
 }
+
+/* ---------- map ---------- */
+
+.scale {
+  width: 40px; height: 10px;
+} 
+
+.scaleall { margin-left: 2%;
+}
+
+.scaleall p {
+  font-size: 0.7em; margin: 0%;
+}
+
+#scaletitel {
+  float: left;
+}
+#scaletitel h4 { 
+  margin: 0%; 
+  font-size: 0.7em;
+}
+
+#flex-scale {
+  display: flex;
+}
+
+#scalebar {
+  margin-left: 2%;
+}
+
+#greyscale {
+  background-color: #DADBDA ;
+}
+
+#lightgreenscale {
+  background-color: #4BB131 ;
+}
+
+#greenscale {
+  background-color: #2A924A ;
+}
+
+#darkgreenscale {
+  background-color: #00441B ;
+}
+
+.mapButtons {
+  background: var(--gradient); width: 90px; height: 25px; color: white; font-size: 0.6em;
+}
+
+#mapselectionyellow p {
+  font-size: 0.6em;
+}
+
+#mapselection {
+  width: 8px; height: 8px; border: 2px solid var(--arlaSunYellow); border-radius: 3px; margin-right: 0.5%;
+}
+
+#mapBtns {
+  flex-direction: column; width: 6%; margin: 0 auto; 
+  position: absolute;
+  top: 410px;
+  right: 180px;
+}
+
+#mapBtns div {
+  margin: 2%;
+}
+
+#mapselectionyellow {
+  display: flex; align-items: center;
+}
+
+#map {
+  position: relative;
+}
+
+#entireMap {
+  width: 35%; float:  right;
+}

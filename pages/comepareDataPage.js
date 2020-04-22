@@ -16,12 +16,50 @@ export default class CompareDataPage {
                 </header>
                 <article><p>Tidsperiode</p><select id="fromYear"></select><p>Til</p><select id="toYear"></select></article>
 
-                <article><button type="button" onclick="farveskift1" >I alt</button><button type="button">Metan</button><button type="button">Diesel</button><button type="button">Foder</button><button type="button">Strøm</button></article>
+                <article><button type="button" onclick="farveskift1()" >I alt</button><button type="button">Metan</button><button type="button">Diesel</button><button type="button">Foder</button><button type="button">Strøm</button></article>
                 <article id="entireMap">
-                <div>TEKST med farver
-                <button type="button">Danmarks data</button><button type="button">Din data</button>
+               
+                <div id="mapBtns">
+                <div id="mapselectionyellow"> 
+                <div id="mapselection"></div>
+                <p>Valgt til grafen</p>
                 </div>
-                <svg>            
+                <div> 
+                <button class="mapButtons" type="button">Danmarks data</button>
+                </div>
+                <div>
+                <button class="mapButtons" type="button">Din data</button>
+                </div>
+                </div>
+
+    
+                
+                <section id="scalebar">
+                <article id="scaletitel">
+                <h4> Reducering af kg CO2 pr. kg mælk i % </h4>
+                <article>
+                
+                <div id="flex-scale">
+                <article class="scaleall">
+                <div class="scale" id="greyscale"></div>
+                <p> < 1 </p>
+                </article>
+                <article class="scaleall">
+                <div class="scale" id="lightgreenscale"></div>
+                <p> 1 - 2 </p>
+                </article>
+                <article class="scaleall">
+                <div class="scale" id="greenscale"></div>
+                <p> 3 - 4 </p>
+                </article>
+                <article class="scaleall">
+                <div class="scale" id="darkgreenscale"></div>
+                <p> > 4 </p>
+                </article>
+                </div>
+                </section>
+                
+                <svg id="map">            
                 <style type="text/css">
                     .st0{fill:#FFFFFF;stroke:#000000;stroke-width:0.5;}
                     .st1{fill:#323232;}
@@ -29,7 +67,8 @@ export default class CompareDataPage {
                     .st3{fill:#6E6E6E;}
                     .st4{fill:#FFFFFF;}
                     .st5{fill:none;stroke:#000000;stroke-width:0.5;}
-                </style>
+                
+                    </style>
                 
                 /* ------------st0----------- */
                 <g>
@@ -249,7 +288,23 @@ export default class CompareDataPage {
         x.style.stroke ="none"
     };
 
-    farveskift1 (x) {
-        x.style.fill ="#2A924A"
-    }
+ farveskift1 () {
+    
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+    sjaelland[i].style.fill = "#00441B";
+    }  
+
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+    syddanmark[i].style.fill = "#2A924A";
+    } 
+    
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+    norddanmark[i].style.fill = "#CBEAC3";
+    }  
+
+
+}
 }
