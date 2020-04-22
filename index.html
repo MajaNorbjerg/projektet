@@ -7,18 +7,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Get started with HTML, CSS and JavaScript">
   <meta name="Johanne,Helle og Maja" content="Arlagården Plus">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
   <link rel="stylesheet" href="css/main.css">
   <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
 </head>
 
 <body onhashchange="pageChange()">
   <!-- tabbar navigation -->
-  <nav class="tabbar">
-    <a href="#forside">Arlagården Plus</a>
-    <a href="#indtast-data">Indtast data</a>
-    <a href="#comepare-data">Sammenlign data</a>
-  </nav>
 
+  <nav class="tabbar">
+    <a class="left" href="#forside">Forside</a>
+    <a class="left" href="#">Indtast Data</a>
+    <a class="left" href="#">Data og Medaljer </a>
+    <a class="left" href="#comepare-data">Sammenligning</a>
+    <a class="left" href="#">Mulige Tiltag</a>
+    
+    
+    
+    <a class="right" href="#">Kontakt Arla</a>
+    <a class="right" href="#">Hjælp til Arlagården Plus</a>
+    <a class="right" href="#indtast-data">Indstillinger</a>
+    
+  </nav>
+<header class="header"></header>
   <!-- pages -->
   <section id="pagesSection"></section>
 
@@ -30,8 +41,10 @@
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
   <!-- Firebase Firestore (database) JS SDK -->
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script>
-
+  <!-- Firebase config -->
   <script src="firebase-service.js"></script>
+  <!--- Load chart.js from CDN --->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
   <!-- main js file -->
   <script src="main.js" type="module"></script>
 

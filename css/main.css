@@ -10,25 +10,32 @@
   --silverMedal: #8e8c8c;
   --bronzeMedal: #b57c46;
   --milkyWhite: #f9f8fa;
+  --gradient: linear-gradient(0deg, rgba(0, 108, 58, 0.8) 0%, rgba(17, 124, 56, 0.8) 37%, rgba(35, 141, 54, 0.8) 65%, rgba(75, 177, 49, 0.8) 100%);
+  --fontAmatic: 'Amatic SC';
 }
 
 /* ---------- general styling ---------- */
 html {
-  color: var(--text-color-dark);
+  color: var(--arlaGraniteGray);
   font-family: Helvetica, Arial, sans-serif;
   height: 100%;
   text-align: center;
   width: 100%;
   font-weight: 200;
+  background-color: var(--milkyWhite);
+  background-image: url(../img/webHeader.svg);
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-size: 101%;
 }
 
 body {
   margin: 0;
-  background-color: var(--milkyWhite);
 }
 
 h1 {
-  font-size: 2em;
+  font-family: var(--fontAmatic);
+  font-size: 3em;
   font-weight: 300;
   letter-spacing: 3px;
 }
@@ -38,71 +45,50 @@ a {
   color: var(--light-green);
 }
 
-/* ---------- topbar styling ---------- */
-.topbar {
-  background-color: var(--green);
-  color: var(--text-color-light);
-  padding: 13.5px;
-  text-transform: uppercase;
+
+/* ---------- menu styling ---------- */
+.tabbar {
+  /* background-color: var(--arlaForrestGreen); */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 9999;
+  font-family: var(--fontAmatic);
+
+  font-weight: bold;
 }
 
-.topbar h2 {
-  margin: 0;
-  font-weight: 300;
+.left {
+  float: left;
+  font-size: 1.5em;
 }
 
-.topbar a {
-  text-decoration: none;
-  color: var(--text-color-light);
-  position: absolute;
-  top: 20px;
-}
-
-.topbar a.left {
-  left: 20px;
-}
-
-.topbar a.right {
-  right: 20px;
-}
-
-/* ---------- tabbar styling ---------- */
-.tabbar {
-  background-color: var(--arlaForrestGreen);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
+.right {
+  float: right;
+  font-size: 1em;
 }
 
 /* Style the links inside the navigation bar */
 .tabbar a {
   display: inline-block;
-  color: var(--text-color-light);
+  color: var(--milkyWhite);
   text-align: center;
   padding: 20px 16px;
   text-decoration: none;
-  font-size: 0.8em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 /* Change the color of links on hover */
 .tabbar a:hover {
-  background-color: var(--light-grey);
-  color: var(--text-color-dark);
+  border-bottom: 3px solid var(--arlaForrestGreen);
 }
 
 /* Add a color to the active/current link */
 .tabbar a.active {
-  background-color: var(--light-green);
-  color: var(--text-color-light);
+  border-bottom: 3px solid var(--arlaForrestGreen);
+  color: var(--milkyWhite);
 }
 
 /* ---------- page styling ---------- */
@@ -113,7 +99,7 @@ a {
   background: var(--light-grey);
   animation: fadeIn 0.4s;
   /* padding equals height of tabbar and topbar */
-  padding: 55px 0;
+  padding: 10% 0;
 }
 
 /* ---------- logo styling ---------- */
@@ -133,6 +119,62 @@ a {
   to {
     opacity: 1
   }
+}
+
+/* ---------- Frontpage styling ---------- */
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 95%;
+}
+
+.frontPageBoks1,
+.frontPageBoks2 {
+  background: var(--gradient);
+  display: block;
+  margin: .1%;
+}
+
+.frontPageBoks1 {
+  width: 21.6%;
+  height: 15em;
+}
+
+.frontPageBoks2 {
+  width: 28%;
+  height: 15em;
+}
+
+
+.frontPageCircle {
+  position: absolute;
+  left: 42.7%;
+  margin: .1%;
+  margin-right: 7.5em;
+  background: white;
+  border-radius: 50%;
+  width: 15em;
+  height: 15em;
+  z-index: 9;
+}
+
+.frontPageCircle img {
+  margin-top: 7%;
+}
+
+.frontPageBoks1 img,
+.frontPageBoks2 img {
+  width: 30%;
+  margin: 10% auto;
+}
+
+#boks2 img {
+  margin-right: 20%;
+}
+
+#boks3 img {
+  margin-left: 20%;
 }
 
 /* ---------- input form stryling ---------- */
@@ -188,7 +230,7 @@ input {
 }
 
 /* Grid container */
-.grid-container {
+/* .grid-container {
   display: grid;
   grid-template-columns: 100%;
   padding: 10px;
@@ -210,11 +252,8 @@ input {
   width: 100%;
   height: auto;
   margin: 1em 0;
-}
+} */
 
-#forside {
-  display: block;
-}
 
 /* #entireMap {
   height: 4001px;
