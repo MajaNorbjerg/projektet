@@ -13,7 +13,7 @@ class ChartService {
 
         // Regioner regnes ud fra sealand
 
-        this.dieselData;
+        this.dieselData = [];
         this.energyData = [];
         this.digestionData = [];
         this.importedData = [];
@@ -22,7 +22,7 @@ class ChartService {
         this.getAllData(7, this.dieselData);
         this.getAllData(8, this.energyData);
         this.getAllData(9, this.digestionData);
-        this.getAllData(10, this.importedDataData);
+        this.getAllData(10, this.importedData);
 
 
     }
