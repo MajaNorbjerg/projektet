@@ -26,6 +26,7 @@ class ChartService {
 
         this.appendChart(this.dieselMyData);
 
+
     }
 
     async getAllData(number, arr) {
@@ -44,6 +45,7 @@ class ChartService {
             }
             // console.log(arr)
         })
+        console.log(this.dieselMyData)
     }
 
 
@@ -61,8 +63,9 @@ class ChartService {
             console.log(object)
             years.push(object.year);
             kgCO2ForKgMilk.push(object.value);
+            years = ['hi', 'you']
         }
-
+        years = ['hi', 'you']
         console.log(years, kgCO2ForKgMilk)
         // returning the two arrays (months & sales) inside and object
         // we cannot return to values - that's why we have to do it inside an array
@@ -73,10 +76,12 @@ class ChartService {
     }
 
     // 3: create and append the chart
-    appendChart(salesData) {
+    async appendChart(salesData) {
         console.log(salesData)
+        console.log(this.dieselMyData)
         // using prepareData() to get the excact data we want
-        let data = this.prepareData(salesData);
+        let data = await this.prepareData(salesData);
+        console.log(salesData)
         //open the developer console to inspect the result
         console.log(data);
         let chartContainer = document.getElementById('chartContainer');
