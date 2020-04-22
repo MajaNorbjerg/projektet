@@ -367,3 +367,18 @@ svg {
   height: 400px;
   /* overflow: visible; */
 }
+
+
+
+
+article #chartContainer {
+  width: 50%;
+}
+
+.chart-size-monitor {
+  width: 50%;
+}
+
+#chartDiv {
+  width: 50%;
+}
