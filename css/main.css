@@ -14,10 +14,26 @@
   --fontAmatic: 'Amatic SC';
 }
 
+/* ---------- Import font ---------- */
+@font-face {
+  font-family: 'Arla Regular';
+  src: url('Arla/ArlaIF_W_Rg.ttf');
+}
+
+@font-face {
+  font-family: 'Arla Italic';
+  src: url('Arla/ArlaIF_W_It.ttf');
+}
+
+@font-face {
+  font-family: 'Arla Bold';
+  src: url('Arla/ArlaIF_W_Bd.ttf');
+}
+
 /* ---------- general styling ---------- */
 html {
   color: var(--arlaGraniteGray);
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Arla Regular', Arial, sans-serif;
   height: 100%;
   text-align: center;
   width: 100%;
@@ -42,10 +58,9 @@ h1 {
 
 h2 {
   font-family: var(--fontAmatic);
-  font-size: 2em;
-  font-weight: 300;
+  font-size: 3em;
+  font-weight: bold;
   letter-spacing: 3px;
-  color: var(--milkyWhite);
 }
 
 a {
@@ -115,11 +130,11 @@ ul {
 }
 
 /* ---------- logo styling ---------- */
-.logo {
+/* .logo {
   margin: 2em auto;
   width: 100%;
   max-width: 300px;
-}
+} */
 
 /* ---------- animations ---------- */
 /* fade in */
@@ -135,7 +150,6 @@ ul {
 
 /* ---------- Frontpage styling ---------- */
 .flexContainer {
-  /* position: relative; */
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
@@ -159,17 +173,6 @@ ul {
 #boks1 {
   margin: 0 .1%;
 }
-
-/* .frontPageBoks2 {
-  width: 28%;
-  height: 16em;
-} */
-
-/* .frontPageBoks1 h2,
-.frontPageBoks2 h2 {
-  bottom: 0;
-} */
-
 
 .frontPageCircle {
   background: var(--milkyWhite);
@@ -196,6 +199,86 @@ ul {
   margin: 2% auto;
 }
 
+.h2Home {
+  font-family: var(--fontAmatic);
+  font-size: 2em;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: var(--milkyWhite);
+}
+
+/* ---------- Compare data page stryling ---------- */
+#fromYear,
+#toYear {
+  border-radius: 10px;
+  background: var(--gradient);
+  color: var(--milkyWhite);
+  padding: 5px 0;
+  width: 70px;
+  cursor: pointer;
+}
+
+option {
+  background-color: var(--arlaForrestGreen);
+  /* font-family: 'Arla Ragular'; */
+}
+
+.tabbarLand {
+  /* background-color: var(--arlaForrestGreen); */
+  position: fixed;
+  font-family: var(--fontAmatic);
+  font-weight: bold;
+}
+
+.tabbarLand a {
+  display: inline-block;
+  color: var(--arlaGraniteGray);
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tabbarLand a:hover {
+  border-bottom: 3px solid var(--arlaForrestGreen);
+}
+
+.tabbarLand a.active {
+  border-bottom: 3px solid var(--arlaForrestGreen);
+  color: var(--milkyWhite);
+}
+
+#timePeriod,
+#buttons {
+  display: inline;
+  margin: 0 5%
+}
+
+#timePeriod p {
+  color: var(--arlaForrestGreen);
+  font-family: 'Arla Bold';
+  display: inline-block;
+  margin: 0 2%;
+}
+
+#buttons button {
+  font-weight: 200;
+  text-align: center;
+  cursor: pointer;
+  background: var(--milkyWhite);
+  width: 60px;
+  border: solid 1px var(--arlaGraniteGray);
+  font-family: var(--fontAmatic);
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.selected {
+  background: red;
+  color: var(--arlaGrassGreen);
+  background-image: url(/img/blomst.svg);
+}
 
 /* ---------- input form stryling ---------- */
 form {
