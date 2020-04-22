@@ -293,11 +293,19 @@ export default class CompareDataPage {
 
                 <article>
                 <canvas id="chartContainer"></canvas>
+                
                 Tabel
                 </article>
-
-                <button type="button">Se medaljefordeling</button><button type="button">Eksporter som excel (evt som PDF)</button>
-              
+                
+                <div id="graphBtns-wrapper">
+                <div>
+                
+                <button class="graphBtns" type="button">Se medaljefordeling</button>
+                </div>
+                <div>
+                <button class="graphBtns" type="button">Eksporter som excel <br> (evt som PDF)</button>
+                </div>
+                </div>
             </article>`
     };
 
