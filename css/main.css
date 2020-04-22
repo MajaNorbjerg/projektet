@@ -45,11 +45,16 @@ h2 {
   font-size: 2em;
   font-weight: 300;
   letter-spacing: 3px;
+  color: var(--milkyWhite);
 }
 
 a {
   text-decoration: none;
   color: var(--light-green);
+}
+
+ul {
+  text-align: left;
 }
 
 
@@ -130,7 +135,7 @@ a {
 
 /* ---------- Frontpage styling ---------- */
 .flexContainer {
-  position: relative;
+  /* position: relative; */
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
@@ -143,57 +148,54 @@ a {
 .frontPageBoks2 {
   background: var(--gradient);
   display: block;
-  margin: .1%;
 }
 
 .frontPageBoks1 {
-  width: 21.6%;
+  width: 19.8%;
   height: 16em;
 }
 
-.frontPageBoks2 {
+#boks4,
+#boks1 {
+  margin: 0 .1%;
+}
+
+/* .frontPageBoks2 {
   width: 28%;
   height: 16em;
-}
+} */
 
-.frontPageBoks1 h2,
+/* .frontPageBoks1 h2,
 .frontPageBoks2 h2 {
   bottom: 0;
-}
+} */
 
 
 .frontPageCircle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
   background: var(--milkyWhite);
   border-radius: 50%;
-  width: 18%;
+  width: 78%;
   height: 100%;
-  z-index: 9;
-  transform: translate(0% 50%);
+  margin: 0 auto;
 }
 
 .frontPageCircle img {
-  margin-top: 9%;
+  margin: auto;
 }
 
-.frontPageBoks1 img,
-.frontPageBoks2 img {
-  max-width: 30%;
+#boks1 img,
+#boks2 img,
+#boks3 img,
+#boks4 img {
+  max-height: 50%;
   margin: 2em auto 0%;
 }
 
-#boks2 img {
-  margin-right: 20%;
+#frontPageTekst {
+  width: 20%;
+  margin: 2% auto;
 }
 
-#boks3 img {
-  margin-left: 20%;
-}
 
 /* ---------- input form stryling ---------- */
 form {
