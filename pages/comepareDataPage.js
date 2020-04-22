@@ -216,7 +216,18 @@ export default class CompareDataPage {
                 </article>
 
                 <article>
+                <div id="chartDiv">
                 <canvas id="chartContainer"></canvas>
+                </div>
+                <button onclick="addData(firstDataset)">Add first dataset</button>
+                <button onclick="removeData(firstDataset)">Remove first dataset</button>
+              
+                <button onclick="addData(secondDataset)">Add another dataset</button>
+                <button onclick="removeData(secondDataset)">Remove another dataset</button>
+                <br>
+<!--
+                <button onclick="addMonth()">Add Month</button>
+                <button onclick="removeMonth()">Remove Month</button> -->
                 Tabel
                 </article>
 

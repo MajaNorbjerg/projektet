@@ -21,7 +21,7 @@ html {
   text-align: center;
   width: 100%;
   font-weight: 200;
-  background-color:var(--milkyWhite);
+  background-color: var(--milkyWhite);
   background-image: url(../img/webHeader.svg);
   background-position: top;
   background-repeat: no-repeat;
@@ -54,14 +54,16 @@ a {
   right: 0;
   z-index: 9999;
   font-family: var(--fontAmatic);
-  
+
   font-weight: bold;
 }
-.left{
+
+.left {
   float: left;
   font-size: 1.5em;
 }
-.right{
+
+.right {
   float: right;
   font-size: 1em;
 }
@@ -207,4 +209,19 @@ svg {
   width: 100%;
   height: 400px;
   /* overflow: visible; */
+}
+
+
+
+
+article #chartContainer {
+  width: 50%;
+}
+
+.chart-size-monitor {
+  width: 50%;
+}
+
+#chartDiv {
+  width: 50%;
 }
