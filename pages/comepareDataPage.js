@@ -33,11 +33,11 @@ export default class CompareDataPage {
                 </article>
 
                 <article id="buttons">
-                <button type="button" class="btn" onclick="farveskift1()" ><img class="img" src="/img/blomst.svg">I alt</button>
-                <button type="button" class="btn selected" onclick="selected()"><img class="img" src="/img/blomst.svg">Metan</button>
-                <button type="button" class="btn" onclick="selected()"><img class="img" src="/img/blomst.svg"> Diesel</button>
-                <button type="button" class="btn" onclick="selected()"><img class="img" src="/img/blomst.svg"> Foder</button>
-                <button type="button" class="btn" onclick="selected()"><img class="img" src="/img/blomst.svg"> Strøm</button>
+                <button type="button" class="btn selected" onclick="selected(this)" onclick="farveskift1()" ><img class="img" src="/img/blomst.svg">I alt</button>
+                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg">Metan</button>
+                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Diesel</button>
+                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Foder</button>
+                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Strøm</button>
                 </article>
                 
                 <article id="entireMap">
@@ -361,24 +361,30 @@ export default class CompareDataPage {
 
 
     /*-------------------- active i navbar ---------------------*/
-    selected() {
-        console.log("Hej")
-        // Get the container element
-        let btnContainer = document.getElementById("buttons");
+    // selected(element) {
+    //     console.log("Hej")
+    //     // Get the container element
+    //     let btnContainer = document.getElementById("buttons");
 
-        // Get all buttons with class="btn" inside the container
-        let btns = btnContainer.getElementsByClassName("btn");
+    //     // Get all buttons with class="btn" inside the container
+    //     let btns = btnContainer.getElementsByClassName("btn");
 
-        // Loop through the buttons and add the active class to the current/clicked button
-        for (let i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                let current = document.getElementsByClassName(" selected");
-                current[0].className = current[0].className.replace(" selected", "");
-                this.className += " selected";
-            });
-        }
+    //     // Loop through the buttons and add the active class to the current/clicked button
+    //     for (let i = 0; i < btns.length; i++) {
+    //         btns[i].addEventListener("click", function () {
+    //             let current = document.getElementsByClassName(" selected");
+    //             current[0].className = current[0].className.replace(" selected", "");
+    //             this.className += " selected";
+    //         });
+    //     }
+    // }
+
+
+    selected(element) {
+        let selected = document.querySelector(".btn.selected");
+        selected.classList.remove("selected");
+        element.classList.add("selected");
     }
-
     // selected(button) {
     //     console.log(button);
     //     // let btnContainer = document.getElementById("buttons");
