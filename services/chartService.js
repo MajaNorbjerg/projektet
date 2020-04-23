@@ -35,11 +35,13 @@ class ChartService {
         let doc = await this.farmerData.get();
         let allFarmerData = doc.data();
 
+
         for (const year of allFarmerData.allArr) {
             let yearlyDiesel = {
                 year: year.propertyArr[0].value,
                 value: year.propertyArr[`${number}`].value
             }
+
             arrayToReturn.push(yearlyDiesel);
         }
         return arrayToReturn;
@@ -106,6 +108,12 @@ class ChartService {
         });
 
 
+    }
+
+    addData(chart) {
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.pop();
+        });
     }
 }
 const chartService = new ChartService();
