@@ -9,6 +9,7 @@
   --goldMedal: #d1a535;
   --silverMedal: #8e8c8c;
   --bronzeMedal: #b57c46;
+  --noMedal: #E5E5E7;
   --milkyWhite: #f9f8fa;
   --gradient: linear-gradient(0deg, rgba(0, 108, 58, 0.8) 0%, rgba(17, 124, 56, 0.8) 37%, rgba(35, 141, 54, 0.8) 65%, rgba(75, 177, 49, 0.8) 100%);
   --fontAmatic: 'Amatic SC';
@@ -278,6 +279,10 @@ option {
   font-size: 1.2em;
 }
 
+.btn:focus {
+  outline: 0;
+}
+
 /* .btn img {
   width: 50%;
   position: absolute;
@@ -303,6 +308,8 @@ option {
   top: -30%;
   right: -15%;
 }
+
+
 
 /* ---------- input form stryling ---------- */
 form {
@@ -508,12 +515,23 @@ svg {
 }
 
 .graphBtns {
+  position: relative;
   background-color: white;
   width: 140px;
   height: 35px;
   color: #006C3A;
   font-size: 0.6em;
   font-weight: 700;
+  margin: 0 5%;
+}
+
+.flower {
+  display: block;
+  position: absolute;
+  overflow: visible;
+  width: 25%;
+  top: -40%;
+  right: -11%;
 }
 
 

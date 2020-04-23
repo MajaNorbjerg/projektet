@@ -306,17 +306,16 @@ export default class CompareDataPage {
 <!--
                 <button onclick="addMonth()">Add Month</button>
                 <button onclick="removeMonth()">Remove Month</button> -->
-                Tabel
+                
                 </article>
                 
                 <div id="graphBtns-wrapper">
-                <div>
                 
-                <button class="graphBtns" type="button">Se medaljefordeling</button>
-                </div>
-                <div>
-                <button class="graphBtns" type="button">Eksporter som excel <br> (evt som PDF)</button>
-                </div>
+                
+                <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
+                
+                <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel <br> (evt som PDF)</button>
+                
                 </div>
             </article>`
     };
