@@ -13,37 +13,38 @@ class ChartService {
 
         // Regioner regnes ud fra sealand
 
+
         this.dieselMyData = [];
         this.energyMyData = [];
         this.digestionMyData = [];
         this.importedMyData = [];
         this.carbonFootprintMyData = [];
 
-        this.getAllData(7, this.dieselMyData);
-        this.getAllData(8, this.energyMyData);
-        this.getAllData(9, this.digestionMyData);
-        this.getAllData(10, this.importedMyData);
-
-        this.appendChart(this.dieselMyData);
+        // this.year = [];
+        this.init();
 
     }
 
-    async getAllData(number, arr) {
-        await this.farmerData.get().then(function (doc) {
+    async init() {
+        this.dieselMyData = await this.getAllData(7);
+        this.appendChart(this.dieselMyData);
+    }
 
-            let allFarmerData = doc.data();
+    async getAllData(number) {
+        let arrayToReturn = [];
+        let doc = await this.farmerData.get();
+        let allFarmerData = doc.data();
 
-            for (const year of allFarmerData.allArr) {
-                let yearlyDiesel = {
-                    year: year.propertyArr[0].value,
-                    value: year.propertyArr[`${number}`].value
-                }
-                // console.log(yearlyDiesel)
-                // console.log(number)
-                arr.push(yearlyDiesel);
+
+        for (const year of allFarmerData.allArr) {
+            let yearlyDiesel = {
+                year: year.propertyArr[0].value,
+                value: year.propertyArr[`${number}`].value
             }
-            // console.log(arr)
-        })
+
+            arrayToReturn.push(yearlyDiesel);
+        }
+        return arrayToReturn;
     }
 
 
@@ -61,6 +62,7 @@ class ChartService {
             console.log(object)
             years.push(object.year);
             kgCO2ForKgMilk.push(object.value);
+
         }
 
         console.log(years, kgCO2ForKgMilk)
@@ -75,10 +77,12 @@ class ChartService {
     // 3: create and append the chart
     appendChart(salesData) {
         console.log(salesData)
+
         // using prepareData() to get the excact data we want
         let data = this.prepareData(salesData);
+
         //open the developer console to inspect the result
-        console.log(data);
+
         let chartContainer = document.getElementById('chartContainer');
         let chart = new Chart(chartContainer, {
             // The type of chart we want to create
@@ -99,24 +103,17 @@ class ChartService {
 
                 }]
 
-            },
-
-            // Configuration options goes here
-            // Go to the docs to find more: https://www.chartjs.org/docs/latest/
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 45,
-                            max: 55
-                        }
-                    }]
-                }
             }
 
         });
 
 
+    }
+
+    addData(chart) {
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.pop();
+        });
     }
 }
 const chartService = new ChartService();

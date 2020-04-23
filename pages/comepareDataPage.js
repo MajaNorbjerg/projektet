@@ -33,7 +33,7 @@ export default class CompareDataPage {
                 </article>
 
                 <article id="buttons">
-                <button type="button" class="btn" onclick="farveskift1" >I alt</button>
+                <button type="button" class="btn" onclick="farveskift1()" >I alt</button>
                 <button type="button" class="btn selected" onclick="active">Metan</button>
                 <button type="button" class="btn">Diesel</button>
                 <button type="button" class="btn">Foder</button>
@@ -41,10 +41,48 @@ export default class CompareDataPage {
                 </article>
                 
                 <article id="entireMap">
-                <div>TEKST med farver
-                <button type="button">Danmarks data</button><button type="button">Din data</button>
+               
+                <div id="mapBtns">
+                <div id="mapselectionyellow"> 
+                <div id="mapselection"></div>
+                <p>Valgt til grafen</p>
                 </div>
-                <svg>            
+                <div> 
+                <button class="mapButtons" type="button">Danmarks data</button>
+                </div>
+                <div>
+                <button class="mapButtons" type="button">Din data</button>
+                </div>
+                </div>
+
+    
+                
+                <section id="scalebar">
+                <article id="scaletitel">
+                <h4> Reducering af kg CO2 pr. kg mælk i % </h4>
+                <article>
+                
+                <div id="flex-scale">
+                <article class="scaleall">
+                <div class="scale" id="greyscale"></div>
+                <p> < 1 </p>
+                </article>
+                <article class="scaleall">
+                <div class="scale" id="lightgreenscale"></div>
+                <p> 1 - 2 </p>
+                </article>
+                <article class="scaleall">
+                <div class="scale" id="greenscale"></div>
+                <p> 3 - 4 </p>
+                </article>
+                <article class="scaleall">
+                <div class="scale" id="darkgreenscale"></div>
+                <p> > 4 </p>
+                </article>
+                </div>
+                </section>
+                
+                <svg id="map">            
                 <style type="text/css">
                     .st0{fill:#FFFFFF;stroke:#000000;stroke-width:0.5;}
                     .st1{fill:#323232;}
@@ -52,7 +90,8 @@ export default class CompareDataPage {
                     .st3{fill:#6E6E6E;}
                     .st4{fill:#FFFFFF;}
                     .st5{fill:none;stroke:#000000;stroke-width:0.5;}
-                </style>
+                
+                    </style>
                 
                 /* ------------st0----------- */
                 <g>
@@ -267,9 +306,16 @@ export default class CompareDataPage {
                 <button onclick="removeMonth()">Remove Month</button> -->
                 Tabel
                 </article>
-
-                <button type="button">Se medaljefordeling</button><button type="button">Eksporter som excel (evt som PDF)</button>
-              
+                
+                <div id="graphBtns-wrapper">
+                <div>
+                
+                <button class="graphBtns" type="button">Se medaljefordeling</button>
+                </div>
+                <div>
+                <button class="graphBtns" type="button">Eksporter som excel <br> (evt som PDF)</button>
+                </div>
+                </div>
             </article>`
     };
 
@@ -283,8 +329,24 @@ export default class CompareDataPage {
         x.style.stroke = "none"
     };
 
-    farveskift1(x) {
-        x.style.fill = "#2A924A"
+    farveskift1() {
+
+        let sjaelland = document.getElementsByClassName("st1")
+        for (let i = 0; i < sjaelland.length; i++) {
+            sjaelland[i].style.fill = "#00441B";
+        }
+
+        let syddanmark = document.getElementsByClassName("st2")
+        for (let i = 0; i < syddanmark.length; i++) {
+            syddanmark[i].style.fill = "#2A924A";
+        }
+
+        let norddanmark = document.getElementsByClassName("st3")
+        for (let i = 0; i < norddanmark.length; i++) {
+            norddanmark[i].style.fill = "#CBEAC3";
+        }
+
+
     }
 
 
