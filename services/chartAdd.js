@@ -49,26 +49,43 @@ class ChartAdd {
     // `;
     // }
 
-    async addDataset(id, data, color) {
-        // user 2 - Ep7o7EToQtZzdKnEDy2ahirFHc43
-        let uidCompare = id; // matching an uid from the database
-        let dataCompare = await sustainabilityDataService.getPreparedDataByUid(uidCompare); // getting prepared data from the service
-        console.log(dataCompare)
-        // creating the dataset to add
-        let datasetToAdd = {
-            label: `User: ${id}`,
-            data: dataCompare[data],
-            fill: false,
-            borderColor: color,
-            backgroundColor: color,
-            pointBackgroundColor: color,
-            pointBorderColor: color,
-            pointHoverBackgroundColor: color,
-            pointHoverBorderColor: color,
-            type: 'line'
-        };
-        chartService.chart.data.datasets.push(datasetToAdd);
-        chartService.chart.update();
+    async addDataset(element, id, data, color) {
+        console.log(element);
+        console.log(element.checked);
+
+
+
+        if (element.checked) {
+            // user 2 - Ep7o7EToQtZzdKnEDy2ahirFHc43
+            let uidCompare = id; // matching an uid from the database
+            let dataCompare = await sustainabilityDataService.getPreparedDataByUid(uidCompare); // getting prepared data from the service
+            console.log(dataCompare)
+            // creating the dataset to add
+            let datasetToAdd = {
+                label: `User: ${id}`,
+                data: dataCompare[data],
+                fill: false,
+                borderColor: color,
+                backgroundColor: color,
+                pointBackgroundColor: color,
+                pointBorderColor: color,
+                pointHoverBackgroundColor: color,
+                pointHoverBorderColor: color,
+                type: 'line'
+            };
+            chartService.chart.data.datasets.push(datasetToAdd);
+            chartService.chart.update();
+        } else if (!element.checked) {
+
+            chartService.chart.data.datasets.forEach((dataset) => {
+                if (dataset.label.includes(id)) {
+                    let arr = chartService.chart.data.datasets
+                    let index = arr.indexOf(dataset)
+                    arr.splice(index, 1);
+                }
+            });
+            chartService.chart.update();
+        }
     }
 
     async removeData(id) {
@@ -82,6 +99,22 @@ class ChartAdd {
             }
         });
         chartService.chart.update();
+    }
+
+    northFunction(element) {
+        let checkBox = document.querySelector('#northDenmark');
+
+        if (checkBox.checked === false) {
+            checkBox.checked = true;
+            this.addDataset(checkBox, 'SkosNYUR2FJDB5KYpqDQ', 'dieselMyData', '#147896')
+            console.log('now its true')
+            element.style.stroke = "#459632"
+        } else if (checkBox.checked === true) {
+            checkBox.checked = false;
+            this.addDataset(checkBox, 'SkosNYUR2FJDB5KYpqDQ', 'dieselMyData', '#147896')
+            console.log('now its NOT true')
+            element.style.stroke = "none"
+        }
     }
 }
 const chartAdd = new ChartAdd();
