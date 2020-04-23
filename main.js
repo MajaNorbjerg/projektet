@@ -31,7 +31,7 @@ window.selected = () => compareDataPage.selected();
 
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();
-window.addData = (dataset) => chartService.addData(dataset);
+window.addDataset = () => chartService.addDataset();
 window.removeData = (dataset) => chartService.removeData(dataset);
 
 
