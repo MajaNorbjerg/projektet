@@ -22,9 +22,59 @@ class ChartService {
         // this.carbonFootprintMyData = [];
 
         // // this.year = [];
-        // this.init();
+        this.init();
 
     }
+
+    async init() {
+        // let = authService.authUser.uid;
+        let uid = "9wuor7U0o7isnnv6MBzl"; // using a fixed uid - want to make sure there's data matching an uid in the database
+        let data = await sustainabilityDataService.getPreparedDataByUid(uid); // getting prepared data from the service
+        // call append functions with the dataset: data
+        this.appendCowsChart(data);
+
+    }
+    //appending the chart
+    appendCowsChart(data) {
+        // generate chart
+        console.log(data.dieselMyData)
+        let chartContainer = document.getElementById("chartContainer");
+        let chart = new Chart(chartContainer, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    data: data.dieselMyData,
+                    label: 'Number of Cows',
+                    fill: false,
+                    borderColor: "#e755ba",
+                    backgroundColor: "#e755ba",
+                    pointBackgroundColor: "#55bae7",
+                    pointBorderColor: "#55bae7",
+                    pointHoverBackgroundColor: "#55bae7",
+                    pointHoverBorderColor: "#55bae7",
+                }],
+                labels: data.years
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            // min: (Math.min(...data.dieselMyData) - 5),
+                            // max: (Math.max(...data.dieselMyData) + 1)
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+
+
+
+
+
+
+
 
     // async init() {
     //     let uid = '9wuor7U0o7isnnv6MBzl';
@@ -148,6 +198,6 @@ class ChartService {
     //     this.chart.update();
     //     console.log(this.chart.data.datasets)
 }
-}
+
 const chartService = new ChartService();
 export default chartService;
