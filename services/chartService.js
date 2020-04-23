@@ -22,6 +22,7 @@ class ChartService {
         // this.carbonFootprintMyData = [];
 
         // // this.year = [];
+        this.chart;
         this.init();
 
     }
@@ -37,34 +38,33 @@ class ChartService {
     //appending the chart
     appendCowsChart(data) {
         // generate chart
-        console.log(data.dieselMyData)
         let chartContainer = document.getElementById("chartContainer");
-        let chart = new Chart(chartContainer, {
+        this.chart = new Chart(chartContainer, {
             type: 'line',
             data: {
                 datasets: [{
                     data: data.dieselMyData,
-                    label: 'Number of Cows',
+                    label: 'Diesel',
                     fill: false,
-                    borderColor: "#e755ba",
-                    backgroundColor: "#e755ba",
-                    pointBackgroundColor: "#55bae7",
-                    pointBorderColor: "#55bae7",
+                    borderColor: "#124512",
+
+                    pointBackgroundColor: "#124512",
+                    pointBorderColor: "#124512",
                     pointHoverBackgroundColor: "#55bae7",
                     pointHoverBorderColor: "#55bae7",
                 }],
                 labels: data.years
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            // min: (Math.min(...data.dieselMyData) - 5),
-                            // max: (Math.max(...data.dieselMyData) + 1)
-                        }
-                    }]
-                }
             }
+            // options: {
+            //     scales: {
+            //         yAxes: [{
+            //             ticks: {
+            //                 // min: (Math.min(...data.dieselMyData) - 5),
+            //                 // max: (Math.max(...data.dieselMyData) + 1)
+            //             }
+            //         }]
+            //     }
+            // }
         });
     }
 
