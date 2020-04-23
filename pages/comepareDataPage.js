@@ -15,6 +15,7 @@ export default class CompareDataPage {
           </nav>              
                 </header>
                 <h2>Sammenlign data</h2> 
+                <div id="top">
                 <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear">
                 <option>2015</option>
                 <option>2016</option>
@@ -33,13 +34,13 @@ export default class CompareDataPage {
                 </article>
 
                 <article id="buttons">
-                <button type="button" class="btn selected" onclick="selected(this)" onclick="farveskift1()" ><img class="img" src="/img/blomst.svg">I alt</button>
+                <button type="button" class="btn selected" onclick="selected(this); farveskift1()" ><img class="img" src="/img/blomst.svg">I alt</button>
                 <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg">Metan</button>
                 <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Diesel</button>
                 <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Foder</button>
                 <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Strøm</button>
                 </article>
-                
+                </div>
                 <article id="entireMap">
                
                 <img id="arlaflower-map" src="./img/blomst.svg"> 
@@ -360,54 +361,14 @@ export default class CompareDataPage {
 
 
 
-    /*-------------------- active i navbar ---------------------*/
-    // selected(element) {
-    //     console.log("Hej")
-    //     // Get the container element
-    //     let btnContainer = document.getElementById("buttons");
-
-    //     // Get all buttons with class="btn" inside the container
-    //     let btns = btnContainer.getElementsByClassName("btn");
-
-    //     // Loop through the buttons and add the active class to the current/clicked button
-    //     for (let i = 0; i < btns.length; i++) {
-    //         btns[i].addEventListener("click", function () {
-    //             let current = document.getElementsByClassName(" selected");
-    //             current[0].className = current[0].className.replace(" selected", "");
-    //             this.className += " selected";
-    //         });
-    //     }
-    // }
 
 
+
+    /* ------------Indikation af hvilken knap der er valgt----------- */
     selected(element) {
         let selected = document.querySelector(".btn.selected");
         selected.classList.remove("selected");
         element.classList.add("selected");
     }
-    // selected(button) {
-    //     console.log(button);
-    //     // let btnContainer = document.getElementById("buttons");
-    //     let btns = document.querySelectorAll(".btn");
 
-    //     btns.forEach(function () {
-
-    //         for (let i = 0; i < btns.length; i++) {
-    //             let current = document.getElementsByClassName(" selected");
-    //             current[0].className = current[0].className.replace(" selected", "");
-    //         };
-
-
-    //     })
-    //     button.className += " selected";
-
-    // modal() {
-    //     let modalBtns = document.querySelectorAll(".modal-btn");
-    //     modalBtns.forEach(function (btn) {
-    //         btn.onclick = function () {
-    //             let modal = btn.getAttribute('data-modal');
-    //             document.getElementById(modal).style.display = "block";
-    //         }
-    //     });
-    // }
 }

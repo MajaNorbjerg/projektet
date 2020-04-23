@@ -1,4 +1,4 @@
-class donutService {
+class DonutService {
     constructor() {
         this._badgeDataNordjylland = [{
             label: "Guld",
@@ -51,6 +51,9 @@ class donutService {
             count: 25,
             color: "#FF998F"
         }]
+        console.log(_badgeDataNordjylland);
+        console.log(_badgeDataSoenderjylland);
+        console.log(_badgeDataSealand);
     }
 
 
@@ -58,3 +61,5 @@ class donutService {
 
 
 }
+const _donutService = new DonutService();
+export default _donutService;
