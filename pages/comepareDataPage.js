@@ -10,11 +10,12 @@ export default class CompareDataPage {
               
             <header>
             <nav class="tabbarLand">
-            <a href="#regioner">Regioner</a>
-            <a href="#lande">Lande</a>
+            <a id="regioner">Regioner</a>
+            <a id="lande">Lande</a>
           </nav>              
                 </header>
-                <h2>Sammenlign data</h2> 
+                
+                <h2 id="titelRegioner">Sammenlign data</h2> 
                 <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear">
                 <option>2015</option>
                 <option>2016</option>
@@ -100,7 +101,7 @@ export default class CompareDataPage {
                     s-14.3-0.9-21.3,1.4c-7,2.3-22.2,3.8-27.2,0s-7.5-3.6-7.5-3.6"/>
                 <g/>
                 /* ------------st1 sjælland----------- */
-                    <g onmouseover="border(this)" onmouseout="ikkeBorder(this)">
+                    <g for="myCheck" onmouseover="border(this)" onmouseout="ikkeBorder(this)" onclick="clickBorder()">
                         <path class="st1" d="M276,250.9c2-4,1.7-7.6-1.4-11.5c3.6,4.1,4.1,7.8,2,12.1c-0.7,1.4-0.6,3.3-0.9,5.2c-1.8-1.3-3.6-2.8-5.7-4.4
                             c-1.1,1.5-2,2.8-3,4.2c0-0.5,0-1,0.1-1.5c0.8-1.1,1.5-2.1,2.4-3.3c2.1,1.6,4,3.1,5.7,4.4C275.4,254.2,275.2,252.3,276,250.9z"/>
                         <path class="st1" d="M273.8,238.3c0,0.1,0,0.2,0,0.2l-0.1-0.1c0-0.1,0.1-0.2,0.1-0.2C273.8,238.3,273.8,238.3,273.8,238.3z"/>
@@ -317,6 +318,12 @@ export default class CompareDataPage {
                 <button class="graphBtns" type="button">Eksporter som excel <br> (evt som PDF)</button>
                 </div>
                 </div>
+
+                /*----- medaljefordeling-----*/
+
+                <canvas id="chart"></canvas>
+
+
             </article>`
     };
 
@@ -329,6 +336,25 @@ export default class CompareDataPage {
     ikkeBorder(x) {
         x.style.stroke = "none"
     };
+
+    /* -------- click event til regioner ---------*/
+
+   /*  clickBorder() {
+        let sjaellandBorder = document.getElementsByClassName("st1");
+        for (let i = 0; i < sjaellandBorder.length; i++) {
+        sjaellandBorder.classList.toggle("border");}
+    }; */
+
+    clickBorder() {
+        var checkBox = document.getElementById("myCheck");
+        var st1 = document.getElementById("st1");
+        if (checkBox.checked == true){
+        st1.classList.toggle("show");
+        } else {
+           text.style.display = "none";
+        }
+      }
+
 
     farveskift1() {
 
@@ -349,13 +375,9 @@ export default class CompareDataPage {
 
     }
 
-    /* showFlower() {
-        document.getElementById("arlaflower-map").style.display = "block";
-      } */
-
       showFlower () {
           let element = document.getElementById("arlaflower-map");
-          element.classList.toggle("mystyle");
+          element.classList.toggle("show");
       }
 
 
@@ -377,6 +399,9 @@ export default class CompareDataPage {
             });
         }
     }
+
+ /*-------------------- Donout graf ---------------------*/
+
 }
 
 // <
