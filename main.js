@@ -9,12 +9,14 @@ import dataService from "./services/addDataService.js"
 import chartService from "./services/chartService.js"
 // import _donutService from "./services/donutService.js"
 import sustainabilityDataService from "./services/sustainabilityData.js"
+import chartAdd from "./services/chartAdd.js"
 
 // // Declare and init pages
 let homePage = new HomePage();
 let enterDataPage = new EnterDataPage();
 let compareDataPage = new CompareDataPage();
 let addDataPage = new AddDataPage();
+
 
 let _spaService = new SpaService("forside");
 let _selectedUserId = "";
@@ -34,8 +36,8 @@ window.selected = (element) => compareDataPage.selected(element);
 
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();
-window.addDataset = () => chartService.addDataset();
-window.removeData = (dataset) => chartService.removeData(dataset);
+window.addDataset = (id, data, color) => chartAdd.addDataset(id, data, color);
+window.removeData = (dataset) => chartAdd.removeData(dataset);
 
 
 

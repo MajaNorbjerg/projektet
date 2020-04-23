@@ -297,11 +297,11 @@ export default class CompareDataPage {
                 <div id="chartDiv">
                 <canvas id="chartContainer"></canvas>
                 </div>
-                <button onclick="addDataset()">Add first dataset</button>
-                <button onclick="removeData(firstDataset)">Remove first dataset</button>
+                <button onclick="addDataset('SkosNYUR2FJDB5KYpqDQ','dieselMyData', '#147896')">Nordjylland</button>
+                <button>Remove first dataset</button>
               
-                <button onclick="addDataset()">Add another dataset</button>
-                <button onclick="removeData(secondDataset)">Remove another dataset</button>
+                <button onclick="addDataset('LvkxxMIXEgjGuvs3xUNL', 'dieselMyData', '#142536')">Syddanmark</button>
+                <button onclick="removeData('LvkxxMIXEgjGuvs3xUNL')">Remove another dataset</button>
                 <br>
 <!--
                 <button onclick="addMonth()">Add Month</button>
