@@ -101,7 +101,7 @@ export default class CompareDataPage {
                     s-14.3-0.9-21.3,1.4c-7,2.3-22.2,3.8-27.2,0s-7.5-3.6-7.5-3.6"/>
                 <g/>
                 /* ------------st1 sjælland----------- */
-                    <g for="myCheck" onmouseover="border(this)" onmouseout="ikkeBorder(this)" onclick="clickBorder()">
+                    <g type="checkbox" for="myCheck" onmouseover="border(this)" onmouseout="ikkeBorder(this)" onclick="clickBorder()">
                         <path class="st1" d="M276,250.9c2-4,1.7-7.6-1.4-11.5c3.6,4.1,4.1,7.8,2,12.1c-0.7,1.4-0.6,3.3-0.9,5.2c-1.8-1.3-3.6-2.8-5.7-4.4
                             c-1.1,1.5-2,2.8-3,4.2c0-0.5,0-1,0.1-1.5c0.8-1.1,1.5-2.1,2.4-3.3c2.1,1.6,4,3.1,5.7,4.4C275.4,254.2,275.2,252.3,276,250.9z"/>
                         <path class="st1" d="M273.8,238.3c0,0.1,0,0.2,0,0.2l-0.1-0.1c0-0.1,0.1-0.2,0.1-0.2C273.8,238.3,273.8,238.3,273.8,238.3z"/>
@@ -339,22 +339,23 @@ export default class CompareDataPage {
 
     /* -------- click event til regioner ---------*/
 
-   /*  clickBorder() {
-        let sjaellandBorder = document.getElementsByClassName("st1");
-        for (let i = 0; i < sjaellandBorder.length; i++) {
-        sjaellandBorder.classList.toggle("border");}
-    }; */
+    //  clickBorder() {
+    //     let sjaellandBorder = document.getElementsByClassName("st1");
+    //     for (let i = 0; i < sjaellandBorder.length; i++) {
+    //     sjaellandBorder.classList.toggle("border");}
+    // }; 
 
     clickBorder() {
         var checkBox = document.getElementById("myCheck");
-        var st1 = document.getElementById("st1");
+        var st1 = document.getElementsByClassName("st1");
+        for (let i = 0; i < st1.length; i++) {
         if (checkBox.checked == true){
-        st1.classList.toggle("show");
+        st1.classList.toggle("border");
         } else {
-           text.style.display = "none";
-        }
+            st1.classList.toggle("noBorder");
+        }}
       }
-
+ 
 
     farveskift1() {
 
