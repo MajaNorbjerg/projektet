@@ -371,18 +371,21 @@ svg {
 /* ---------- map ---------- */
 
 .scale {
-  width: 70px; height: 10px;
-} 
+  width: 70px;
+  height: 10px;
+}
 
-.scaleall { margin-left: 2%;
+.scaleall {
+  margin-left: 2%;
 }
 
 .scaleall p {
-  font-size: 0.7em; margin: 0%;
+  font-size: 0.7em;
+  margin: 0%;
 }
 
-#scaletitel h4 { 
-  margin: 0%; 
+#scaletitel h4 {
+  margin: 0%;
   font-size: 0.96em;
 }
 
@@ -391,27 +394,33 @@ svg {
 }
 
 #scalebar {
-  margin-left: 2%; float: right; margin-right: 40%;
+  margin-left: 2%;
+  float: right;
+  margin-right: 40%;
 }
 
 #greyscale {
-  background-color: #DADBDA ;
+  background-color: #DADBDA;
 }
 
 #lightgreenscale {
-  background-color: #4BB131 ;
+  background-color: #4BB131;
 }
 
 #greenscale {
-  background-color: #2A924A ;
+  background-color: #2A924A;
 }
 
 #darkgreenscale {
-  background-color: #00441B ;
+  background-color: #00441B;
 }
 
 .mapButtons {
-  background: var(--gradient); width: 90px; height: 25px; color: white; font-size: 0.6em;
+  background: var(--gradient);
+  width: 90px;
+  height: 25px;
+  color: white;
+  font-size: 0.6em;
 }
 
 #mapselectionyellow p {
@@ -419,11 +428,17 @@ svg {
 }
 
 #mapselection {
-  width: 8px; height: 8px; border: 2px solid var(--arlaSunYellow); border-radius: 3px; margin-right: 0.5%;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--arlaSunYellow);
+  border-radius: 3px;
+  margin-right: 0.5%;
 }
 
 #mapBtns {
-  flex-direction: column; width: 6%; margin: 0 auto; 
+  flex-direction: column;
+  width: 6%;
+  margin: 0 auto;
   position: absolute;
   top: 420px;
   right: 180px;
@@ -434,7 +449,8 @@ svg {
 }
 
 #mapselectionyellow {
-  display: flex; align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 #map {
@@ -442,15 +458,37 @@ svg {
 }
 
 #entireMap {
-  width: 35%; float:  right; margin-top: 3%;
+  width: 35%;
+  float: right;
+  margin-top: 3%;
 }
 
 /* ---------- Graph ---------- */
 
 #graphBtns-wrapper {
-  align-items: center; display: flex;
+  align-items: center;
+  display: flex;
 }
 
 .graphBtns {
-  background-color: white; width: 140px; height: 35px; color:#006C3A; font-size: 0.6em; font-weight: 700;
+  background-color: white;
+  width: 140px;
+  height: 35px;
+  color: #006C3A;
+  font-size: 0.6em;
+  font-weight: 700;
+}
+
+
+
+article #chartContainer {
+  width: 50%;
+}
+
+.chart-size-monitor {
+  width: 50%;
+}
+
+#chartDiv {
+  width: 50%;
 }

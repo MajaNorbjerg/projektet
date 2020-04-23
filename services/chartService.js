@@ -1,9 +1,50 @@
 class ChartService {
     constructor() {
-        // this.farmerData = _db.collection("farmers");
+        this.uuid = '9wuor7U0o7isnnv6MBzl'
+        this.farmerData = _db.collection("farmers").doc(`${this.uuid}`);
+
+        //         // Vi skal burge: --- findes ved... farmers -> id -> allArr[0 = 2015][8-11]
+        //         //('Diesel', 'Carbon dioxide', 'kg CO2 per kg milk')[7]
+        //         // ('Electricity and heating', 'Carbon dioxide', 'kg CO2 per kg milk')[8]
+        //         //('Digestion, cows', 'Methane', 'kg CO2 per kg milk')[9]
+        //         // ('Imported feed','Carbon dioxide','kg CO2 per kg milk')[10]
+
+        //         // ('Carbon footprint for the whole  farm, 'Carbon dioxide', 'ton CO2') --- nederste i arr [11]
+
+        // Regioner regnes ud fra sealand
 
 
-        // this.appendChart();
+        this.dieselMyData = [];
+        this.energyMyData = [];
+        this.digestionMyData = [];
+        this.importedMyData = [];
+        this.carbonFootprintMyData = [];
+
+        // this.year = [];
+        this.init();
+
+    }
+
+    async init() {
+        this.dieselMyData = await this.getAllData(7);
+        this.appendChart(this.dieselMyData);
+    }
+
+    async getAllData(number) {
+        let arrayToReturn = [];
+        let doc = await this.farmerData.get();
+        let allFarmerData = doc.data();
+
+
+        for (const year of allFarmerData.allArr) {
+            let yearlyDiesel = {
+                year: year.propertyArr[0].value,
+                value: year.propertyArr[`${number}`].value
+            }
+
+            arrayToReturn.push(yearlyDiesel);
+        }
+        return arrayToReturn;
     }
 
 
@@ -12,87 +53,35 @@ class ChartService {
     // why? that's how chart.js reads the data :)
     prepareData(data) {
         // declaring two array to store the data 
-        let months = [];
-        let sales = [];
-        // looping through the global _salesData array
-        for (const saleObject of data) {
+        let years = [];
+        let kgCO2ForKgMilk = [];
+        console.log(data)
+        // looping through the data array
+        for (const object of data) {
             // adding the values to the different arrays
-            months.push(saleObject.month);
-            sales.push(saleObject.sale);
+            console.log(object)
+            years.push(object.year);
+            kgCO2ForKgMilk.push(object.value);
+
         }
+
+        console.log(years, kgCO2ForKgMilk)
         // returning the two arrays (months & sales) inside and object
         // we cannot return to values - that's why we have to do it inside an array
         return {
-            months,
-            sales
+            years,
+            kgCO2ForKgMilk
         };
     }
 
     // 3: create and append the chart
-    appendChart() {
-        // 1: data
-        // Array of objects with sale
-        let _salesData2018 = [{
-                month: 'January',
-                sale: 1000000
-            },
-            {
-                month: 'February',
-                sale: 890000
-            },
-            {
-                month: 'March',
-                sale: 690000
-            },
-            {
-                month: 'April',
-                sale: 880000
-            },
-            {
-                month: 'May',
-                sale: 705000
-            },
-            {
-                month: 'June',
-                sale: 980000
-            }
-        ];
+    appendChart(salesData) {
+        console.log(salesData)
 
-
-
-        // Antother array of objects with sale
-        let _salesData2019 = [{
-                month: 'January',
-                sale: 900000
-            },
-            {
-                month: 'February',
-                sale: 790000
-            },
-            {
-                month: 'March',
-                sale: 790000
-            },
-            {
-                month: 'April',
-                sale: 880000
-            },
-            {
-                month: 'May',
-                sale: 705500
-            },
-            {
-                month: 'June',
-                sale: 900000
-            }
-        ];
-        // this.prepareData();
         // using prepareData() to get the excact data we want
-        let data2018 = this.prepareData(_salesData2018);
-        let data2019 = this.prepareData(_salesData2019);
+        let data = this.prepareData(salesData);
+
         //open the developer console to inspect the result
-        console.log(data2018);
-        console.log(data2019);
 
         let chartContainer = document.getElementById('chartContainer');
         let chart = new Chart(chartContainer, {
@@ -100,37 +89,32 @@ class ChartService {
             type: 'line',
             // The data for our dataset
             data: {
-                labels: data2018.months, // refering to the data object, holding data from prepareData()
-                datasets: [
-                    // first dataset - 2018
-                    {
-                        data: data2018.sales, // refering to the data object, holding data from prepareData()
-                        label: 'Revenue first 6 month 2018',
-                        backgroundColor: '#f1f1f1', // Customise the graf color etc. Go to the docs to find more: https://www.chartjs.org/docs/latest/
-                        borderColor: '#ff6384'
-                    },
-                    // second dataset - 2019
-                    {
-                        data: data2019.sales,
-                        label: 'Revenue first 6 month 2019',
-                        backgroundColor: '#f1f1f1', // Customise the graf color etc. Go to the docs to find more: https://www.chartjs.org/docs/latest/
-                        borderColor: '#d863ff'
-                    }
-                ]
-            },
-            // Configuration options goes here
-            // Go to the docs to find more: https://www.chartjs.org/docs/latest/
-            options: {
-                title: {
-                    display: true,
-                    text: 'Sales'
-                }
+                labels: data.years, // refering to the data object, holding data from prepareData()
+                datasets: [{
+                    data: data.kgCO2ForKgMilk, // refering to the data object, holding data from prepareData()
+                    label: 'Kg Co2 pr. kg mælk',
+                    borderColor: '#145823' // Customise the graf color etc. Go to the docs to find more: https://www.chartjs.org/docs/latest/
+                    // borderColor: 'rgb(255, 255, 132)'
+
+
+
+                    // hoverBorderColor: '#006c3a',
+                    // borderWidth: 4
+
+                }]
+
             }
 
         });
+
+
     }
 
-    // appendChart();
+    addData(chart) {
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.pop();
+        });
+    }
 }
 const chartService = new ChartService();
 export default chartService;

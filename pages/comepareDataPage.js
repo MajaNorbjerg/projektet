@@ -292,8 +292,18 @@ export default class CompareDataPage {
                 </article>
 
                 <article>
+                <div id="chartDiv">
                 <canvas id="chartContainer"></canvas>
-                
+                </div>
+                <button onclick="addData(firstDataset)">Add first dataset</button>
+                <button onclick="removeData(firstDataset)">Remove first dataset</button>
+              
+                <button onclick="addData(secondDataset)">Add another dataset</button>
+                <button onclick="removeData(secondDataset)">Remove another dataset</button>
+                <br>
+<!--
+                <button onclick="addMonth()">Add Month</button>
+                <button onclick="removeMonth()">Remove Month</button> -->
                 Tabel
                 </article>
                 
@@ -319,25 +329,25 @@ export default class CompareDataPage {
         x.style.stroke = "none"
     };
 
- farveskift1 () {
-    
-    let sjaelland = document.getElementsByClassName("st1")
-    for (let i = 0; i < sjaelland.length; i++) {
-    sjaelland[i].style.fill = "#00441B";
-    }  
+    farveskift1() {
 
-    let syddanmark = document.getElementsByClassName("st2")
-    for (let i = 0; i < syddanmark.length; i++) {
-    syddanmark[i].style.fill = "#2A924A";
-    } 
-    
-    let norddanmark = document.getElementsByClassName("st3")
-    for (let i = 0; i < norddanmark.length; i++) {
-    norddanmark[i].style.fill = "#CBEAC3";
-    }  
+        let sjaelland = document.getElementsByClassName("st1")
+        for (let i = 0; i < sjaelland.length; i++) {
+            sjaelland[i].style.fill = "#00441B";
+        }
+
+        let syddanmark = document.getElementsByClassName("st2")
+        for (let i = 0; i < syddanmark.length; i++) {
+            syddanmark[i].style.fill = "#2A924A";
+        }
+
+        let norddanmark = document.getElementsByClassName("st3")
+        for (let i = 0; i < norddanmark.length; i++) {
+            norddanmark[i].style.fill = "#CBEAC3";
+        }
 
 
-}
+    }
 
 
     /*-------------------- active i navbar ---------------------*/
