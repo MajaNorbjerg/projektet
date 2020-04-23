@@ -353,10 +353,10 @@ export default class CompareDataPage {
         document.getElementById("arlaflower-map").style.display = "block";
       } */
 
-      showFlower () {
-          let element = document.getElementById("arlaflower-map");
-          element.classList.toggle("mystyle");
-      }
+    showFlower() {
+        let element = document.getElementById("arlaflower-map");
+        element.classList.toggle("mystyle");
+    }
 
 
 
@@ -378,4 +378,30 @@ export default class CompareDataPage {
             });
         }
     }
+
+    // selected(button) {
+    //     console.log(button);
+    //     // let btnContainer = document.getElementById("buttons");
+    //     let btns = document.querySelectorAll(".btn");
+
+    //     btns.forEach(function () {
+
+    //         for (let i = 0; i < btns.length; i++) {
+    //             let current = document.getElementsByClassName(" selected");
+    //             current[0].className = current[0].className.replace(" selected", "");
+    //         };
+
+
+    //     })
+    //     button.className += " selected";
+
+    // modal() {
+    //     let modalBtns = document.querySelectorAll(".modal-btn");
+    //     modalBtns.forEach(function (btn) {
+    //         btn.onclick = function () {
+    //             let modal = btn.getAttribute('data-modal');
+    //             document.getElementById(modal).style.display = "block";
+    //         }
+    //     });
+    // }
 }

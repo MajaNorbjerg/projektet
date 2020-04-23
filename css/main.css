@@ -213,7 +213,7 @@ ul {
   border-radius: 20px;
   background: var(--gradient);
   color: var(--milkyWhite);
-  padding: 5px 0;
+  padding: 5px;
   width: 70px;
   cursor: pointer;
 }
@@ -308,7 +308,7 @@ form {
   width: 19%;
 }
 
-/* form button {
+form button {
   font-weight: 200;
   text-align: center;
   cursor: pointer;
@@ -320,9 +320,9 @@ form {
   background-color: var(--arlaForrestGreen);
   width: 100%;
   max-width: 350px;
-} */
+}
 
-/* article button {
+article button {
   font-weight: 200;
   text-align: center;
   cursor: pointer;
@@ -332,7 +332,7 @@ form {
   color: var(--text-color-light);
   background-color: #ffffff;
   width: 5%;
-} */
+}
 
 input {
   margin: 1em auto;
@@ -485,7 +485,7 @@ svg {
   margin-top: 3%;
 }
 
- #arlaflower-map {
+#arlaflower-map {
   width: 3%;
   position: absolute;
   top: 570px;
@@ -493,7 +493,7 @@ svg {
   z-index: 2;
 }
 
- .mystyle {
+.mystyle {
   display: none;
 }
 
