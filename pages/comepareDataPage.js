@@ -34,10 +34,10 @@ export default class CompareDataPage {
 
                 <article id="buttons">
                 <button type="button" class="btn" onclick="farveskift1()" >I alt</button>
-                <button type="button" class="btn selected" onclick="active">Metan</button>
-                <button type="button" class="btn">Diesel</button>
-                <button type="button" class="btn">Foder</button>
-                <button type="button" class="btn">Strøm</button>
+                <button type="button" class="btn selected" onclick="selected()">Metan</button>
+                <button type="button" class="btn" onclick="selected()">Diesel</button>
+                <button type="button" class="btn" onclick="selected()">Foder</button>
+                <button type="button" class="btn" onclick="selected()">Strøm</button>
                 </article>
                 
                 <article id="entireMap">
@@ -351,7 +351,7 @@ export default class CompareDataPage {
 
 
     /*-------------------- active i navbar ---------------------*/
-    active() {
+    selected() {
         // Get the container element
         let btnContainer = document.getElementById("buttons");
 
@@ -361,9 +361,9 @@ export default class CompareDataPage {
         // Loop through the buttons and add the active class to the current/clicked button
         for (let i = 0; i < btns.length; i++) {
             btns[i].addEventListener("click", function () {
-                let current = document.getElementsByClassName("active");
-                current[0].className = current[0].className.replace("active", "");
-                this.className += "active";
+                let current = document.getElementsByClassName(" selected");
+                current[0].className = current[0].className.replace(" selected", "");
+                this.className += " selected";
             });
         }
     }

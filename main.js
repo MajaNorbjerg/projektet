@@ -27,6 +27,7 @@ window.pageChange = function () {
 window.border = (x) => compareDataPage.border(x);
 window.ikkeBorder = (x) => compareDataPage.ikkeBorder(x);
 window.farveskift1 = () => compareDataPage.farveskift1();
+window.selected = () => compareDataPage.selected();
 
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();
