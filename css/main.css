@@ -225,19 +225,28 @@ option {
 
 .tabbarLand {
   /* background-color: var(--arlaForrestGreen); */
-  position: fixed;
   font-family: var(--fontAmatic);
   font-weight: bold;
+  font-size: 1.7em;
+  width: 100%;
 }
 
 .tabbarLand a {
   display: inline-block;
   color: var(--arlaGraniteGray);
   text-align: center;
-  padding: 20px 16px;
+  padding: 10px 321.37px;
   text-decoration: none;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+#regioner {
+  border-bottom: 10px solid var(--arlaForrestGreen);
+}
+
+#lande {
+  border-bottom: 10px solid #F2F0F0;
 }
 
 .tabbarLand a:hover {
@@ -249,8 +258,8 @@ option {
   color: var(--milkyWhite);
 }
 
-#top {
-  margin: 0 auto;
+#titelRegioner {
+  margin-top: 1%;
 }
 
 #timePeriod,
@@ -495,16 +504,25 @@ svg {
   margin-top: 3%;
 }
 
-#arlaflower-map {
-  width: 3%;
-  position: absolute;
-  top: 570px;
-  right: 360px;
-  z-index: 2;
+.st1.noBorder {
+  stroke: none;
 }
 
-.mystyle {
+.st1.border {
+  stroke: #FFCC32;
+}
+
+ #arlaflower-map {
+  width: 3%;
+  position: absolute;
+  top: 600px;
+  right: 360px;
+  z-index: 2;
   display: none;
+}
+
+#arlaflower-map.show {
+  display: block;
 }
 
 /* ---------- Graph ---------- */
