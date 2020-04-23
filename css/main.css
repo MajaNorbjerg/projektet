@@ -210,7 +210,7 @@ ul {
 /* ---------- Compare data page stryling ---------- */
 #fromYear,
 #toYear {
-  border-radius: 10px;
+  border-radius: 20px;
   background: var(--gradient);
   color: var(--milkyWhite);
   padding: 5px 0;
@@ -250,7 +250,7 @@ option {
 }
 
 #timePeriod,
-#buttons {
+.buttons {
   display: inline;
   margin: 0 5%
 }
@@ -262,22 +262,22 @@ option {
   margin: 0 2%;
 }
 
-#buttons button {
+.buttons button {
   font-weight: 200;
   text-align: center;
   cursor: pointer;
   background: var(--milkyWhite);
   width: 60px;
   border: solid 1px var(--arlaGraniteGray);
+  border-radius: 20px;
   font-family: var(--fontAmatic);
   font-weight: bold;
   font-size: 1.2em;
 }
 
 .selected {
-  background: red;
+  background: var(--gradient);
   color: var(--arlaGrassGreen);
-  background-image: url(/img/blomst.svg);
 }
 
 /* ---------- input form stryling ---------- */
@@ -287,7 +287,7 @@ form {
   width: 19%;
 }
 
-form button {
+/* form button {
   font-weight: 200;
   text-align: center;
   cursor: pointer;
@@ -299,9 +299,9 @@ form button {
   background-color: var(--arlaForrestGreen);
   width: 100%;
   max-width: 350px;
-}
+} */
 
-article button {
+/* article button {
   font-weight: 200;
   text-align: center;
   cursor: pointer;
@@ -311,7 +311,7 @@ article button {
   color: var(--text-color-light);
   background-color: #ffffff;
   width: 5%;
-}
+} */
 
 input {
   margin: 1em auto;

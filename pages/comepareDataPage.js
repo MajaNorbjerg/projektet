@@ -368,24 +368,3 @@ export default class CompareDataPage {
         }
     }
 }
-
-// <
-// ul class = "nav justify-content-center"
-// id = "nav1" >
-//     <
-//     li class = "nav-item" >
-//     <
-//     a class = "nav-link btn active2"
-// href = "#about" > about < /a> < /
-//     li > <
-//     li class = "nav-item" >
-//     <
-//     a class = "nav-link btn"
-// href = "#portfolio" > portfolio < /a> < /
-//     li > <
-//     li class = "nav-item" >
-//     <
-//     a class = "nav-link btn"
-// href = "#contact" > contact < /a> < /
-//     li > <
-//     /ul>
