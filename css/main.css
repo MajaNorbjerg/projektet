@@ -250,7 +250,7 @@ option {
 }
 
 #timePeriod,
-.buttons {
+#buttons {
   display: inline;
   margin: 0 5%
 }
@@ -262,7 +262,7 @@ option {
   margin: 0 2%;
 }
 
-.buttons button {
+.btn {
   font-weight: 200;
   text-align: center;
   cursor: pointer;
