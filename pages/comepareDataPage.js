@@ -33,11 +33,11 @@ export default class CompareDataPage {
                 </article>
 
                 <article id="buttons">
-                <button type="button" class="btn" onclick="farveskift1()" >I alt</button>
-                <button type="button" class="btn selected" onclick="selected()">Metan</button>
-                <button type="button" class="btn" onclick="selected()">Diesel</button>
-                <button type="button" class="btn" onclick="selected()">Foder</button>
-                <button type="button" class="btn" onclick="selected()">Strøm</button>
+                <button type="button" class="btn" onclick="farveskift1()" ><img class="img" src="/img/blomst.svg">I alt</button>
+                <button type="button" class="btn selected" onclick="selected()"><img class="img" src="/img/blomst.svg">Metan</button>
+                <button type="button" class="btn" onclick="selected()"><img class="img" src="/img/blomst.svg"> Diesel</button>
+                <button type="button" class="btn" onclick="selected()"><img class="img" src="/img/blomst.svg"> Foder</button>
+                <button type="button" class="btn" onclick="selected()"><img class="img" src="/img/blomst.svg"> Strøm</button>
                 </article>
                 
                 <article id="entireMap">
@@ -352,6 +352,7 @@ export default class CompareDataPage {
 
     /*-------------------- active i navbar ---------------------*/
     selected() {
+        console.log("Hej")
         // Get the container element
         let btnContainer = document.getElementById("buttons");
 

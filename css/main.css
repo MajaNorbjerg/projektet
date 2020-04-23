@@ -281,16 +281,24 @@ option {
   right: 0;
   top: -2;
 } */
+.img {
+  display: none;
+}
 
 .selected {
   background: var(--gradient);
-  color: var(--arlaGrassGreen);
-  background-image: url(../img/blomst.svg);
-  background-repeat: no-repeat;
-  /* background-position: 130% -100%; */
+  color: var(--milkyWhite);
+  position: relative;
+  border: none;
+}
+
+.selected img {
+  display: block;
+  position: absolute;
   overflow: visible;
-  background-position-y: -100%;
-  background-position-x: 130%;
+  width: 50%;
+  top: -50%;
+  right: -20%;
 }
 
 /* ---------- input form stryling ---------- */
