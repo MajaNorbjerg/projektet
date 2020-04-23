@@ -12,7 +12,7 @@ class ChartService {
         //         // ('Carbon footprint for the whole  farm, 'Carbon dioxide', 'ton CO2') --- nederste i arr [11]
 
         // Regioner regnes ud fra sealand
-
+        this.chart;
 
         this.dieselMyData = [];
         this.energyMyData = [];
@@ -84,7 +84,7 @@ class ChartService {
         //open the developer console to inspect the result
 
         let chartContainer = document.getElementById('chartContainer');
-        let chart = new Chart(chartContainer, {
+        this.chart = new Chart(chartContainer, {
             // The type of chart we want to create
             type: 'line',
             // The data for our dataset
@@ -110,10 +110,34 @@ class ChartService {
 
     }
 
-    addData(chart) {
-        chart.data.datasets.forEach((dataset) => {
-            dataset.data.pop();
-        });
+    async addDataset() {
+        // this.chart.data.datasets.forEach((dataset) => {
+        //     dataset.data.pop();
+        // });
+        this.energyMyData = await this.getAllData(8);
+        let arr = []
+        for (const year of this.energyMyData) {
+            arr.push(year.value)
+        }
+
+        //   // user 2 - Ep7o7EToQtZzdKnEDy2ahirFHc43
+        //   let uidCompare = "Ep7o7EToQtZzdKnEDy2ahirFHc43"; // matching an uid from the database
+        //   let dataCompare = await sustainabilityDataService.getPreparedDataByUid(uidCompare); // getting prepared data from the service
+        // creating the dataset to add
+        let datasetToAdd = {
+            label: 'User: Ep7o7EToQtZzdKnEDy2ahirFHc43',
+            data: arr,
+            fill: false,
+            borderColor: "#55bae7",
+            backgroundColor: "#55bae7",
+            pointBackgroundColor: "#e755ba",
+            pointBorderColor: "#e755ba",
+            pointHoverBackgroundColor: "#e755ba",
+            pointHoverBorderColor: "#e755ba",
+            type: 'line'
+        };
+        this.chart.data.datasets.push(datasetToAdd);
+        this.chart.update();
     }
 }
 const chartService = new ChartService();
