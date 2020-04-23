@@ -42,6 +42,8 @@ export default class CompareDataPage {
                 
                 <article id="entireMap">
                
+                <img id="arlaflower-map" src="./img/blomst.svg"> 
+
                 <div id="mapBtns">
                 <div id="mapselectionyellow"> 
                 <div id="mapselection"></div>
@@ -51,12 +53,11 @@ export default class CompareDataPage {
                 <button class="mapButtons" type="button">Danmarks data</button>
                 </div>
                 <div>
-                <button class="mapButtons" type="button">Din data</button>
+                <button class="mapButtons" onclick="showFlower()" type="button">Din data</button>
                 </div>
                 </div>
 
     
-                
                 <section id="scalebar">
                 <article id="scaletitel">
                 <h4> Reducering af kg CO2 pr. kg mælk i % </h4>
@@ -346,8 +347,17 @@ export default class CompareDataPage {
             norddanmark[i].style.fill = "#CBEAC3";
         }
 
-
     }
+
+    /* showFlower() {
+        document.getElementById("arlaflower-map").style.display = "block";
+      } */
+
+      showFlower () {
+          let element = document.getElementById("arlaflower-map");
+          element.classList.toggle("mystyle");
+      }
+
 
 
     /*-------------------- active i navbar ---------------------*/

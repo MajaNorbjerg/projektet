@@ -442,6 +442,7 @@ svg {
   position: absolute;
   top: 420px;
   right: 180px;
+  z-index: 2;
 }
 
 #mapBtns div {
@@ -461,6 +462,18 @@ svg {
   width: 35%;
   float: right;
   margin-top: 3%;
+}
+
+ #arlaflower-map {
+  width: 3%;
+  position: absolute;
+  top: 570px;
+  right: 360px;
+  z-index: 2;
+}
+
+ .mystyle {
+  display: none;
 }
 
 /* ---------- Graph ---------- */
