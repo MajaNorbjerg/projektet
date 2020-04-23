@@ -30,7 +30,7 @@ window.farveskift1 = () => compareDataPage.farveskift1();
 
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();
-window.addData = (dataset) => chartService.addData(dataset);
+window.addDataset = () => chartService.addDataset();
 window.removeData = (dataset) => chartService.removeData(dataset);
 
 
