@@ -7,6 +7,7 @@ import AddDataPage from "./pages/addDataToFirebase.js"
 import SpaService from "./services/spa-service.js";
 import dataService from "./services/addDataService.js"
 import chartService from "./services/chartService.js"
+import sustainabilityDataService from "./services/sustainabilityData.js"
 
 // // Declare and init pages
 let homePage = new HomePage();
