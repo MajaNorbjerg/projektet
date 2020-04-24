@@ -88,60 +88,85 @@ class ChartAdd {
         }
     }
 
-    removeData(element) {
-        console.log(element.id)
-        if (element.id === 'fromYear') {
+    removeData() {
+        let from = document.querySelector('#fromYear');
+        let to = document.querySelector('#toYear');
 
-            if (element.value === 2017) {
-                chartService.chart.data.labels.slice(1, 3);
-                chartService.chart.data.datasets.forEach((dataset) => {
-                    console.log(dataset.data)
-                });
 
+        chartService.chart.options = {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Chart.js'
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        min: from.value,
+                        max: to.value
+                    }
+                }]
+                // yAxes: [{
+                //     display: true
+                // }]
             }
-
-            chartService.chart.data.labels.shift();
-
-            // let spliced = arr.slice(0, 3)
-            // console.log(arr, spliced)
-            chartService.chart.data.datasets.forEach((dataset) => {
-                console.log(dataset.data)
-                dataset.data.shift();
-
-            });
-
-        } else if (element.id === 'toYear') {
-            console.log(element.id)
-
-
-            chartService.chart.data.labels.pop();
-            chartService.chart.data.labels.pop();
-            // let spliced = arr.slice(0, 3)
-            // console.log(arr, spliced)
-            chartService.chart.data.datasets.forEach((dataset) => {
-                console.log(dataset.data)
-
-                dataset.data.pop();
-                dataset.data.pop();
-            });
-        }
-        // fromYear
-        // toYear
-
+        };
         chartService.chart.update();
+
+
+        // console.log(element.id)
+        // if (element.id === 'fromYear') {
+
+        //     if (element.value === 2017) {
+        //         chartService.chart.data.labels.slice(1, 3);
+        //         chartService.chart.data.datasets.forEach((dataset) => {
+        //             console.log(dataset.data)
+        //         });
+
+        //     }
+
+        //     chartService.chart.data.labels.shift();
+
+        //     // let spliced = arr.slice(0, 3)
+        //     // console.log(arr, spliced)
+        //     chartService.chart.data.datasets.forEach((dataset) => {
+        //         console.log(dataset.data)
+        //         dataset.data.shift();
+
+        //     });
+
+        // } else if (element.id === 'toYear') {
+        //     console.log(element.id)
+
+
+        //     chartService.chart.data.labels.pop();
+        //     chartService.chart.data.labels.pop();
+        //     // let spliced = arr.slice(0, 3)
+        //     // console.log(arr, spliced)
+        //     chartService.chart.data.datasets.forEach((dataset) => {
+        //         console.log(dataset.data)
+
+        //         dataset.data.pop();
+        //         dataset.data.pop();
+        //     });
+        // }
+        // // fromYear
+        // // toYear
+
+        // chartService.chart.update();
     }
 
-    mapToChart(element, checkboxId) {
+    mapToChart(element, checkboxId, id, color) {
         let checkBox = document.querySelector(`#${checkboxId}`);
 
         if (checkBox.checked === false) {
             checkBox.checked = true;
-            this.addDataset(checkBox, 'SkosNYUR2FJDB5KYpqDQ', 'dieselMyData', '#147896')
+            this.addDataset(checkBox, id, 'dieselMyData', color)
             console.log('now its true')
             element.style.stroke = "#459632"
         } else if (checkBox.checked === true) {
             checkBox.checked = false;
-            this.addDataset(checkBox, 'SkosNYUR2FJDB5KYpqDQ', 'dieselMyData', '#147896')
+            this.addDataset(checkBox, id, 'dieselMyData', color)
             console.log('now its NOT true')
             element.style.stroke = "none"
         }

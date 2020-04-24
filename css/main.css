@@ -11,6 +11,8 @@
   --bronzeMedal: #b57c46;
   --noMedal: #E5E5E7;
   --milkyWhite: #f9f8fa;
+  --ArlaRoyalPurple: #7D5D8A;
+  --ArlaPoppyRed: #F8353C;
   --gradient: linear-gradient(0deg, rgba(0, 108, 58, 0.8) 0%, rgba(17, 124, 56, 0.8) 37%, rgba(35, 141, 54, 0.8) 65%, rgba(75, 177, 49, 0.8) 100%);
   --fontAmatic: 'Amatic SC';
 }
@@ -555,8 +557,6 @@ svg {
   right: -11%;
 }
 
-
-
 article #chartContainer {
   width: 50%;
 }
@@ -568,6 +568,33 @@ article #chartContainer {
 #chartDiv {
   width: 50%;
 }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 40%;
+  border-collapse:separate;
+  border:solid #dddddd 5px;
+  border-radius:6px;
+  -moz-border-radius:6px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+#thFirst {
+  background-color: #707070; color: white;}
+
+#tdNordDK {
+background-color: var(--ArlaRoyalPurple); color: white;
+}
+
+#tdSydDK {
+  background-color: var(--ArlaPoppyRed); color: white;
+  }
 
 /* ---------- Donut Chart ---------- */
 #donutChart {
