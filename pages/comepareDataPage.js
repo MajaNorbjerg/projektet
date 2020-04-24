@@ -13,10 +13,11 @@ export default class CompareDataPage {
             <a id="regioner">Regioner</a>
             <a id="lande">Lande</a>
           </nav>              
-                </header>
-                
+                </hearder>
+  
                 <h2 id="titelRegioner">Sammenlign data</h2> 
-                <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear">
+                <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear" onchange="removeData(this)">
+
                 <option>2015</option>
                 <option>2016</option>
                 <option>2017</option>
@@ -24,7 +25,7 @@ export default class CompareDataPage {
                 <option>2019</option>
                 </select>
                 <p>Til</p>
-                <select id="toYear">
+                <select id="toYear" onchange="removeData(this)">
                 <option >2015</option>
                 <option >2016</option>
                 <option >2017</option>
@@ -212,9 +213,9 @@ export default class CompareDataPage {
                             C150.7,254.6,151.1,255.1,151.6,255.5z"/>
                             <path class="st2" d="M124.7,286.2c-0.6,1.3-1.1,2.4-1.5,3.5c-0.2,0.5-0.5,1.1-0.7,1.7h-1.9c-0.6-1.1-1.2-2.3-2.5-4.6
                             c-1.6,2.1-2.6,3.5-3.7,5c-0.1,0-0.1-0.1-0.2-0.1l0,0v0.1c-4.7-2-0.5-5.7-1.8-8.3c1.8-0.9,3.2-1.6,4.3-2
-                            C119.5,282.9,122.1,284.5,124.7,286.2z"/>
-                            <path class="st2" d="M107.6,315.1c1.4,1.2,2.6,2.1,3.8,3.1c-1.3,1.2-2.6,2.3-4.2,3.7l-1.5-2C106.2,318.6,106.7,317.3,107.6,315.1z
-                            "/>
+                            C119.5,282.9,123.1c-1.3,1.2-2.6,2.3-4.2,3.7l-1.5-2C106.2,318.6,106.7,317.3,107.6,315.1z
+           2.1,284.5,124.7,286.2z"/>
+                            <path class="st2" d="M107.6,315.1c1.4,1.2,2.6,2.1,3.8,                 "/>
                             <path class="st2" d="M40.7,294.1c0.8-0.3,3.4,1.5,3.3,2.1c-0.4,2-1.5,3.9-2.3,5.8c-0.6,0.1-1.1,0.1-1.7,0.2
                             c-0.9-1.5-2.4-3.1-2.4-4.6C37.6,296.3,39.4,294.6,40.7,294.1z"/>
                         <path class="st2" d="M39.3,305.3c5.1,1.4,5.8,3.1,4.1,7.8c-1,2.8-1.3,6-2.6,8.6c-0.7,1.4-3.1,1.9-4.7,2.9
@@ -225,7 +226,7 @@ export default class CompareDataPage {
                             </g>
 
                  /* ------------st3 - norddanmark----------- */
-                        <g onmouseover="border(this)" onmouseout="ikkeBorder(this)">
+                        <g onmouseover="border(this)" onmouseout="ikkeBorder(this)" onclick="mapToChart(this, 'northDenmark')">
                         <path class="st3" d="M154.3,99.7c-6.2-1.4-7.2-12-15.7-9.4c5,3.8,9.9,7.4,14.8,11C153.7,100.7,154,100.2,154.3,99.7z M83.3,139
                             c2.8,0.6,5.8,1.1,8.1,2.5c0.9,0.5,0.5,3.5,0.4,5.3c0,0.9-0.6,1.8-0.9,2.5c5.1,5.5,7,5.7,8.5,0.9c-1.5,0-3,0-4.8,0
                             c0.1-2.2,0.2-4.2,0.3-6.2c0.1-2.7,0.2-5.5,0.3-8.2c-2.4,0.3-4.9,0.6-7.3,0.9c-0.4,0.1-0.8,0.2-1.2,0.4c-0.5-0.2-1-0.4-1.4-0.7
@@ -294,14 +295,16 @@ export default class CompareDataPage {
                 </article>
 
                 <article>
-                <div id="chartDiv">
+                // <div id="chartDiv"> 
                 <canvas id="chartContainer"></canvas>
                 </div>
-                <button onclick="addData(firstDataset)">Add first dataset</button>
-                <button onclick="removeData(firstDataset)">Remove first dataset</button>
+                
+                <input type="checkbox" id="northDenmark" onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', '#147896')">
+                <button onclick="addDataset('SkosNYUR2FJDB5KYpqDQ','dieselMyData', '#147896')">Nordjylland</button>
+                <button>Remove first dataset</button>
               
-                <button onclick="addData(secondDataset)">Add another dataset</button>
-                <button onclick="removeData(secondDataset)">Remove another dataset</button>
+                <button onclick="addDataset(this, 'LvkxxMIXEgjGuvs3xUNL', 'dieselMyData', '#142536')">Syddanmark</button>
+                <button >Remove another dataset</button> <!-- onclick="removeData()" -->
                 <br>
 <!--
                 <button onclick="addMonth()">Add Month</button>
