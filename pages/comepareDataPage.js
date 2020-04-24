@@ -1,6 +1,15 @@
+import _donutService from "../services/donutService.js";
+
 export default class CompareDataPage {
     constructor() {
         this.template();
+        this.preparedDataNord = _donutService.prepareData(_donutService._badgeDataNordjylland);
+        this.preparedDataSyd = _donutService.prepareData(_donutService._badgeDataSoenderjylland);
+        this.preparedDataSealand = _donutService.prepareData(_donutService._badgeDataSealand);
+
+        // this.appendChart(this.preparedDataNord, "chartNord");
+        // this.appendChart(this.preparedDataSyd, "chartSyd");
+        // this.appendChart(this.preparedDataSealand, "chartSealand");
     }
 
     template() {
@@ -14,7 +23,7 @@ export default class CompareDataPage {
             <a id="lande">Lande</a>
           </nav>              
                 </header>
-                
+                <div>
                 <h2 id="titelRegioner">Sammenlign data</h2> 
                 <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear">
                 <option>2015</option>
@@ -41,6 +50,7 @@ export default class CompareDataPage {
                 <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Strøm</button>
                 </article>
                 </div>
+
                 <article id="entireMap">
                
                 <img id="arlaflower-map" src="./img/blomst.svg"> 
@@ -314,19 +324,20 @@ export default class CompareDataPage {
                 <div id="graphBtns-wrapper">
                 
                 
-                <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
+                <button class="graphBtns" type="button" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
                 
                 <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel <br> (evt som PDF)</button>
                 
                 </div>
-                <div>
-                <button class="graphBtns" type="button">Eksporter som excel <br> (evt som PDF)</button>
-                </div>
-                </div>
 
-                /*----- medaljefordeling-----*/
+                <!-- ----- medaljefordeling----- -->
 
-                <canvas id="chart"></canvas>
+                <h3> i alt - Region Nordjylland</h3>
+                <canvas id="chartNord"></canvas>
+                <h3> i alt - Region Sønderjylland</h3>
+                <canvas id="chartSyd"></canvas>
+                <h3> i alt - Region Sjælland og øer</h3>
+                <canvas id="chartSealand"></canvas>
 
 
             </article>`
@@ -354,13 +365,14 @@ export default class CompareDataPage {
         var checkBox = document.getElementById("myCheck");
         var st1 = document.getElementsByClassName("st1");
         for (let i = 0; i < st1.length; i++) {
-        if (checkBox.checked == true){
-        st1.classList.toggle("border");
-        } else {
-            st1.classList.toggle("noBorder");
-        }}
-      }
- 
+            if (checkBox.checked == true) {
+                st1.classList.toggle("border");
+            } else {
+                st1.classList.toggle("noBorder");
+            }
+        }
+    }
+
 
     farveskift1() {
 
@@ -381,10 +393,10 @@ export default class CompareDataPage {
 
     }
 
-      showFlower () {
-          let element = document.getElementById("arlaflower-map");
-          element.classList.toggle("show");
-      }
+    showFlower() {
+        let element = document.getElementById("arlaflower-map");
+        element.classList.toggle("show");
+    }
 
 
 
@@ -397,5 +409,30 @@ export default class CompareDataPage {
         selected.classList.remove("selected");
         element.classList.add("selected");
     }
+
+
+    appendChart(data, chart) {
+        // generate chart
+        let chartContainerNord = document.getElementById(chart);
+        let chart1 = new Chart(chartContainerNord, {
+            type: 'doughnut',
+            data: {
+                labels: data.counts,
+                datasets: [{
+                    data: data.counts,
+                    backgroundColor: data.colors
+                }]
+            }
+        });
+
+
+
+    }
+    drawCharts() {
+        this.appendChart(this.preparedDataNord, "chartNord");
+        this.appendChart(this.preparedDataSyd, "chartSyd");
+        this.appendChart(this.preparedDataSealand, "chartSealand");
+    }
+
 
 }

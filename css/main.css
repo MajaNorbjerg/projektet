@@ -64,6 +64,13 @@ h2 {
   letter-spacing: 3px;
 }
 
+h3 {
+  font-family: var(--fontAmatic);
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
 a {
   text-decoration: none;
   color: var(--light-green);
@@ -216,6 +223,10 @@ ul {
   padding: 5px;
   width: 70px;
   cursor: pointer;
+}
+
+select:active {
+  outline: 0;
 }
 
 option {
@@ -508,11 +519,11 @@ svg {
   stroke: none;
 }
 
-.st1.border {
+.st1.border {
   stroke: #FFCC32;
 }
 
- #arlaflower-map {
+#arlaflower-map {
   width: 3%;
   position: absolute;
   top: 600px;

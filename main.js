@@ -7,7 +7,7 @@ import AddDataPage from "./pages/addDataToFirebase.js"
 import SpaService from "./services/spa-service.js"
 import dataService from "./services/addDataService.js"
 import chartService from "./services/chartService.js"
-// import _donutService from "./services/donutService.js"
+import _donutService from "./services/donutService.js"
 import sustainabilityDataService from "./services/sustainabilityData.js"
 import chartAdd from "./services/chartAdd.js"
 
@@ -34,6 +34,7 @@ window.farveskift1 = () => compareDataPage.farveskift1();
 window.showFlower = () => compareDataPage.showFlower();
 window.clickBorder = () => compareDataPage.clickBorder();
 window.selected = (element) => compareDataPage.selected(element);
+window.drawCharts = () => compareDataPage.drawCharts();
 
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();

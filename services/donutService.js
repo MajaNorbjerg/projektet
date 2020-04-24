@@ -51,10 +51,9 @@ class DonutService {
             count: 25,
             color: "#E5E5E7"
         }]
-        console.log(_badgeDataNordjylland);
-        console.log(_badgeDataSoenderjylland);
-        console.log(_badgeDataSealand);
+
     }
+
     prepareData(data) {
         // declaring two array to store the data 
         let labels = [];
@@ -63,7 +62,7 @@ class DonutService {
         // looping through the global _salesData array
         for (const badgeObject of data) {
             // adding the values to the different arrays
-            labels.push(Object.label);
+            labels.push(badgeObject.label);
             counts.push(badgeObject.count);
             colors.push(badgeObject.color);
         }
@@ -75,23 +74,8 @@ class DonutService {
             colors
         };
     }
-    appendChart(data) {
-        // generate chart
-        let chartContainer = document.getElementById('chart');
-        let chart = new Chart(chartContainer, {
-            type: 'doughnut',
-            data: {
-                labels: data.labels,
-                datasets: [{
-                    data: data.counts,
-                    backgroundColor: data.colors
-                }]
-            }
-        });
-        // Doughnut and Pie Charts: https://www.chartjs.org/docs/latest/charts/doughnut.html 
-    }
 
-
+    // 3: create and append the chart
 
 }
 const _donutService = new DonutService();
