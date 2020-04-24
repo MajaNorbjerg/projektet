@@ -599,7 +599,7 @@ th {
   color: white;
 }
 
-/* ---------- Donut Chart ---------- */
+/* ---------- Medaljefordeling ---------- */
 #donutChart {
   display: none;
   flex-wrap: wrap;
