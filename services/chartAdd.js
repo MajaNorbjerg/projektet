@@ -88,21 +88,51 @@ class ChartAdd {
         }
     }
 
-    async removeData(id) {
-        // chartService.chart.data.labels.pop();
-        chartService.chart.data.datasets.forEach((dataset) => {
-            if (dataset.label.includes(id)) {
-                for (const d of datset.data) {
-                    d.pop();
-                }
+    removeData(element) {
+        console.log(element.id)
+        if (element.id === 'fromYear') {
+
+            if (element.value === 2017) {
+                chartService.chart.data.labels.slice(1, 3);
+                chartService.chart.data.datasets.forEach((dataset) => {
+                    console.log(dataset.data)
+                });
 
             }
-        });
+
+            chartService.chart.data.labels.shift();
+
+            // let spliced = arr.slice(0, 3)
+            // console.log(arr, spliced)
+            chartService.chart.data.datasets.forEach((dataset) => {
+                console.log(dataset.data)
+                dataset.data.shift();
+
+            });
+
+        } else if (element.id === 'toYear') {
+            console.log(element.id)
+
+
+            chartService.chart.data.labels.pop();
+            chartService.chart.data.labels.pop();
+            // let spliced = arr.slice(0, 3)
+            // console.log(arr, spliced)
+            chartService.chart.data.datasets.forEach((dataset) => {
+                console.log(dataset.data)
+
+                dataset.data.pop();
+                dataset.data.pop();
+            });
+        }
+        // fromYear
+        // toYear
+
         chartService.chart.update();
     }
 
-    northFunction(element) {
-        let checkBox = document.querySelector('#northDenmark');
+    mapToChart(element, checkboxId) {
+        let checkBox = document.querySelector(`#${checkboxId}`);
 
         if (checkBox.checked === false) {
             checkBox.checked = true;
@@ -116,6 +146,9 @@ class ChartAdd {
             element.style.stroke = "none"
         }
     }
+
+
+
 }
 const chartAdd = new ChartAdd();
 export default chartAdd;

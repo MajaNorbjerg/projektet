@@ -33,7 +33,7 @@ export default class CompareDataPage {
                 <option>2019</option>
                 </select>
                 <p>Til</p>
-                <select id="toYear">
+                <select id="toYear" onchange="removeData(this)">
                 <option >2015</option>
                 <option >2016</option>
                 <option >2017</option>
@@ -235,7 +235,7 @@ export default class CompareDataPage {
                             </g>
 
                  /* ------------st3 - norddanmark----------- */
-                        <g onmouseover="border(this)" onmouseout="ikkeBorder(this)" onclick="northFunction(this)">
+                        <g onmouseover="border(this)" onmouseout="ikkeBorder(this)" onclick="mapToChart(this, 'northDenmark')">
                         <path class="st3" d="M154.3,99.7c-6.2-1.4-7.2-12-15.7-9.4c5,3.8,9.9,7.4,14.8,11C153.7,100.7,154,100.2,154.3,99.7z M83.3,139
                             c2.8,0.6,5.8,1.1,8.1,2.5c0.9,0.5,0.5,3.5,0.4,5.3c0,0.9-0.6,1.8-0.9,2.5c5.1,5.5,7,5.7,8.5,0.9c-1.5,0-3,0-4.8,0
                             c0.1-2.2,0.2-4.2,0.3-6.2c0.1-2.7,0.2-5.5,0.3-8.2c-2.4,0.3-4.9,0.6-7.3,0.9c-0.4,0.1-0.8,0.2-1.2,0.4c-0.5-0.2-1-0.4-1.4-0.7
@@ -313,7 +313,7 @@ export default class CompareDataPage {
                 <button>Remove first dataset</button>
               
                 <button onclick="addDataset(this, 'LvkxxMIXEgjGuvs3xUNL', 'dieselMyData', '#142536')">Syddanmark</button>
-                <button onclick="removeData('LvkxxMIXEgjGuvs3xUNL')">Remove another dataset</button>
+                <button >Remove another dataset</button> <!-- onclick="removeData()" -->
                 <br>
 <!--
                 <button onclick="addMonth()">Add Month</button>

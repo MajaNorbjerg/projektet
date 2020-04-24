@@ -39,8 +39,8 @@ window.drawCharts = () => compareDataPage.drawCharts();
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();
 window.addDataset = (element, id, data, color) => chartAdd.addDataset(element, id, data, color);
-window.removeData = (dataset) => chartAdd.removeData(dataset);
-window.northFunction = (element) => chartAdd.northFunction(element);
+window.removeData = (element) => chartAdd.removeData(element);
+window.mapToChart = (element, checkboxId) => chartAdd.mapToChart(element, checkboxId);
 
 
 
