@@ -305,7 +305,7 @@ export default class CompareDataPage {
                 </article>
 
                 <article>
-                // <div id="chartDiv"> 
+                <div id="chartDiv"> 
                 <canvas id="chartContainer"></canvas>
                 </div>
                 
@@ -322,23 +322,61 @@ export default class CompareDataPage {
                 
                 </article>
                 
+                <!-- ----- medaljefordeling----- -->
+                <article id="donutChart">
+                <div id="divChartNord">
+                <h3> i alt - Region Nordjylland</h3>
+                <canvas id="chartNord"></canvas>
+                <table>
+                <tr>
+                  <th class="tableHeadNord">Medalje</th>
+                  <th class="tableHeadNord">Antal</th>
+                </tr>
+                <tr>
+                  <td>Guld</td>
+                  <td>26</td>
+                </tr>
+                <tr>
+                  <td>Sølv</td>
+                  <td>28</td>
+                </tr>
+                <tr>
+                  <td>Bronce</td>
+                  <td>40</td>
+                </tr>
+                <tr>
+                  <td>Ingen</td>
+                  <td>110</td>
+                </tr>
+                <tr>
+                  <td>Endnu ingen data</td>
+                  <td>0</td>
+                  <tr>
+                  <td>Total</td>
+                  <td>204</td>
+                </tr>
+                </tr>
+              </table> 
+                </div>
+
+                <div id="divChartSyd">
+                <h3> i alt - Region Sønderjylland</h3>
+                <canvas id="chartSyd"></canvas>
+                </div>
+
+                <div id="divChartSealand">
+                <h3> i alt - Region Sjælland og øer</h3>
+                <canvas id="chartSealand"></canvas>
+                </div>
+                </article>
+
                 <div id="graphBtns-wrapper">
-                
-                
                 <button class="graphBtns" type="button" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
                 
                 <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel <br> (evt som PDF)</button>
                 
                 </div>
 
-                <!-- ----- medaljefordeling----- -->
-
-                <h3> i alt - Region Nordjylland</h3>
-                <canvas id="chartNord"></canvas>
-                <h3> i alt - Region Sønderjylland</h3>
-                <canvas id="chartSyd"></canvas>
-                <h3> i alt - Region Sjælland og øer</h3>
-                <canvas id="chartSealand"></canvas>
 
 
             </article>`
@@ -396,12 +434,18 @@ export default class CompareDataPage {
         let chartContainerNord = document.getElementById(chart);
         let chart1 = new Chart(chartContainerNord, {
             type: 'doughnut',
+
             data: {
-                labels: data.counts,
+                labels: data.labels,
                 datasets: [{
                     data: data.counts,
                     backgroundColor: data.colors
                 }]
+            },
+            options: {
+                legend: {
+                    display: false
+                }
             }
         });
 
@@ -409,6 +453,7 @@ export default class CompareDataPage {
 
     }
     drawCharts() {
+        document.getElementById("donutChart").style.display = "flex";
         this.appendChart(this.preparedDataNord, "chartNord");
         this.appendChart(this.preparedDataSyd, "chartSyd");
         this.appendChart(this.preparedDataSealand, "chartSealand");

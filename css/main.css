@@ -515,7 +515,7 @@ svg {
   margin-top: 3%;
 }
 
- #arlaflower-map {
+#arlaflower-map {
   width: 3%;
   position: absolute;
   top: 600px;
@@ -567,4 +567,32 @@ article #chartContainer {
 
 #chartDiv {
   width: 50%;
+}
+
+/* ---------- Donut Chart ---------- */
+#donutChart {
+  display: none;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+
+
+#divChartNord,
+#divChartSyd,
+#divChartSealand {
+  width: 32%;
+  margin: 3% 0;
+}
+
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.tableHeadNord {
+  background-color: ;
 }
