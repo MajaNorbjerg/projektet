@@ -184,14 +184,24 @@ class ChartAdd {
             console.log('now its NOT true')
             element.style.stroke = "none";
             
-            var table = document.getElementById("graphTable");
-            for (var i = 0, row; row = table.rows[i]; i++) {
-                var a = table.indexOf(i);
-                a.deleteRow(tdtext)
+           /* var table = document.getElementById("graphTable");
+            console.log(table);
+            
+            for (const row of table.children) {
+                console.log(row[1]);
+                
+            } */
+
+            /*
+             for (var i = 0, row; row = table.rows[i]; i++) {
+                console.log(table.rows);
+                
+                var a = tdtext.indexOf();
+                a.deleteRow(td)
                 
                  //iterate through cells
                  //cells would be accessed using the "cell" variable assigned in the for loop
-            }
+            } */
         }
     }
 
