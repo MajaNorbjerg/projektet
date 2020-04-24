@@ -570,7 +570,6 @@ article #chartContainer {
 }
 
 table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 40%;
   border-collapse:separate;
@@ -588,10 +587,10 @@ td, th {
 #thFirst {
   background-color: #707070; color: white;}
 
-#tdNordDK {
+#tdFirst {
 background-color: var(--ArlaRoyalPurple); color: white;
 }
 
-#tdSydDK {
+#tdSecond {
   background-color: var(--ArlaPoppyRed); color: white;
   }

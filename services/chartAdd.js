@@ -91,7 +91,9 @@ class ChartAdd {
     removeData() {
         let from = document.querySelector('#fromYear');
         let to = document.querySelector('#toYear');
-
+        
+        document.getElementById("fromYearTable").innerHTML = + from.value;
+        document.getElementById("toYearTable").innerHTML = + to.value;
 
         chartService.chart.options = {
             responsive: true,
@@ -106,13 +108,17 @@ class ChartAdd {
                         max: to.value
                     }
                 }]
-                // yAxes: [{
-                //     display: true
-                // }]
+           
             }
         };
         chartService.chart.update();
 
+       /* -----------  fra tidslinje til tabel ----- */
+
+       /* function myFunction() {
+        var x = document.getElementById("mySelect").value;
+        document.getElementById("demo").innerHTML = "You selected: " + x;
+      } */
 
         // console.log(element.id)
         // if (element.id === 'fromYear') {
@@ -156,19 +162,36 @@ class ChartAdd {
         // chartService.chart.update();
     }
 
-    mapToChart(element, checkboxId, id, color) {
+    mapToChart(element, checkboxId, id, color, tdtext, r) {
         let checkBox = document.querySelector(`#${checkboxId}`);
+        console.log(checkboxId);
 
         if (checkBox.checked === false) {
             checkBox.checked = true;
             this.addDataset(checkBox, id, 'dieselMyData', color)
             console.log('now its true')
             element.style.stroke = "#459632"
+            let table = document.getElementById("graphTable");
+            let row = table.insertRow(1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            cell1.innerHTML = tdtext;
+
         } else if (checkBox.checked === true) {
             checkBox.checked = false;
             this.addDataset(checkBox, id, 'dieselMyData', color)
             console.log('now its NOT true')
-            element.style.stroke = "none"
+            element.style.stroke = "none";
+            
+            var table = document.getElementById("graphTable");
+            for (var i = 0, row; row = table.rows[i]; i++) {
+                var a = table.indexOf(i);
+                a.deleteRow(tdtext)
+                
+                 //iterate through cells
+                 //cells would be accessed using the "cell" variable assigned in the for loop
+            }
         }
     }
 
