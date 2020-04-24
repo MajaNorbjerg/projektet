@@ -7,17 +7,20 @@ class ChartAdd {
         // this.template();
         this.chart;
         // this.startChart();
+        // this.north = document.querySelector('#northMap')
+        // this.mapToChart('document.querySelector("#northMap")', 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a')
+
     }
 
     // dataInput(data){
 
-    startChart() {
-        let checkBox = document.querySelector('#northDenmark');
-        if (checkBox.checked) {
-            this.addDataset(checkBox, '7OIHxbSLJcSF2sXVtxTA', 'dieselMyData', '#147896')
-        }
+    // startChart() {
+    //     let checkBox = document.querySelector('#northDenmark');
+    //     if (checkBox.checked) {
+    //         // this.addDataset(checkBox, '7OIHxbSLJcSF2sXVtxTA', 'dieselMyData', '#147896')
+    //     }
 
-    }
+    // }
 
     // }
 
@@ -85,7 +88,9 @@ class ChartAdd {
     }
 
     mapToChart(element, checkboxId, id, color) {
+        console.log(element)
         let checkBox = document.querySelector(`#${checkboxId}`);
+        console.log(checkBox)
 
         if (checkBox.checked === false) {
             checkBox.checked = true;
