@@ -25,8 +25,9 @@ export default class CompareDataPage {
                 </header>
                 <div>
                 <h2 id="titelRegioner">Sammenlign data</h2> 
-                <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear" onchange="removeData(this)">
-
+                <article id="timePeriod"><p>Tidsperiode</p>
+                
+                <select id="fromYear" onchange="removeData(this)">
                 <option>2015</option>
                 <option>2016</option>
                 <option>2017</option>
@@ -308,6 +309,24 @@ export default class CompareDataPage {
                 // <div id="chartDiv"> 
                 <canvas id="chartContainer"></canvas>
                 </div>
+
+<table>
+  <tr id="thFirst">
+    <th></th>
+    <th>2015</th>
+    <th>2019</th>
+  </tr>
+  <tr>
+    <td id="tdNordDK">Norddanmark</td>
+    <td>10020</td>
+    <td>7750</td>
+  </tr>
+  <tr>
+    <td id="tdSydDK">Syddanmark</td>
+    <td>13350</td>
+    <td>8300</td>
+  </tr>
+  </table>
                 
                 <input type="checkbox" id="northDenmark" onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', '#147896')">
                 <button onclick="addDataset('SkosNYUR2FJDB5KYpqDQ','dieselMyData', '#147896')">Nordjylland</button>
