@@ -459,7 +459,7 @@ export default class CompareDataPage {
                 </article>
 
                 <div id="graphBtns-wrapper">
-                <button class="graphBtns" id="badgeGraphButton" type="button" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
+                <button class="graphBtns" id="donutChartButton" type="button" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
                 
                 <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel <br> (evt som PDF)</button>
                 
@@ -551,7 +551,7 @@ export default class CompareDataPage {
     }
     drawCharts() {
         let donutChart = document.getElementById("donutChart");
-        let buttonText = document.getElementById("badgeGraphButton")
+        let buttonText = document.getElementById("donutChartButton")
         console.log(donutChart.style.display)
         if (buttonText.innerHTML === "Se medaljefordeling") {
             buttonText.innerHTML = "Skjul medaljefordeling";
