@@ -15,11 +15,6 @@ class ChartService {
         // // Regioner regnes ud fra sealand
         // this.chart;
 
-        // this.dieselMyData = [];
-        // this.energyMyData = [];
-        // this.digestionMyData = [];
-        // this.importedMyData = [];
-        // this.carbonFootprintMyData = [];
 
         // // this.year = [];
         this.chart;
