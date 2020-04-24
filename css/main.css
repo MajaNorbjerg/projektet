@@ -9,6 +9,7 @@
   --goldMedal: #d1a535;
   --silverMedal: #8e8c8c;
   --bronzeMedal: #b57c46;
+  --noMedal: #E5E5E7;
   --milkyWhite: #f9f8fa;
   --gradient: linear-gradient(0deg, rgba(0, 108, 58, 0.8) 0%, rgba(17, 124, 56, 0.8) 37%, rgba(35, 141, 54, 0.8) 65%, rgba(75, 177, 49, 0.8) 100%);
   --fontAmatic: 'Amatic SC';
@@ -63,6 +64,13 @@ h2 {
   letter-spacing: 3px;
 }
 
+h3 {
+  font-family: var(--fontAmatic);
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
 a {
   text-decoration: none;
   color: var(--light-green);
@@ -76,7 +84,6 @@ ul {
 /* ---------- menu styling ---------- */
 .tabbar {
   /* background-color: var(--arlaForrestGreen); */
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -210,12 +217,16 @@ ul {
 /* ---------- Compare data page stryling ---------- */
 #fromYear,
 #toYear {
-  border-radius: 10px;
+  border-radius: 20px;
   background: var(--gradient);
   color: var(--milkyWhite);
-  padding: 5px 0;
+  padding: 5px;
   width: 70px;
   cursor: pointer;
+}
+
+select:active {
+  outline: 0;
 }
 
 option {
@@ -265,7 +276,7 @@ option {
 #timePeriod,
 #buttons {
   display: inline;
-  margin: 0 5%
+  margin: 0 5%;
 }
 
 #timePeriod p {
@@ -275,23 +286,50 @@ option {
   margin: 0 2%;
 }
 
-#buttons button {
+.btn {
   font-weight: 200;
   text-align: center;
   cursor: pointer;
   background: var(--milkyWhite);
   width: 60px;
   border: solid 1px var(--arlaGraniteGray);
+  border-radius: 20px;
   font-family: var(--fontAmatic);
   font-weight: bold;
   font-size: 1.2em;
 }
 
-.selected {
-  background: red;
-  color: var(--arlaGrassGreen);
-  background-image: url(/img/blomst.svg);
+.btn:focus {
+  outline: 0;
 }
+
+/* .btn img {
+  width: 50%;
+  position: absolute;
+  right: 0;
+  top: -2;
+} */
+.img {
+  display: none;
+}
+
+.selected {
+  background: var(--gradient);
+  color: var(--milkyWhite);
+  position: relative;
+  border: none;
+}
+
+.selected img {
+  display: block;
+  position: absolute;
+  overflow: visible;
+  width: 50%;
+  top: -30%;
+  right: -15%;
+}
+
+
 
 /* ---------- input form stryling ---------- */
 form {
@@ -498,12 +536,23 @@ svg {
 }
 
 .graphBtns {
+  position: relative;
   background-color: white;
   width: 140px;
   height: 35px;
   color: #006C3A;
   font-size: 0.6em;
   font-weight: 700;
+  margin: 0 5%;
+}
+
+.flower {
+  display: block;
+  position: absolute;
+  overflow: visible;
+  width: 25%;
+  top: -40%;
+  right: -11%;
 }
 
 
