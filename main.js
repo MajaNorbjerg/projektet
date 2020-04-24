@@ -28,8 +28,8 @@ window.pageChange = function () {
   _spaService.pageChange();
 }
 
-window.border = (x) => compareDataPage.border(x);
-window.ikkeBorder = (x) => compareDataPage.ikkeBorder(x);
+window.border = (element, checkboxId) => compareDataPage.border(element, checkboxId);
+window.ikkeBorder = (element, checkboxId) => compareDataPage.ikkeBorder(element, checkboxId);
 window.farveskift1 = () => compareDataPage.farveskift1();
 window.showFlower = () => compareDataPage.showFlower();
 window.selected = (element) => compareDataPage.selected(element);
@@ -38,8 +38,8 @@ window.drawCharts = () => compareDataPage.drawCharts();
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();
 window.addDataset = (element, id, data, color) => chartAdd.addDataset(element, id, data, color);
-window.removeData = (element) => chartAdd.removeData(element);
-window.mapToChart = (element, checkboxId) => chartAdd.mapToChart(element, checkboxId);
+window.removeData = () => chartAdd.removeData();
+window.mapToChart = (element, checkboxId, id, color) => chartAdd.mapToChart(element, checkboxId, id, color);
 
 
 
