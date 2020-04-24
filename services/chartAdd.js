@@ -111,7 +111,7 @@ class ChartAdd {
                 // }]
             }
         };
-        chart.update();
+        chartService.chart.update();
 
 
         // console.log(element.id)
