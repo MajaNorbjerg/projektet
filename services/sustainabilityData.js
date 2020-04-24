@@ -39,7 +39,7 @@ class SustainabilityDataService {
 
         // do what ever you want with the data array 🎉
 
-        console.log(sustainabilityData)
+        // console.log(sustainabilityData)
         return sustainabilityData;
     }
 
@@ -55,7 +55,7 @@ class SustainabilityDataService {
         let digestionMyData = [];
         let importedMyData = [];
         let carbonFootprintMyData = [];
-        console.log(sustainabilityData[0].allArr)
+        // console.log(sustainabilityData[0].allArr)
         for (const year of sustainabilityData[0].allArr) { // looping through all data and pushing to arrays
             years.push(year.propertyArr[0].value);
             dieselMyData.push(year.propertyArr[7].value);
@@ -64,14 +64,14 @@ class SustainabilityDataService {
             importedMyData.push(year.propertyArr[10].value);
             carbonFootprintMyData.push(year.propertyArr[11].value);
         }
-        console.log({
-            years,
-            dieselMyData,
-            energyMyData,
-            digestionMyData,
-            importedMyData,
-            carbonFootprintMyData
-        })
+        // console.log({
+        //     years,
+        //     dieselMyData,
+        //     energyMyData,
+        //     digestionMyData,
+        //     importedMyData,
+        //     carbonFootprintMyData
+        // })
         return {
             years,
             dieselMyData,
@@ -85,7 +85,7 @@ class SustainabilityDataService {
     async getPreparedDataByUid(uid) {
         let firebaseData = await this.getDataByUid(uid); // get the data from Firebase
         let preparedData = this.prepareData(firebaseData); // Prepare all the data. Returning an object with arrays: years, numberOfCows, milkProduction & carbonFootprint
-        console.log(preparedData);
+        // console.log(preparedData);
         return preparedData; // returning the data back to the "caller", in this case the chart pages 
     }
 }

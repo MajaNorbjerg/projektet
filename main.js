@@ -33,8 +33,9 @@ window.farveskift1 = () => compareDataPage.farveskift1();
 
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();
-window.addDataset = (id, data, color) => chartAdd.addDataset(id, data, color);
-window.removeData = (dataset) => chartAdd.removeData(dataset);
+window.addDataset = (element, id, data, color) => chartAdd.addDataset(element, id, data, color);
+window.removeData = (element) => chartAdd.removeData(element);
+window.mapToChart = (element, checkboxId) => chartAdd.mapToChart(element, checkboxId);
 
 
 
