@@ -1,6 +1,15 @@
+import _donutService from "../services/donutService.js";
+
 export default class CompareDataPage {
     constructor() {
         this.template();
+        this.preparedDataNord = _donutService.prepareData(_donutService._badgeDataNordjylland);
+        this.preparedDataSyd = _donutService.prepareData(_donutService._badgeDataSoenderjylland);
+        this.preparedDataSealand = _donutService.prepareData(_donutService._badgeDataSealand);
+
+        // this.appendChart(this.preparedDataNord, "chartNord");
+        // this.appendChart(this.preparedDataSyd, "chartSyd");
+        // this.appendChart(this.preparedDataSealand, "chartSealand");
     }
 
     template() {
@@ -13,8 +22,8 @@ export default class CompareDataPage {
             <a id="regioner">Regioner</a>
             <a id="lande">Lande</a>
           </nav>              
-                </hearder>
-  
+                </header>
+                <div>
                 <h2 id="titelRegioner">Sammenlign data</h2> 
                 <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear" onchange="removeData(this)">
 
@@ -35,13 +44,14 @@ export default class CompareDataPage {
                 </article>
 
                 <article id="buttons">
-                <button type="button" class="btn" onclick="farveskift1()" >I alt</button>
-                <button type="button" class="btn selected" onclick="active">Metan</button>
-                <button type="button" class="btn">Diesel</button>
-                <button type="button" class="btn">Foder</button>
-                <button type="button" class="btn">Strøm</button>
+                <button type="button" class="btn selected" onclick="selected(this); farveskift1()" ><img class="img" src="/img/blomst.svg">I alt</button>
+                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg">Metan</button>
+                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Diesel</button>
+                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Foder</button>
+                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Strøm</button>
                 </article>
-                
+                </div>
+
                 <article id="entireMap">
                
                 <img id="arlaflower-map" src="./img/blomst.svg"> 
@@ -309,22 +319,26 @@ export default class CompareDataPage {
 <!--
                 <button onclick="addMonth()">Add Month</button>
                 <button onclick="removeMonth()">Remove Month</button> -->
-                Tabel
+                
                 </article>
                 
                 <div id="graphBtns-wrapper">
-                <div>
                 
-                <button class="graphBtns" type="button">Se medaljefordeling</button>
-                </div>
-                <div>
-                <button class="graphBtns" type="button">Eksporter som excel <br> (evt som PDF)</button>
-                </div>
+                
+                <button class="graphBtns" type="button" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
+                
+                <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel <br> (evt som PDF)</button>
+                
                 </div>
 
-                /*----- medaljefordeling-----*/
+                <!-- ----- medaljefordeling----- -->
 
-                <canvas id="chart"></canvas>
+                <h3> i alt - Region Nordjylland</h3>
+                <canvas id="chartNord"></canvas>
+                <h3> i alt - Region Sønderjylland</h3>
+                <canvas id="chartSyd"></canvas>
+                <h3> i alt - Region Sjælland og øer</h3>
+                <canvas id="chartSealand"></canvas>
 
 
             </article>`
@@ -359,52 +373,46 @@ export default class CompareDataPage {
 
     }
 
-      showFlower () {
-          let element = document.getElementById("arlaflower-map");
-          element.classList.toggle("show");
-      }
-
-
-
-    /*-------------------- active i navbar ---------------------*/
-    active() {
-        // Get the container element
-        let btnContainer = document.getElementById("buttons");
-
-        // Get all buttons with class="btn" inside the container
-        let btns = btnContainer.getElementsByClassName("btn");
-
-        // Loop through the buttons and add the active class to the current/clicked button
-        for (let i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                let current = document.getElementsByClassName("active");
-                current[0].className = current[0].className.replace("active", "");
-                this.className += "active";
-            });
-        }
+    showFlower() {
+        let element = document.getElementById("arlaflower-map");
+        element.classList.toggle("show");
     }
 
- /*-------------------- Donout graf ---------------------*/
+
+
+
+
+
+    /* ------------Indikation af hvilken knap der er valgt----------- */
+    selected(element) {
+        let selected = document.querySelector(".btn.selected");
+        selected.classList.remove("selected");
+        element.classList.add("selected");
+    }
+
+
+    appendChart(data, chart) {
+        // generate chart
+        let chartContainerNord = document.getElementById(chart);
+        let chart1 = new Chart(chartContainerNord, {
+            type: 'doughnut',
+            data: {
+                labels: data.counts,
+                datasets: [{
+                    data: data.counts,
+                    backgroundColor: data.colors
+                }]
+            }
+        });
+
+
+
+    }
+    drawCharts() {
+        this.appendChart(this.preparedDataNord, "chartNord");
+        this.appendChart(this.preparedDataSyd, "chartSyd");
+        this.appendChart(this.preparedDataSealand, "chartSealand");
+    }
+
 
 }
-
-// <
-// ul class = "nav justify-content-center"
-// id = "nav1" >
-//     <
-//     li class = "nav-item" >
-//     <
-//     a class = "nav-link btn active2"
-// href = "#about" > about < /a> < /
-//     li > <
-//     li class = "nav-item" >
-//     <
-//     a class = "nav-link btn"
-// href = "#portfolio" > portfolio < /a> < /
-//     li > <
-//     li class = "nav-item" >
-//     <
-//     a class = "nav-link btn"
-// href = "#contact" > contact < /a> < /
-//     li > <
-//     /ul>
