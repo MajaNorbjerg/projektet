@@ -85,9 +85,7 @@ class ChartAdd {
         };
         chartService.chart.update();
 
-        <<
-        <<
-        << < HEAD
+
         /* -----------  fra tidslinje til tabel ----- */
 
         /* function myFunction() {
@@ -139,17 +137,14 @@ class ChartAdd {
 
     mapToChart(element, checkboxId, id, color, tdtext, r) {
         let checkBox = document.querySelector(`#${checkboxId}`);
-        console.log(checkboxId); ===
-        ===
-        =
+        console.log(checkboxId);
     }
 
     mapToChart(element, checkboxId, id, color) {
         console.log(element)
         let checkBox = document.querySelector(`#${checkboxId}`);
-        console.log(checkBox) >>>
-            >>>
-            > Maja
+        console.log(checkBox)
+
 
         if (checkBox.checked === false) {
             checkBox.checked = true;
