@@ -116,7 +116,7 @@ export default class CompareDataPage {
                     s-14.3-0.9-21.3,1.4c-7,2.3-22.2,3.8-27.2,0s-7.5-3.6-7.5-3.6"/>
                 <g/>
                 /* ------------st1 sjælland----------- */
-                    <g onclick="mapToChart(this, 'zeaDenmark', 'ZpCPJdBCL6aurufSlCCY', '#189547')" onmouseover="border(this, 'zeaDenmark')" onmouseout="ikkeBorder(this, 'zeaDenmark')">
+                    <g onclick="mapToChart(this, 'zeaDenmark', 'ZpCPJdBCL6aurufSlCCY', '#189547', 'Sjælland')" onmouseover="border(this, 'zeaDenmark')" onmouseout="ikkeBorder(this, 'zeaDenmark')">
                         <path class="st1" d="M276,250.9c2-4,1.7-7.6-1.4-11.5c3.6,4.1,4.1,7.8,2,12.1c-0.7,1.4-0.6,3.3-0.9,5.2c-1.8-1.3-3.6-2.8-5.7-4.4
                             c-1.1,1.5-2,2.8-3,4.2c0-0.5,0-1,0.1-1.5c0.8-1.1,1.5-2.1,2.4-3.3c2.1,1.6,4,3.1,5.7,4.4C275.4,254.2,275.2,252.3,276,250.9z"/>
                         <path class="st1" d="M273.8,238.3c0,0.1,0,0.2,0,0.2l-0.1-0.1c0-0.1,0.1-0.2,0.1-0.2C273.8,238.3,273.8,238.3,273.8,238.3z"/>
@@ -179,7 +179,7 @@ export default class CompareDataPage {
                             </g>
 
                 /* ------------st2 Syddanmark----------- */
-                            <g onclick="mapToChart(this, 'southDenmark', 'CwsGcarffzaNsTnUe6ZV', '#584563')" onmouseover="border(this, 'southDenmark')" onmouseout="ikkeBorder(this, 'southDenmark')">
+                            <g onclick="mapToChart(this, 'southDenmark', 'CwsGcarffzaNsTnUe6ZV', '#584563', 'Syddanmark')" onmouseover="border(this, 'southDenmark')" onmouseout="ikkeBorder(this, 'southDenmark')">
                             <path class="st2" d="M200.3,313.2c1.1,1.5,3.2,3.1,3,4.4c-0.7,4.8-1.9,9.5-3.4,14.2c-3.3,10.5-7.1,20.9-10.3,31.5
                             c-1.1,3.6-2.3,6.6-6.1,6.2c-3.6-0.4-3-4.2-4.1-6.8c-3.1-7.4,1.9-10.7,6.5-14.7c-1.2-1.4-2.2-2.7-3.2-3.9c0.9-2.4,1.8-4.7,2.7-7
                             l0,0c5.2-3.1,6.9-8.2,8.4-13.7c0.6-2.3,1.4-4.7,2.6-6.8C197.3,315.1,199,314.3,200.3,313.2z"/>
@@ -240,7 +240,7 @@ export default class CompareDataPage {
                             </g>
 
                  /* ------------st3 - norddanmark----------- */
-                        <g onclick="mapToChart(this, 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#147896')" onmouseover="border(this, 'northDenmark')" onmouseout="ikkeBorder(this, 'northDenmark')" >
+                        <g onclick="mapToChart(this, 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#147896', 'NordDanmark')" onmouseover="border(this, 'northDenmark')" onmouseout="ikkeBorder(this, 'northDenmark')" >
                         <path class="st3" d="M154.3,99.7c-6.2-1.4-7.2-12-15.7-9.4c5,3.8,9.9,7.4,14.8,11C153.7,100.7,154,100.2,154.3,99.7z M83.3,139
                             c2.8,0.6,5.8,1.1,8.1,2.5c0.9,0.5,0.5,3.5,0.4,5.3c0,0.9-0.6,1.8-0.9,2.5c5.1,5.5,7,5.7,8.5,0.9c-1.5,0-3,0-4.8,0
                             c0.1-2.2,0.2-4.2,0.3-6.2c0.1-2.7,0.2-5.5,0.3-8.2c-2.4,0.3-4.9,0.6-7.3,0.9c-0.4,0.1-0.8,0.2-1.2,0.4c-0.5-0.2-1-0.4-1.4-0.7
@@ -313,21 +313,11 @@ export default class CompareDataPage {
                 <canvas id="chartContainer"></canvas>
                 </div>
 
-<table>
+<table id="graphTable">
   <tr id="thFirst">
     <th></th>
-    <th>2015</th>
-    <th>2019</th>
-  </tr>
-  <tr>
-    <td id="tdNordDK">Norddanmark</td>
-    <td>10020</td>
-    <td>7750</td>
-  </tr>
-  <tr>
-    <td id="tdSydDK">Syddanmark</td>
-    <td>13350</td>
-    <td>8300</td>
+    <th id="fromYearTable"></th>
+    <th id="toYearTable"></th>
   </tr>
   </table>
                 

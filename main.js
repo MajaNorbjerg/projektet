@@ -39,7 +39,7 @@ window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();
 window.addDataset = (element, id, data, color) => chartAdd.addDataset(element, id, data, color);
 window.removeData = () => chartAdd.removeData();
-window.mapToChart = (element, checkboxId, id, color) => chartAdd.mapToChart(element, checkboxId, id, color);
+window.mapToChart = (element, checkboxId, id, color, tdText) => chartAdd.mapToChart(element, checkboxId, id, color, tdText);
 
 
 

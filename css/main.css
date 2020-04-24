@@ -570,6 +570,7 @@ article #chartContainer {
 }
 
 table {
+  border-collapse: collapse;
   width: 40%;
   border-collapse: separate;
   border: solid #dddddd 5px;
@@ -589,65 +590,10 @@ th {
   color: white;
 }
 
-#tdNordDK {
-  background-color: var(--ArlaRoyalPurple);
-  color: white;
+#tdFirst {
+background-color: var(--ArlaRoyalPurple); color: white;
 }
 
-#tdSydDK {
-  background-color: var(--ArlaPoppyRed);
-  color: white;
-}
-
-/* ---------- Medaljefordeling ---------- */
-#donutChart {
-  display: none;
-  flex-wrap: wrap;
-  width: 50%;
-}
-
-
-
-#divChartNord,
-#divChartSyd,
-#divChartSealand {
-  width: 32%;
-  margin: 3% 0;
-}
-
-
-table,
-th,
-td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  text-align: center;
-  padding: 2% 8%;
-}
-
-.donutTable {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.donutTd {
-  width: 100px;
-}
-
-.tableHeadNord {
-  background-color: var(--ArlaRoyalPurple);
-  font-family: var(--fontAmatic);
-  color: var(--milkyWhite);
-}
-
-.tableHeadSyd {
-  background-color: var(--ArlaPoppyRed);
-  font-family: var(--fontAmatic);
-  color: var(--milkyWhite);
-}
-
-.tableHeadSealand {
-  background-color: #3cc4eb;
-  font-family: var(--fontAmatic);
-  color: var(--milkyWhite);
-}
+#tdSecond {
+  background-color: var(--ArlaPoppyRed); color: white;
+  }
