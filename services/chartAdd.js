@@ -5,41 +5,90 @@ import chartService from "../services/chartService.js";
 class ChartAdd {
     constructor() {
         // this.template();
+        this.farmerData = _db.collection("farmers")
         this.chart;
-        // this.startChart();
-        // this.north = document.querySelector('#northMap')
-        // this.mapToChart('document.querySelector("#northMap")', 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a')
+        this.data = 'dieselMyData';
 
     }
 
-    // dataInput(data){
+    dataInput(data) {
+        this.data = data;
+        console.log(this.data)
 
-    // startChart() {
-    //     let checkBox = document.querySelector('#northDenmark');
-    //     if (checkBox.checked) {
-    //         // this.addDataset(checkBox, '7OIHxbSLJcSF2sXVtxTA', 'dieselMyData', '#147896')
-    //     }
+        // chartService.chart.data.labels.push(label);
+        chartService.chart.data.datasets.forEach((dataset) => {
+            console.log(dataset.label)
+        });
+        chartService.chart.update();
+    }
 
-    // }
 
-    // }
+    mapToChart(element, checkboxId, id, color, tdtext) {
+        console.log(element, checkboxId, id, color, tdtext)
+        let checkBox = document.querySelector(`#${checkboxId}`);
+        console.log(checkBox)
 
-    async addDataset(element, id, data, color) {
-        console.log(element);
+
+        if (checkBox.checked === false) {
+            checkBox.checked = true;
+            this.addDataset(checkBox, id, color)
+            console.log('now its true')
+            element.style.stroke = "#459632"
+            let table = document.getElementById("graphTable");
+            let row = table.insertRow(1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            cell1.innerHTML = tdtext;
+
+        } else if (checkBox.checked === true) {
+            checkBox.checked = false;
+            this.addDataset(checkBox, id, color)
+            console.log('now its NOT true')
+            element.style.stroke = "none";
+
+            /* var table = document.getElementById("graphTable");
+             console.log(table);
+             
+             for (const row of table.children) {
+                 console.log(row[1]);
+                 
+             } */
+
+            /*
+             for (var i = 0, row; row = table.rows[i]; i++) {
+                console.log(table.rows);
+                
+                var a = tdtext.indexOf();
+                a.deleteRow(td)
+                
+                 //iterate through cells
+                 //cells would be accessed using the "cell" variable assigned in the for loop
+            } */
+        }
+    }
+
+    async addDataset(element, id, color) {
+        console.log(element, id, color);
         console.log(element.checked);
-        console.log(data)
+        // console.log(data)
+
 
 
         if (element.checked) {
+
+            // let doc = await this.farmerData.doc(`${id}`).get()
+            // let data = doc.data(); // save the data in a variable
+            // data.id = doc.id;
+
             // user 2 - Ep7o7EToQtZzdKnEDy2ahirFHc43
             let uidCompare = id; // matching an uid from the database
-            console.log(uidCompare)
             let dataCompare = await sustainabilityDataService.getPreparedDataByUid(uidCompare); // getting prepared data from the service
-            console.log(dataCompare)
+
             // creating the dataset to add
             let datasetToAdd = {
-                label: `User: ${id}`,
-                data: dataCompare[data],
+                label: `${id}`,
+                data: dataCompare[this.data],
                 fill: false,
                 borderColor: color,
                 backgroundColor: color,
@@ -135,55 +184,11 @@ class ChartAdd {
         // chartService.chart.update();
     }
 
-    mapToChart(element, checkboxId, id, color, tdtext, r) {
-        let checkBox = document.querySelector(`#${checkboxId}`);
-        console.log(checkboxId);
-    }
+    // mapToChart(element, checkboxId, id, color, tdtext, r) {
+    //     let checkBox = document.querySelector(`#${checkboxId}`);
+    //     console.log(checkboxId);
+    // }
 
-    mapToChart(element, checkboxId, id, color) {
-        console.log(element)
-        let checkBox = document.querySelector(`#${checkboxId}`);
-        console.log(checkBox)
-
-
-        if (checkBox.checked === false) {
-            checkBox.checked = true;
-            this.addDataset(checkBox, id, 'dieselMyData', color)
-            console.log('now its true')
-            element.style.stroke = "#459632"
-            let table = document.getElementById("graphTable");
-            let row = table.insertRow(1);
-            let cell1 = row.insertCell(0);
-            let cell2 = row.insertCell(1);
-            let cell3 = row.insertCell(2);
-            cell1.innerHTML = tdtext;
-
-        } else if (checkBox.checked === true) {
-            checkBox.checked = false;
-            this.addDataset(checkBox, id, 'dieselMyData', color)
-            console.log('now its NOT true')
-            element.style.stroke = "none";
-
-            /* var table = document.getElementById("graphTable");
-             console.log(table);
-             
-             for (const row of table.children) {
-                 console.log(row[1]);
-                 
-             } */
-
-            /*
-             for (var i = 0, row; row = table.rows[i]; i++) {
-                console.log(table.rows);
-                
-                var a = tdtext.indexOf();
-                a.deleteRow(td)
-                
-                 //iterate through cells
-                 //cells would be accessed using the "cell" variable assigned in the for loop
-            } */
-        }
-    }
 
 
 
