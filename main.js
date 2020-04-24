@@ -32,7 +32,6 @@ window.border = (x) => compareDataPage.border(x);
 window.ikkeBorder = (x) => compareDataPage.ikkeBorder(x);
 window.farveskift1 = () => compareDataPage.farveskift1();
 window.showFlower = () => compareDataPage.showFlower();
-window.clickBorder = () => compareDataPage.clickBorder();
 window.selected = (element) => compareDataPage.selected(element);
 window.drawCharts = () => compareDataPage.drawCharts();
 
