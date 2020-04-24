@@ -312,6 +312,24 @@ export default class CompareDataPage {
                 // <div id="chartDiv"> 
                 <canvas id="chartContainer"></canvas>
                 </div>
+
+<table>
+  <tr id="thFirst">
+    <th></th>
+    <th>2015</th>
+    <th>2019</th>
+  </tr>
+  <tr>
+    <td id="tdNordDK">Norddanmark</td>
+    <td>10020</td>
+    <td>7750</td>
+  </tr>
+  <tr>
+    <td id="tdSydDK">Syddanmark</td>
+    <td>13350</td>
+    <td>8300</td>
+  </tr>
+  </table>
                 
                 <input type="checkbox" id="northDenmark" onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', '#147896')">
                 <input type="checkbox" id="southDenmark" onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', '#584563')">
