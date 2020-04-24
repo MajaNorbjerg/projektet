@@ -82,6 +82,10 @@ ul {
   text-align: left;
 }
 
+.displayNone {
+  display: none;
+}
+
 
 /* ---------- menu styling ---------- */
 .tabbar {
@@ -517,7 +521,7 @@ svg {
   margin-top: 3%;
 }
 
- #arlaflower-map {
+#arlaflower-map {
   width: 3%;
   position: absolute;
   top: 600px;
@@ -573,25 +577,30 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 40%;
-  border-collapse:separate;
-  border:solid #dddddd 5px;
-  border-radius:6px;
-  -moz-border-radius:6px;
+  border-collapse: separate;
+  border: solid #dddddd 5px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
 }
 
-td, th {
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
 #thFirst {
-  background-color: #707070; color: white;}
+  background-color: #707070;
+  color: white;
+}
 
 #tdNordDK {
-background-color: var(--ArlaRoyalPurple); color: white;
+  background-color: var(--ArlaRoyalPurple);
+  color: white;
 }
 
 #tdSydDK {
-  background-color: var(--ArlaPoppyRed); color: white;
-  }
+  background-color: var(--ArlaPoppyRed);
+  color: white;
+}
