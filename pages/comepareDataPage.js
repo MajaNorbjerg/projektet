@@ -25,7 +25,8 @@ export default class CompareDataPage {
                 </header>
                 <div>
                 <h2 id="titelRegioner">Sammenlign data</h2> 
-                <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear">
+                <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear" onchange="removeData(this)">
+
                 <option>2015</option>
                 <option>2016</option>
                 <option>2017</option>
