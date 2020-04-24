@@ -10,12 +10,14 @@ export default class CompareDataPage {
               
             <header>
             <nav class="tabbarLand">
-            <a href="#regioner">Regioner</a>
-            <a href="#lande">Lande</a>
+            <a id="regioner">Regioner</a>
+            <a id="lande">Lande</a>
           </nav>              
-                </header>
-                <h2>Sammenlign data</h2> 
+                </hearder>
+  
+                <h2 id="titelRegioner">Sammenlign data</h2> 
                 <article id="timePeriod"><p>Tidsperiode</p><select id="fromYear" onchange="removeData(this)">
+
                 <option>2015</option>
                 <option>2016</option>
                 <option>2017</option>
@@ -42,6 +44,8 @@ export default class CompareDataPage {
                 
                 <article id="entireMap">
                
+                <img id="arlaflower-map" src="./img/blomst.svg"> 
+
                 <div id="mapBtns">
                 <div id="mapselectionyellow"> 
                 <div id="mapselection"></div>
@@ -51,12 +55,11 @@ export default class CompareDataPage {
                 <button class="mapButtons" type="button">Danmarks data</button>
                 </div>
                 <div>
-                <button class="mapButtons" type="button">Din data</button>
+                <button class="mapButtons" onclick="showFlower()" type="button">Din data</button>
                 </div>
                 </div>
 
     
-                
                 <section id="scalebar">
                 <article id="scaletitel">
                 <h4> Reducering af kg CO2 pr. kg mælk i % </h4>
@@ -318,6 +321,12 @@ export default class CompareDataPage {
                 <button class="graphBtns" type="button">Eksporter som excel <br> (evt som PDF)</button>
                 </div>
                 </div>
+
+                /*----- medaljefordeling-----*/
+
+                <canvas id="chart"></canvas>
+
+
             </article>`
     };
 
@@ -348,8 +357,13 @@ export default class CompareDataPage {
             norddanmark[i].style.fill = "#CBEAC3";
         }
 
-
     }
+
+      showFlower () {
+          let element = document.getElementById("arlaflower-map");
+          element.classList.toggle("show");
+      }
+
 
 
     /*-------------------- active i navbar ---------------------*/
@@ -369,6 +383,9 @@ export default class CompareDataPage {
             });
         }
     }
+
+ /*-------------------- Donout graf ---------------------*/
+
 }
 
 // <
