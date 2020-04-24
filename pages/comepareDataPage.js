@@ -555,11 +555,16 @@ export default class CompareDataPage {
         } else {
             donutChart.style.display = "none";
         }
+        let hasCharts = document.querySelector('#gonutChart .chartjs-size-monitor');
+        console.log(hasCharts);
+        if (!hasCharts) {
+            this.appendChart(this.preparedDataNord, "chartNord");
+            this.appendChart(this.preparedDataSyd, "chartSyd");
+            this.appendChart(this.preparedDataSealand, "chartSealand");
+        }
 
         // document.getElementById("donutChart").style.display = "flex";
-        this.appendChart(this.preparedDataNord, "chartNord");
-        this.appendChart(this.preparedDataSyd, "chartSyd");
-        this.appendChart(this.preparedDataSealand, "chartSealand");
+
 
 
     }
