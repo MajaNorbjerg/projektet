@@ -351,37 +351,37 @@ export default class CompareDataPage {
                 </article>
                 
                 <!-- ----- medaljefordeling----- -->
-                <article id="donutChart">
+                <article id="donutChart" style="display:none;">
                 <div id="divChartNord">
                 <h3> i alt - Region Nordjylland</h3>
                 <canvas id="chartNord"></canvas>
-                <table>
+                <table class=" donutTable">
                 <tr>
-                  <th class="tableHeadNord">Medalje</th>
-                  <th class="tableHeadNord">Antal</th>
+                  <th class="donutTh tableHeadNord">Medalje</th>
+                  <th class="donutTh tableHeadNord">Antal</th>
                 </tr>
                 <tr>
-                  <td>Guld</td>
-                  <td>26</td>
+                  <td class="donutTd">Guld</td>
+                  <td class="donutTd">13</td>
                 </tr>
                 <tr>
-                  <td>Sølv</td>
-                  <td>28</td>
+                  <td class="donutTd">Sølv</td>
+                  <td class="donutTd">14</td>
                 </tr>
                 <tr>
-                  <td>Bronce</td>
-                  <td>40</td>
+                  <td class="donutTd">Bronce</td>
+                  <td class="donutTd">20</td>
                 </tr>
                 <tr>
-                  <td>Ingen</td>
-                  <td>110</td>
+                  <td class="donutTd">Ingen</td>
+                  <td class="donutTd">53</td>
                 </tr>
                 <tr>
-                  <td>Endnu ingen data</td>
-                  <td>0</td>
+                  <td class="donutTd">Endnu ingen data</td>
+                  <td class="donutTd">0</td>
                   <tr>
-                  <td>Total</td>
-                  <td>204</td>
+                  <td class="donutTd">Total</td>
+                  <td class="donutTd">100</td>
                 </tr>
                 </tr>
               </table> 
@@ -390,16 +390,76 @@ export default class CompareDataPage {
                 <div id="divChartSyd">
                 <h3> i alt - Region Sønderjylland</h3>
                 <canvas id="chartSyd"></canvas>
+                <table class=" donutTable">
+                <tr>
+                  <th class="donutTh tableHeadSyd">Medalje</th>
+                  <th class="donutTh tableHeadSyd">Antal</th>
+                </tr>
+                <tr>
+                  <td class="donutTd">Guld</td>
+                  <td class="donutTd">25</td>
+                </tr>
+                <tr>
+                  <td class="donutTd">Sølv</td>
+                  <td class="donutTd">17</td>
+                </tr>
+                <tr>
+                  <td class="donutTd">Bronce</td>
+                  <td class="donutTd">38</td>
+                </tr>
+                <tr>
+                  <td class="donutTd">Ingen</td>
+                  <td class="donutTd">20</td>
+                </tr>
+                <tr>
+                  <td class="donutTd">Endnu ingen data</td>
+                  <td class="donutTd">0</td>
+                  <tr>
+                  <td class="donutTd">Total</td>
+                  <td class="donutTd">100</td>
+                </tr>
+                </tr>
+              </table>
                 </div>
 
                 <div id="divChartSealand">
                 <h3> i alt - Region Sjælland og øer</h3>
                 <canvas id="chartSealand"></canvas>
+                <table class=" donutTable">
+                <tr>
+                  <th class="donutTh tableHeadSealand">Medalje</th>
+                  <th class="donutTh tableHeadSealand">Antal</th>
+                </tr>
+                <tr>
+                  <td class="donutTd">Guld</td>
+                  <td class="donutTd">17</td>
+                </tr>
+                <tr>
+                  <td class="donutTd">Sølv</td>
+                  <td class="donutTd">21</td>
+                </tr>
+                <tr>
+                  <td class="donutTd">Bronce</td>
+                  <td class="donutTd">37</td>
+                </tr>
+                <tr>
+                  <td class="donutTd">Ingen</td>
+                  <td class="donutTd">25</td>
+                </tr>
+                <tr>
+                  <td class="donutTd">Endnu ingen data</td>
+                  <td class="donutTd">0</td>
+                  <tr>
+                  <td class="donutTd">Total</td>
+                  <td class="donutTd">100</td>
+                </tr>
+                </tr>
+              </table>
                 </div>
                 </article>
 
                 <div id="graphBtns-wrapper">
-                <button class="graphBtns" type="button" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
+                <button class="graphBtns" id="badgeGraphButton" type="button" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
                 
                 <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel <br> (evt som PDF)</button>
                 
@@ -490,10 +550,28 @@ export default class CompareDataPage {
 
     }
     drawCharts() {
-        document.getElementById("donutChart").style.display = "flex";
+        let donutChart = document.getElementById("donutChart");
+        let buttonText = document.getElementById("badgeGraphButton")
+        console.log(donutChart.style.display)
+        if (buttonText.innerHTML === "Se medaljefordeling") {
+            buttonText.innerHTML = "Skjul medaljefordeling";
+        } else {
+            buttonText.innerHTML = "Se medaljefordeling";
+        }
+        if (donutChart.style.display == "none" || donutChart.style.display === "") {
+
+            donutChart.style.display = "flex";
+            console.log(donutChart.style.display)
+        } else {
+            donutChart.style.display = "none";
+        }
+
+        // document.getElementById("donutChart").style.display = "flex";
         this.appendChart(this.preparedDataNord, "chartNord");
         this.appendChart(this.preparedDataSyd, "chartSyd");
         this.appendChart(this.preparedDataSealand, "chartSealand");
+
+
     }
 
 
