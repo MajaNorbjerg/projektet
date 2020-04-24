@@ -35,11 +35,11 @@ class ChartService {
         let uid = "7OIHxbSLJcSF2sXVtxTA"; // using a fixed uid - want to make sure there's data matching an uid in the database
         let data = await sustainabilityDataService.getPreparedDataByUid(uid); // getting prepared data from the service
         // call append functions with the dataset: data
-        this.appendCowsChart(data);
+        this.appendCowsChart(data, uid);
 
     }
     //appending the chart
-    appendCowsChart(data) {
+    appendCowsChart(data, uid) {
         // generate chart
         let chartContainer = document.getElementById("chartContainer");
         this.chart = new Chart(chartContainer, {
@@ -47,7 +47,7 @@ class ChartService {
             data: {
                 datasets: [{
                     data: data.dieselMyData,
-                    label: 'Diesel',
+                    label: uid,
                     fill: false,
                     borderColor: this.northColor,
 
@@ -58,16 +58,7 @@ class ChartService {
                 }],
                 labels: data.years
             }
-            // options: {
-            //     scales: {
-            //         yAxes: [{
-            //             ticks: {
-            //                 // min: (Math.min(...data.dieselMyData) - 5),
-            //                 // max: (Math.max(...data.dieselMyData) + 1)
-            //             }
-            //         }]
-            //     }
-            // }
+
         });
     }
 
