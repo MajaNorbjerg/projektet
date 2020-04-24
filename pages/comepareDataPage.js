@@ -1,7 +1,15 @@
 import _donutService from "../services/donutService.js";
+import chartService from "../services/chartService.js";
 
 export default class CompareDataPage {
     constructor() {
+
+        this.northColor = '#7d5d8a';
+        this.southColor = '#f8353c';
+        this.zeaColor = '#3cc4eb';
+        this.denmarkColor = '#efc531';
+        this.myColor = '#4bb131';
+
         this.template();
         this.preparedDataNord = _donutService.prepareData(_donutService._badgeDataNordjylland);
         this.preparedDataSyd = _donutService.prepareData(_donutService._badgeDataSoenderjylland);
@@ -48,14 +56,14 @@ export default class CompareDataPage {
                 </article>
 
                 <article id="buttons">
-                <button type="button" class="btn selected" onclick="selected(this); farveskift1()" ><img class="img" src="/img/blomst.svg">I alt</button>
-                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg">Metan</button>
-                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Diesel</button>
-                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Foder</button>
-                <button type="button" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg"> Strøm</button>
+                <button type="button" value="carbonFootprintMyData" class="btn selected" onclick="selected(this); farveskift1()" ><img class="img" src="/img/blomst.svg">I alt</button>
+                <button type="button" value="digestionMyData" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg">Metan</button>
+                <button type="button" value="dieselMyData" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg">Diesel</button>
+                <button type="button" value="importedMyData" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg">Foder</button>
+                <button type="button" value="energyMyData" class="btn" onclick="selected(this)"><img class="img" src="/img/blomst.svg">Energi</button>
                 </article>
                 </div>
-
+                
                 <article id="entireMap">
                
                 <img id="arlaflower-map" src="./img/blomst.svg"> 
@@ -66,10 +74,11 @@ export default class CompareDataPage {
                 <p>Valgt til grafen</p>
                 </div>
                 <div> 
-                <button class="mapButtons" type="button">Danmarks data</button>
+               
+                <button class="mapButtons" type="button" onclick="mapToChart(this, 'entireDenmark', 'SkosNYUR2FJDB5KYpqDQ', '#efc531')">Danmarks data</button>
                 </div>
                 <div>
-                <button class="mapButtons" onclick="showFlower()" type="button">Din data</button>
+                <button class="mapButtons" onclick="showFlower(); mapToChart(this, 'myFarm', '9wuor7U0o7isnnv6MBzl', '#4bb131')" type="button">Din data</button>
                 </div>
                 </div>
 
@@ -177,7 +186,8 @@ export default class CompareDataPage {
                             c2.4,2,5,3.7,7.5,5.5c1,0.8,2.6,1.2,3.2,2.2C304.2,142.8,307.1,145.1,311.6,145.7z"/>
                             <path class="st1" d="M219.4,229.4c1.6,2.7,1.5,3.2-1.9,6.4c-4.3-3.4-11.1-3.9-10.9-11.3C211.5,223.4,217.1,225.6,219.4,229.4z"/>
                             </g>
-
+                       
+                        
                 /* ------------st2 Syddanmark----------- */
                             <g onclick="mapToChart(this, 'southDenmark', 'CwsGcarffzaNsTnUe6ZV', '#584563', 'Syddanmark')" onmouseover="border(this, 'southDenmark')" onmouseout="ikkeBorder(this, 'southDenmark')">
                             <path class="st2" d="M200.3,313.2c1.1,1.5,3.2,3.1,3,4.4c-0.7,4.8-1.9,9.5-3.4,14.2c-3.3,10.5-7.1,20.9-10.3,31.5
@@ -321,22 +331,11 @@ export default class CompareDataPage {
   </tr>
   </table>
                 
-                <input type="checkbox" id="northDenmark" onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', '#147896')">
-                <input type="checkbox" id="southDenmark" onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', '#584563')">
-                <input type="checkbox" id="zeaDenmark" onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', '#189547')">
-                <input type="checkbox" id="entireDenmark" onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', '#624510')">
-
-
-                <input type="checkbox" id="myFarm" onclick="addDataset(this, '9wuor7U0o7isnnv6MBzl','dieselMyData', '#659956')">
-                <button onclick="addDataset('SkosNYUR2FJDB5KYpqDQ','dieselMyData', '#147896')">Nordjylland</button>
-                <button>Remove first dataset</button>
-              
-                <button onclick="addDataset(this, 'LvkxxMIXEgjGuvs3xUNL', 'dieselMyData', '#142536')">Syddanmark</button>
-                <button >Remove another dataset</button> <!-- onclick="removeData()" -->
-                <br>
-<!--
-                <button onclick="addMonth()">Add Month</button>
-                <button onclick="removeMonth()">Remove Month</button> -->
+                <input type="checkbox" checked id="northDenmark" onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', '#147896')">
+                <input class="displayNone" type="checkbox" id="southDenmark" onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', '#584563')">
+                <input class="displayNone" type="checkbox" id="zeaDenmark" onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', chartService.zeaColor)">
+                <input class="displayNone" type="checkbox" id="entireDenmark" onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', '#624510')">
+                <input class="displayNone" type="checkbox" id="myFarm" onclick="addDataset(this, '9wuor7U0o7isnnv6MBzl','dieselMyData', '#659956')">
                 
                 </article>
                 

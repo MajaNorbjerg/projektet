@@ -17,14 +17,22 @@ class ChartService {
 
 
         // // this.year = [];
+
+
+        this.northColor = '#7d5d8a';
+        this.southColor = '#f8353c';
+        this.zeaColor = '#3cc4eb';
+        this.denmarkColor = '#efc531';
+        this.myColor = '#4bb131';
+
         this.chart;
         this.init();
 
     }
 
     async init() {
-        // let = authService.authUser.uid;
-        let uid = "9wuor7U0o7isnnv6MBzl"; // using a fixed uid - want to make sure there's data matching an uid in the database
+        // let = authService.authUser.uid; 
+        let uid = "7OIHxbSLJcSF2sXVtxTA"; // using a fixed uid - want to make sure there's data matching an uid in the database
         let data = await sustainabilityDataService.getPreparedDataByUid(uid); // getting prepared data from the service
         // call append functions with the dataset: data
         this.appendCowsChart(data);
@@ -41,12 +49,12 @@ class ChartService {
                     data: data.dieselMyData,
                     label: 'Diesel',
                     fill: false,
-                    borderColor: "#124512",
+                    borderColor: this.northColor,
 
-                    pointBackgroundColor: "#124512",
-                    pointBorderColor: "#124512",
-                    pointHoverBackgroundColor: "#55bae7",
-                    pointHoverBorderColor: "#55bae7",
+                    pointBackgroundColor: this.northColor,
+                    pointBorderColor: this.northColor,
+                    pointHoverBackgroundColor: this.northColor,
+                    pointHoverBorderColor: this.northColor,
                 }],
                 labels: data.years
             }

@@ -28,6 +28,8 @@ window.pageChange = function () {
   _spaService.pageChange();
 }
 
+// chartservice.startChart();
+
 window.border = (element, checkboxId) => compareDataPage.border(element, checkboxId);
 window.ikkeBorder = (element, checkboxId) => compareDataPage.ikkeBorder(element, checkboxId);
 window.farveskift1 = () => compareDataPage.farveskift1();
