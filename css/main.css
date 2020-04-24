@@ -477,14 +477,6 @@ svg {
   margin-top: 3%;
 }
 
-.st1.noBorder {
-  stroke: none;
-}
-
-.st1.border {
-  stroke: #FFCC32;
-}
-
  #arlaflower-map {
   width: 3%;
   position: absolute;
