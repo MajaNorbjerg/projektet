@@ -162,7 +162,7 @@ class ChartAdd {
         // chartService.chart.update();
     }
 
-    mapToChart(element, checkboxId, id, color, tdtext, r) {
+    mapToChart(element, checkboxId, id, color, tdtext,) {
         let checkBox = document.querySelector(`#${checkboxId}`);
         console.log(checkboxId);
 
@@ -171,18 +171,20 @@ class ChartAdd {
             this.addDataset(checkBox, id, 'dieselMyData', color)
             console.log('now its true')
             element.style.stroke = "#459632"
-            let table = document.getElementById("graphTable");
+/*             let table = document.getElementById("graphTable");
             let row = table.insertRow(1);
             let cell1 = row.insertCell(0);
             let cell2 = row.insertCell(1);
             let cell3 = row.insertCell(2);
             cell1.innerHTML = tdtext;
-
+ */
         } else if (checkBox.checked === true) {
             checkBox.checked = false;
             this.addDataset(checkBox, id, 'dieselMyData', color)
             console.log('now its NOT true')
             element.style.stroke = "none";
+
+
             
            /* var table = document.getElementById("graphTable");
             console.log(table);
