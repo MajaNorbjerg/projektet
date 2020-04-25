@@ -70,14 +70,14 @@ class ChartAdd {
 
         if (checkBox.checked === false) {
             checkBox.checked = true;
-            this.addDataset(checkBox, id, color)
+            this.addDataset(checkBox, id, color, tdtext)
             console.log('now its true')
             element.style.stroke = "#459632"
 
 
         } else if (checkBox.checked === true) {
             checkBox.checked = false;
-            this.addDataset(checkBox, id, color)
+            this.addDataset(checkBox, id, color, tdtext)
             console.log('now its NOT true')
             element.style.stroke = "none";
 
@@ -88,7 +88,7 @@ class ChartAdd {
         }, 300);
     }
 
-    async addDataset(element, id, color) {
+    async addDataset(element, id, color, tdtext) {
         console.log(element, id, color);
         console.log(element.checked);
         // console.log(data)
@@ -107,7 +107,7 @@ class ChartAdd {
 
             // creating the dataset to add
             let datasetToAdd = {
-                label: `${id}`,
+                label: `${tdtext}`,
                 data: dataCompare[this.data],
                 fill: false,
                 borderColor: color,
@@ -123,7 +123,7 @@ class ChartAdd {
         } else if (!element.checked) {
 
             chartService.chart.data.datasets.forEach((dataset) => {
-                if (dataset.label.includes(id)) {
+                if (dataset.label.includes(tdtext)) {
                     let arr = chartService.chart.data.datasets
                     let index = arr.indexOf(dataset)
                     arr.splice(index, 1);
