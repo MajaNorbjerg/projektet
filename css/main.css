@@ -603,3 +603,57 @@ th {
   background-color: var(--ArlaPoppyRed);
   color: white;
 }
+
+/* ---------- Donut Chart ---------- */
+#donutChart {
+  display: none;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+
+
+#divChartNord,
+#divChartSyd,
+#divChartSealand {
+  width: 32%;
+  margin: 3% 0;
+}
+
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 2% 8%;
+}
+
+.donutTable {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.donutTd {
+  width: 100px;
+}
+
+.tableHeadNord {
+  background-color: var(--ArlaRoyalPurple);
+  font-family: var(--fontAmatic);
+  color: var(--milkyWhite);
+}
+
+.tableHeadSyd {
+  background-color: var(--ArlaPoppyRed);
+  font-family: var(--fontAmatic);
+  color: var(--milkyWhite);
+}
+
+.tableHeadSealand {
+  background-color: #3cc4eb;
+  font-family: var(--fontAmatic);
+  color: var(--milkyWhite);
+  border-width: 5px;
+}
