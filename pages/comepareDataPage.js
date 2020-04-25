@@ -11,7 +11,6 @@ export default class CompareDataPage {
     this.myColor = '#4bb131';
 
     this.template();
-    console.log(donutChartButton.innerHTML);
   }
 
   template() {

@@ -23,10 +23,11 @@ class ChartAdd {
     }
 
 
-
-    generateTable() {
+    generateTable(color) {
         console.log(chartService.chart.data.datasets);
-        let colorID = color.shift();
+        let newcolor = `${color}`.substring(1, color.lenght);
+        let colorID = `c${newcolor}`
+
 
         let htmlTemplate = /*html*/ `
     <table id="graphTable">
@@ -37,6 +38,8 @@ class ChartAdd {
     <th id="toYearTable"></th>
   </tr>`;
 
+
+        // generates a "new" table each time data is contained in the data set.
         for (const data of chartService.chart.data.datasets) {
             htmlTemplate += /*html*/ `
     <tr>
@@ -53,8 +56,9 @@ class ChartAdd {
     `;
 
         document.querySelector("#graphTable tbody").innerHTML = htmlTemplate
-        document.querySelector(`#${colorID}`).style.background = color;
+        document.getElementById(`${colorID}`).style.background = color;
     }
+
 
     mapToChart(element, checkboxId, id, color, tdtext) {
         console.log(element, checkboxId, id, color, tdtext)
@@ -64,26 +68,27 @@ class ChartAdd {
 
         if (checkBox.checked === false) {
             checkBox.checked = true;
-            this.addDataset(checkBox, id, color)
+            this.addDataset(checkBox, id, color, tdtext)
             console.log('now its true')
             element.style.stroke = "#459632"
 
 
         } else if (checkBox.checked === true) {
             checkBox.checked = false;
-            this.addDataset(checkBox, id, color)
+            this.addDataset(checkBox, id, color, tdtext)
             console.log('now its NOT true')
             element.style.stroke = "none";
 
 
         }
-        setTimeout(() => {
-            this.generateTable();
-        }, 300);
+        // setTimeout(() => {
+        //     this.generateTable();
+        // }, 300);
+        this.generateTable();
     }
 
-    async addDataset(element, id, color) {
-        console.log(element, id, color);
+    async addDataset(element, id, color, tdtext) {
+        console.log(element, id, color, tdtext);
         console.log(element.checked);
         // console.log(data)
 
@@ -101,7 +106,7 @@ class ChartAdd {
 
             // creating the dataset to add
             let datasetToAdd = {
-                label: `${id}`,
+                label: `${tdtext}`,
                 data: dataCompare[this.data],
                 fill: false,
                 borderColor: color,
@@ -112,12 +117,13 @@ class ChartAdd {
                 pointHoverBorderColor: color,
                 type: 'line'
             };
+
             chartService.chart.data.datasets.push(datasetToAdd);
             chartService.chart.update();
         } else if (!element.checked) {
 
             chartService.chart.data.datasets.forEach((dataset) => {
-                if (dataset.label.includes(id)) {
+                if (dataset.label.includes(tdtext)) {
                     let arr = chartService.chart.data.datasets
                     let index = arr.indexOf(dataset)
                     arr.splice(index, 1);

@@ -36,7 +36,7 @@ class SustainabilityDataService {
         let data = doc.data(); // save the data in a variable
         data.id = doc.id; // add the id to the data variable
         sustainabilityData.push(data); // push the data to the array
-
+        console.log(data.id);
         // do what ever you want with the data array 🎉
 
         // console.log(sustainabilityData)

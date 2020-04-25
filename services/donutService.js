@@ -1,6 +1,7 @@
  /* ------------ Helle ----------- */
  class DonutService {
      constructor() {
+         //  Fictive array over the badge count for every region
          this._badgeDataNordjylland = [{
              label: "Guld",
              count: 13,
@@ -52,25 +53,25 @@
              count: 25,
              color: "#E5E5E7"
          }]
+
+         //  collection of the data, witch is user for the doughnut chart
          this.preparedDataNord = this.prepareData(this._badgeDataNordjylland);
          this.preparedDataSyd = this.prepareData(this._badgeDataSoenderjylland);
          this.preparedDataSealand = this.prepareData(this._badgeDataSealand);
      }
 
      prepareData(data) {
-         // declaring two array to store the data 
+         // declaring arrays to store the data 
          let labels = [];
          let counts = [];
          let colors = [];
-         // looping through the global _salesData array
+         // looping through the three global arrays and adding the values to the different arrays
          for (const badgeObject of data) {
-             // adding the values to the different arrays
              labels.push(badgeObject.label);
              counts.push(badgeObject.count);
              colors.push(badgeObject.color);
          }
-         // returning the two arrays (months & sales) inside and object
-         // we cannot return to values - that's why we have to do it inside an array
+
          return {
              labels,
              counts,
@@ -78,11 +79,13 @@
          };
      }
 
+     //  appending doughnut charts inside the element with id="charts"
      appendChart(data, chart) {
          // generate chart
          let chartContainerNord = document.getElementById(chart);
          let chart1 = new Chart(chartContainerNord, {
              type: 'doughnut',
+             //  This information is what is drawn in the chart
              data: {
                  labels: data.labels,
                  datasets: [{
@@ -90,6 +93,7 @@
                      backgroundColor: data.colors
                  }]
              },
+             //  the legend (bars in the top saying gold in front of the gold colored line) is not shown
              options: {
                  legend: {
                      display: false
@@ -101,11 +105,11 @@
 
      }
 
-
+     // function called from compareDataPage, checks the information on the button, and switches it, and checks if the charts is alredy drawn, or draws it
      drawCharts() {
          let donutChart = document.getElementById("donutChart");
          let buttonText = document.getElementById("donutChartButton")
-         // This part
+
          if (buttonText.innerHTML === '<img class="flower" src="/img/blomst.svg">Se medaljefordeling') {
 
              buttonText.innerHTML = '<img class="flower" src="/img/blomst.svg">Skjul medaljefordeling';
