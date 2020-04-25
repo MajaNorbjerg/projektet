@@ -82,6 +82,10 @@ ul {
   text-align: left;
 }
 
+.displayNone {
+  display: none;
+}
+
 
 /* ---------- menu styling ---------- */
 .tabbar {
