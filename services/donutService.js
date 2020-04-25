@@ -19,15 +19,15 @@ class DonutService {
         }]
         this._badgeDataSoenderjylland = [{
             label: "Guld",
-            count: 20,
+            count: 25,
             color: "#d1a535"
         }, {
             label: "Sølv",
-            count: 20,
+            count: 17,
             color: "#8e8c8c"
         }, {
             label: "Bronce",
-            count: 40,
+            count: 38,
             color: "#b57c46"
         }, {
             label: "Ingen",
