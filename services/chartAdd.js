@@ -26,7 +26,7 @@ class ChartAdd {
 
     generateTable() {
         console.log(chartService.chart.data.datasets);
-
+        let colorID = color.shift();
 
         let htmlTemplate = /*html*/ `
     <table id="graphTable">
@@ -40,7 +40,7 @@ class ChartAdd {
         for (const data of chartService.chart.data.datasets) {
             htmlTemplate += /*html*/ `
     <tr>
-    <td>${data.label}</td>
+    <td id="${colorID}">${data.label}</td>
     <td> </td>
     <td> </td>
     </tr>
@@ -53,7 +53,7 @@ class ChartAdd {
     `;
 
         document.querySelector("#graphTable tbody").innerHTML = htmlTemplate
-
+        document.querySelector(`#${color}`).style.background = color;
     }
 
     mapToChart(element, checkboxId, id, color, tdtext) {
