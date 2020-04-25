@@ -543,7 +543,8 @@ export default class CompareDataPage {
         let donutChart = document.getElementById("donutChart");
         let buttonText = document.getElementById("donutChartButton")
         console.log(donutChart.style.display)
-        if (buttonText.innerHTML === "Se medaljefordeling") {
+        if (buttonText.innerHTML === "Se medaljefordeling" || buttonText.innerHTML === "") {
+
             buttonText.innerHTML = "Skjul medaljefordeling";
         } else {
             buttonText.innerHTML = "Se medaljefordeling";
@@ -555,7 +556,7 @@ export default class CompareDataPage {
         } else {
             donutChart.style.display = "none";
         }
-        let hasCharts = document.querySelector('#gonutChart .chartjs-size-monitor');
+        let hasCharts = document.querySelector('#donutChart .chartjs-size-monitor');
         console.log(hasCharts);
         if (!hasCharts) {
             this.appendChart(this.preparedDataNord, "chartNord");
