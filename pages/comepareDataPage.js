@@ -300,18 +300,17 @@ export default class CompareDataPage {
                 </article>
 
                 <article>
-                <div id="chartDiv"> 
+                // <div id="chartDiv"> 
                 <canvas id="chartContainer"></canvas>
                 </div>
 
-                <table id="graphTable">
+<table id="graphTable">
   <tr id="thFirst">
     <th></th>
     <th id="fromYearTable"></th>
     <th id="toYearTable"></th>
   </tr>
   </table>
-
                 
                 <input type="checkbox" checked id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
                 <input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
@@ -321,121 +320,23 @@ export default class CompareDataPage {
                 
                 </article>
                 
-                <!-- ----- medaljefordeling----- -->
-                <article id="donutChart" style="display:none;">
-                <div id="divChartNord">
-                <h3> i alt - Region Nordjylland</h3>
-                <canvas id="chartNord"></canvas>
-                <table class=" donutTable">
-                <tr>
-                  <th class="donutTh tableHeadNord">Medalje</th>
-                  <th class="donutTh tableHeadNord">Antal</th>
-                </tr>
-                <tr>
-                  <td class="donutTd">Guld</td>
-                  <td class="donutTd">13</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Sølv</td>
-                  <td class="donutTd">14</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Bronce</td>
-                  <td class="donutTd">20</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Ingen</td>
-                  <td class="donutTd">53</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Endnu ingen data</td>
-                  <td class="donutTd">0</td>
-                  <tr>
-                  <td class="donutTd">Total</td>
-                  <td class="donutTd">100</td>
-                </tr>
-                </tr>
-              </table> 
-                </div>
-
-                <div id="divChartSyd">
-                <h3> i alt - Region Sønderjylland</h3>
-                <canvas id="chartSyd"></canvas>
-                <table class=" donutTable">
-                <tr>
-                  <th class="donutTh tableHeadSyd">Medalje</th>
-                  <th class="donutTh tableHeadSyd">Antal</th>
-                </tr>
-                <tr>
-                  <td class="donutTd">Guld</td>
-                  <td class="donutTd">25</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Sølv</td>
-                  <td class="donutTd">17</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Bronce</td>
-                  <td class="donutTd">38</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Ingen</td>
-                  <td class="donutTd">20</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Endnu ingen data</td>
-                  <td class="donutTd">0</td>
-                  <tr>
-                  <td class="donutTd">Total</td>
-                  <td class="donutTd">100</td>
-                </tr>
-                </tr>
-              </table>
-                </div>
-
-                <div id="divChartSealand">
-                <h3> i alt - Region Sjælland og øer</h3>
-                <canvas id="chartSealand"></canvas>
-                <table class=" donutTable">
-                <tr>
-                  <th class="donutTh tableHeadSealand">Medalje</th>
-                  <th class="donutTh tableHeadSealand">Antal</th>
-                </tr>
-                <tr>
-                  <td class="donutTd">Guld</td>
-                  <td class="donutTd">17</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Sølv</td>
-                  <td class="donutTd">21</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Bronce</td>
-                  <td class="donutTd">37</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Ingen</td>
-                  <td class="donutTd">25</td>
-                </tr>
-                <tr>
-                  <td class="donutTd">Endnu ingen data</td>
-                  <td class="donutTd">0</td>
-                  <tr>
-                  <td class="donutTd">Total</td>
-                  <td class="donutTd">100</td>
-                </tr>
-                </tr>
-              </table>
-                </div>
-                </article>
-
                 <div id="graphBtns-wrapper">
-                <button class="graphBtns" id="donutChartButton" type="button" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
+                
+                
+                <button class="graphBtns" type="button" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
                 
                 <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel <br> (evt som PDF)</button>
                 
                 </div>
 
+                <!-- ----- medaljefordeling----- -->
+
+                <h3> i alt - Region Nordjylland</h3>
+                <canvas id="chartNord"></canvas>
+                <h3> i alt - Region Sønderjylland</h3>
+                <canvas id="chartSyd"></canvas>
+                <h3> i alt - Region Sjælland og øer</h3>
+                <canvas id="chartSealand"></canvas>
 
 
             </article>`
@@ -502,18 +403,12 @@ export default class CompareDataPage {
         let chartContainerNord = document.getElementById(chart);
         let chart1 = new Chart(chartContainerNord, {
             type: 'doughnut',
-
             data: {
-                labels: data.labels,
+                labels: data.counts,
                 datasets: [{
                     data: data.counts,
                     backgroundColor: data.colors
                 }]
-            },
-            options: {
-                legend: {
-                    display: false
-                }
             }
         });
 
@@ -521,33 +416,9 @@ export default class CompareDataPage {
 
     }
     drawCharts() {
-        let donutChart = document.getElementById("donutChart");
-        let buttonText = document.getElementById("donutChartButton")
-        console.log(donutChart.style.display)
-        if (buttonText.innerHTML === "Se medaljefordeling") {
-            buttonText.innerHTML = "Skjul medaljefordeling";
-        } else {
-            buttonText.innerHTML = "Se medaljefordeling";
-        }
-        if (donutChart.style.display == "none" || donutChart.style.display === "") {
-
-            donutChart.style.display = "flex";
-            console.log(donutChart.style.display)
-        } else {
-            donutChart.style.display = "none";
-        }
-        let hasCharts = document.querySelector('#gonutChart .chartjs-size-monitor');
-        console.log(hasCharts);
-        if (!hasCharts) {
-            this.appendChart(this.preparedDataNord, "chartNord");
-            this.appendChart(this.preparedDataSyd, "chartSyd");
-            this.appendChart(this.preparedDataSealand, "chartSealand");
-        }
-
-        // document.getElementById("donutChart").style.display = "flex";
-
-
-
+        this.appendChart(this.preparedDataNord, "chartNord");
+        this.appendChart(this.preparedDataSyd, "chartSyd");
+        this.appendChart(this.preparedDataSealand, "chartSealand");
     }
 
 
