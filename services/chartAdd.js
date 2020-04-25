@@ -31,13 +31,13 @@ class ChartAdd {
 
         if (checkBox.checked === false) {
             checkBox.checked = true;
-            this.addDataset(checkBox, id, color)
+            this.addDataset(checkBox, id, 'dieselMyData', color)
             console.log('now its true')
             element.style.stroke = "#459632"
            
         } else if (checkBox.checked === true) {
             checkBox.checked = false;
-            this.addDataset(checkBox, id, color)
+            this.addDataset(checkBox, id, 'dieselMyData', color)
             console.log('now its NOT true')
             element.style.stroke = "none";
 
