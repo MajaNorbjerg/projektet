@@ -28,6 +28,8 @@ window.pageChange = function () {
   _spaService.pageChange();
 }
 
+// chartservice.startChart();
+
 window.border = (element, checkboxId) => compareDataPage.border(element, checkboxId);
 window.ikkeBorder = (element, checkboxId) => compareDataPage.ikkeBorder(element, checkboxId);
 window.farveskift1 = () => compareDataPage.farveskift1();
@@ -37,9 +39,10 @@ window.drawCharts = () => compareDataPage.drawCharts();
 
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();
-window.addDataset = (element, id, data, color) => chartAdd.addDataset(element, id, data, color);
+window.addDataset = (element, id, color) => chartAdd.addDataset(element, id, color);
 window.removeData = () => chartAdd.removeData();
 window.mapToChart = (element, checkboxId, id, color, tdText) => chartAdd.mapToChart(element, checkboxId, id, color, tdText);
+window.dataInput = (value) => chartAdd.dataInput(value);
 
 
 
