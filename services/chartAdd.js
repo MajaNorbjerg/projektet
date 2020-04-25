@@ -23,10 +23,14 @@ class ChartAdd {
     }
 
 
-
-    generateTable() {
+ /*.........................johanne.............................*/ 
+   
+    /* ------------Table generator----------- */
+    generateTable(color) {
         console.log(chartService.chart.data.datasets);
-        let colorID = color.shift();
+        let newcolor = `${color}`.substring(1, color.lenght);
+        let colorID = `c${newcolor}`
+        
 
         let htmlTemplate = /*html*/ `
     <table id="graphTable">
@@ -37,6 +41,8 @@ class ChartAdd {
     <th id="toYearTable"></th>
   </tr>`;
 
+
+    // generates a "new" table each time data is contained in the data set.
         for (const data of chartService.chart.data.datasets) {
             htmlTemplate += /*html*/ `
     <tr>
@@ -53,7 +59,7 @@ class ChartAdd {
     `;
 
         document.querySelector("#graphTable tbody").innerHTML = htmlTemplate
-        document.querySelector(`#${color}`).style.background = color;
+        document.getElementById(`${colorID}`).style.background = color;
     }
 
     mapToChart(element, checkboxId, id, color, tdtext) {
@@ -78,7 +84,7 @@ class ChartAdd {
 
         }
         setTimeout(() => {
-            this.generateTable();
+            this.generateTable(color);
         }, 300);
     }
 
@@ -127,10 +133,12 @@ class ChartAdd {
         }
     }
 
+    /*.........................johanne & maja.............................*/ 
     removeData() {
         let from = document.querySelector('#fromYear');
         let to = document.querySelector('#toYear');
 
+        //Return the value property of the variabels from and to
         document.getElementById("fromYearTable").innerHTML = +from.value;
         document.getElementById("toYearTable").innerHTML = +to.value;
 

@@ -24,11 +24,12 @@ export default class CompareDataPage {
         //home page
         document.querySelector('#pagesSection').innerHTML += /*html*/ `
             <article id="comepare-data" class="page">
-              
+            
             <header>
             <nav class="tabbarLand">
             <a id="regioner">Regioner</a>
             <a id="lande">Lande</a>
+
           </nav>              
                 </header>
                 <div>
@@ -66,6 +67,7 @@ export default class CompareDataPage {
                 
                 <article id="entireMap">
                
+                
                 <img id="arlaflower-map" src="./img/blomst.svg"> 
 
                 <div id="mapBtns">
@@ -440,6 +442,9 @@ export default class CompareDataPage {
             </article>`
     };
 
+    /*.................johanne.................. */ 
+    
+    /* ------------map border----------- */
     border(element, checkboxId) {
         let checkBox = document.querySelector(`#${checkboxId}`);
         if (checkBox.checked) {
@@ -459,6 +464,7 @@ export default class CompareDataPage {
 
     };
 
+  /* ------------colorchange map---------- */
     farveskift1() {
 
         let sjaelland = document.getElementsByClassName("st1")
@@ -478,6 +484,7 @@ export default class CompareDataPage {
 
     }
 
+    /* ------------flower on map - own data---------- */
     showFlower() {
         let element = document.getElementById("arlaflower-map");
         element.classList.toggle("show");
