@@ -53,7 +53,7 @@ class ChartAdd {
     `;
 
         document.querySelector("#graphTable tbody").innerHTML = htmlTemplate
-        document.querySelector(`#${color}`).style.background = color;
+        document.querySelector(`#${colorID}`).style.background = color;
     }
 
     mapToChart(element, checkboxId, id, color, tdtext) {

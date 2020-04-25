@@ -2,27 +2,21 @@ import _donutService from "../services/donutService.js";
 import chartService from "../services/chartService.js";
 
 export default class CompareDataPage {
-    constructor() {
+  constructor() {
 
-        this.northColor = '#7d5d8a';
-        this.southColor = '#f8353c';
-        this.zeaColor = '#3cc4eb';
-        this.denmarkColor = '#efc531';
-        this.myColor = '#4bb131';
+    this.northColor = '#7d5d8a';
+    this.southColor = '#f8353c';
+    this.zeaColor = '#3cc4eb';
+    this.denmarkColor = '#efc531';
+    this.myColor = '#4bb131';
 
-        this.template();
-        this.preparedDataNord = _donutService.prepareData(_donutService._badgeDataNordjylland);
-        this.preparedDataSyd = _donutService.prepareData(_donutService._badgeDataSoenderjylland);
-        this.preparedDataSealand = _donutService.prepareData(_donutService._badgeDataSealand);
+    this.template();
+    console.log(donutChartButton.innerHTML);
+  }
 
-        // this.appendChart(this.preparedDataNord, "chartNord");
-        // this.appendChart(this.preparedDataSyd, "chartSyd");
-        // this.appendChart(this.preparedDataSealand, "chartSealand");
-    }
-
-    template() {
-        //home page
-        document.querySelector('#pagesSection').innerHTML += /*html*/ `
+  template() {
+    //Compare data page
+    document.querySelector('#pagesSection').innerHTML += /*html*/ `
             <article id="comepare-data" class="page">
               
             <header>
@@ -56,9 +50,9 @@ export default class CompareDataPage {
                 </article>
 
                 <article id="buttons">
-                <button type="button" value="carbonFootprintMyData" class="btn selected" onclick="selected(this); farveskift1(); dataInput(this.value)" ><img class="img" src="/img/blomst.svg">I alt</button>
+                <button type="button" value="carbonFootprintMyData" class="btn " onclick="selected(this); farveskift1(); dataInput(this.value)" ><img class="img" src="/img/blomst.svg">I alt</button>
                 <button type="button" value="digestionMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Metan</button>
-                <button type="button" value="dieselMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Diesel</button>
+                <button type="button" value="dieselMyData" class="btn selected" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Diesel</button>
                 <button type="button" value="importedMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Foder</button>
                 <button type="button" value="energyMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Energi</button>
                 </article>
@@ -438,110 +432,62 @@ export default class CompareDataPage {
 
 
             </article>`
-    };
+  };
 
-    border(element, checkboxId) {
-        let checkBox = document.querySelector(`#${checkboxId}`);
-        if (checkBox.checked) {
+  border(element, checkboxId) {
+    let checkBox = document.querySelector(`#${checkboxId}`);
+    if (checkBox.checked) {
 
-        } else {
+    } else {
 
-            element.style.stroke = "#FFCC32";
-            element.style.strokeWidth = 4
-        }
-    };
+      element.style.stroke = "#FFCC32";
+      element.style.strokeWidth = 4
+    }
+  };
 
-    ikkeBorder(element, checkboxId) {
-        let checkBox = document.querySelector(`#${checkboxId}`);
-        if (!checkBox.checked) {
-            element.style.stroke = "none";
-        } else {}
+  ikkeBorder(element, checkboxId) {
+    let checkBox = document.querySelector(`#${checkboxId}`);
+    if (!checkBox.checked) {
+      element.style.stroke = "none";
+    } else {}
 
-    };
+  };
 
-    farveskift1() {
+  farveskift1() {
 
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#00441B";
-        }
-
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#2A924A";
-        }
-
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#CBEAC3";
-        }
-
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+      sjaelland[i].style.fill = "#00441B";
     }
 
-    showFlower() {
-        let element = document.getElementById("arlaflower-map");
-        element.classList.toggle("show");
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#2A924A";
     }
 
-
-
-
-
-
-    /* ------------Indikation af hvilken knap der er valgt----------- */
-    selected(element) {
-        let selected = document.querySelector(".btn.selected");
-        selected.classList.remove("selected");
-        element.classList.add("selected");
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#CBEAC3";
     }
 
+  }
 
-    appendChart(data, chart) {
-        // generate chart
-        let chartContainerNord = document.getElementById(chart);
-        let chart1 = new Chart(chartContainerNord, {
-            type: 'doughnut',
-            data: {
-                labels: data.counts,
-                datasets: [{
-                    data: data.counts,
-                    backgroundColor: data.colors
-                }]
-            },
-            options: {
-                legend: {
-                    display: false
-                }
-            }
-        });
+  showFlower() {
+    let element = document.getElementById("arlaflower-map");
+    element.classList.toggle("show");
+  }
 
 
 
-    }
-    drawCharts() {
-        let donutChart = document.getElementById("donutChart");
-        let buttonText = document.getElementById("donutChartButton")
-        console.log(donutChart.style.display)
-        if (buttonText.innerHTML === "Se medaljefordeling" || buttonText.innerHTML === "") {
 
-            buttonText.innerHTML = "Skjul medaljefordeling";
-        } else {
-            buttonText.innerHTML = "Se medaljefordeling";
-        }
-        if (donutChart.style.display == "none" || donutChart.style.display === "") {
 
-            donutChart.style.display = "flex";
-            console.log(donutChart.style.display)
-        } else {
-            donutChart.style.display = "none";
-        }
-        let hasCharts = document.querySelector('#donutChart .chartjs-size-monitor');
-        console.log(hasCharts);
-        if (!hasCharts) {
-            this.appendChart(this.preparedDataNord, "chartNord");
-            this.appendChart(this.preparedDataSyd, "chartSyd");
-            this.appendChart(this.preparedDataSealand, "chartSealand");
-        }
-    }
+
+  /* ------------Indikation af hvilken knap der er valgt----------- */
+  /* ------------ Helle ----------- */
+  selected(element) {
+    let selected = document.querySelector(".btn.selected");
+    selected.classList.remove("selected");
+    element.classList.add("selected");
+  }
 
 }
