@@ -304,13 +304,7 @@ export default class CompareDataPage {
                 <canvas id="chartContainer"></canvas>
                 </div>
 
-<table id="graphTable">
-  <tr id="thFirst">
-    <th></th>
-    <th id="fromYearTable"></th>
-    <th id="toYearTable"></th>
-  </tr>
-  </table>
+
                 
                 <input type="checkbox" checked id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
                 <input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->

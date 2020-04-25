@@ -34,39 +34,53 @@ class ChartAdd {
             this.addDataset(checkBox, id, color)
             console.log('now its true')
             element.style.stroke = "#459632"
-            let table = document.getElementById("graphTable");
-            let row = table.insertRow(1);
-            let cell1 = row.insertCell(0);
-            let cell2 = row.insertCell(1);
-            let cell3 = row.insertCell(2);
-            cell1.innerHTML = tdtext;
-
+           
         } else if (checkBox.checked === true) {
             checkBox.checked = false;
             this.addDataset(checkBox, id, color)
             console.log('now its NOT true')
             element.style.stroke = "none";
 
-            /* var table = document.getElementById("graphTable");
-             console.log(table);
-             
-             for (const row of table.children) {
-                 console.log(row[1]);
-                 
-             } */
+        };
 
-            /*
-             for (var i = 0, row; row = table.rows[i]; i++) {
-                console.log(table.rows);
-                
-                var a = tdtext.indexOf();
-                a.deleteRow(td)
-                
-                 //iterate through cells
-                 //cells would be accessed using the "cell" variable assigned in the for loop
-            } */
-        }
+        setTimeout(() => {
+            this.generateTable();
+        }, 300);
     }
+
+    generateTable () {
+        console.log(chartService.chart.data.datasets);
+     
+        
+    let htmlTemplate = /*html*/`
+    <table id="graphTable">
+  <tbody>
+    <tr id="thFirst">
+    <th></th>
+    <th id="fromYearTable"></th>
+    <th id="toYearTable"></th>
+  </tr>`;
+
+  for (const data of chartService.chart.data.datasets) {
+    htmlTemplate += /*html*/ `
+    <tr>
+    <td>${data.label}</td>
+    <td> </td>
+    <td> </td>
+    </tr>
+    `;
+  }
+
+  htmlTemplate += /*html*/`
+  </tbody>
+  </table>
+    `;
+
+document.querySelector("#graphTable tbody").innerHTML = htmlTemplate
+
+    }
+
+    
 
     async addDataset(element, id, color) {
         console.log(element, id, color);
