@@ -37,10 +37,11 @@ class ChartService {
                     fill: false,
                     borderColor: this.northColor,
 
-                    pointBackgroundColor: this.northColor,
-                    pointBorderColor: this.northColor,
-                    pointHoverBackgroundColor: this.northColor,
-                    pointHoverBorderColor: this.northColor,
+                    //     pointBackgroundColor: this.northColor,
+                    //     pointBorderColor: this.northColor,
+                    //     pointHoverBackgroundColor: this.northColor,
+                    //     pointHoverBorderColor: this.northColor,
+                    // }
                 }],
                 labels: data.years
             }
