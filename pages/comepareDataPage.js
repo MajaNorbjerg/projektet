@@ -11,17 +11,10 @@ export default class CompareDataPage {
     this.myColor = '#4bb131';
 
     this.template();
-    this.preparedDataNord = _donutService.prepareData(_donutService._badgeDataNordjylland);
-    this.preparedDataSyd = _donutService.prepareData(_donutService._badgeDataSoenderjylland);
-    this.preparedDataSealand = _donutService.prepareData(_donutService._badgeDataSealand);
-
-    // this.appendChart(this.preparedDataNord, "chartNord");
-    // this.appendChart(this.preparedDataSyd, "chartSyd");
-    // this.appendChart(this.preparedDataSealand, "chartSealand");
   }
 
   template() {
-    //home page
+    //Compare data page
     document.querySelector('#pagesSection').innerHTML += /*html*/ `
             <article id="comepare-data" class="page">
               
@@ -56,9 +49,9 @@ export default class CompareDataPage {
                 </article>
 
                 <article id="buttons">
-                <button type="button" value="carbonFootprintMyData" class="btn selected" onclick="selected(this); farveskift1(); dataInput(this.value)" ><img class="img" src="/img/blomst.svg">I alt</button>
+                <button type="button" value="carbonFootprintMyData" class="btn " onclick="selected(this); farveskift1(); dataInput(this.value)" ><img class="img" src="/img/blomst.svg">I alt</button>
                 <button type="button" value="digestionMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Metan</button>
-                <button type="button" value="dieselMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Diesel</button>
+                <button type="button" value="dieselMyData" class="btn selected" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Diesel</button>
                 <button type="button" value="importedMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Foder</button>
                 <button type="button" value="energyMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Energi</button>
                 </article>
@@ -324,7 +317,9 @@ export default class CompareDataPage {
               <article id="donutChart" style="display:none;">
               <div id="divChartNord">
               <h3> i alt - Region Nordjylland</h3>
+              <div class="doughnutDiv">
               <canvas id="chartNord"></canvas>
+              </div>
               <table class=" donutTable">
               <tr>
                 <th class="donutTh tableHeadNord">Medalje</th>
@@ -359,7 +354,9 @@ export default class CompareDataPage {
 
               <div id="divChartSyd">
               <h3> i alt - Region Sønderjylland</h3>
+              <div class="doughnutDiv">
               <canvas id="chartSyd"></canvas>
+              </div>
               <table class=" donutTable">
               <tr>
                 <th class="donutTh tableHeadSyd">Medalje</th>
@@ -394,7 +391,9 @@ export default class CompareDataPage {
 
               <div id="divChartSealand">
               <h3> i alt - Region Sjælland og øer</h3>
+              <div class="doughnutDiv">
               <canvas id="chartSealand"></canvas>
+              </div>
               <table class=" donutTable">
               <tr>
                 <th class="donutTh tableHeadSealand">Medalje</th>
@@ -484,64 +483,12 @@ export default class CompareDataPage {
   }
 
 
-
-
-
-
   /* ------------Indikation af hvilken knap der er valgt----------- */
+  /* ------------ Helle ----------- */
   selected(element) {
     let selected = document.querySelector(".btn.selected");
     selected.classList.remove("selected");
     element.classList.add("selected");
-  }
-
-
-  appendChart(data, chart) {
-    // generate chart
-    let chartContainerNord = document.getElementById(chart);
-    let chart1 = new Chart(chartContainerNord, {
-      type: 'doughnut',
-      data: {
-        labels: data.counts,
-        datasets: [{
-          data: data.counts,
-          backgroundColor: data.colors
-        }]
-      },
-      options: {
-        legend: {
-          display: false
-        }
-      }
-    });
-
-
-
-  }
-  drawCharts() {
-    let donutChart = document.getElementById("donutChart");
-    let buttonText = document.getElementById("donutChartButton")
-    console.log(donutChart.style.display)
-    if (buttonText.innerHTML === "Se medaljefordeling" || buttonText.innerHTML === "") {
-
-      buttonText.innerHTML = "Skjul medaljefordeling";
-    } else {
-      buttonText.innerHTML = "Se medaljefordeling";
-    }
-    if (donutChart.style.display == "none" || donutChart.style.display === "") {
-
-      donutChart.style.display = "flex";
-      console.log(donutChart.style.display)
-    } else {
-      donutChart.style.display = "none";
-    }
-    let hasCharts = document.querySelector('#donutChart .chartjs-size-monitor');
-    console.log(hasCharts);
-    if (!hasCharts) {
-      this.appendChart(this.preparedDataNord, "chartNord");
-      this.appendChart(this.preparedDataSyd, "chartSyd");
-      this.appendChart(this.preparedDataSealand, "chartSealand");
-    }
   }
 
 }

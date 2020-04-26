@@ -16,20 +16,24 @@ class ChartService {
 
     // Initial function to run
     async init() {
-        let uid = "7OIHxbSLJcSF2sXVtxTA"; // Using a fixed uid - want to make sure there's data matching an uid in the database
-        let data = await sustainabilityDataService.getPreparedDataByUid(uid); // Getting prepared data from the sustainabilityData service
-        this.createChart(data, uid);
+        // let = authService.authUser.uid; 
+        let uid = "7OIHxbSLJcSF2sXVtxTA"; // using a fixed uid - want to make sure there's data matching an uid in the database
+        let data = await sustainabilityDataService.getPreparedDataByUid(uid); // getting prepared data from the service
+        let region = "NordDanmark";
+        // call append functions with the dataset: data
+        this.appendCowsChart(data, uid, region);
 
     }
-    //Appending the chart
-    createChart(data, uid) {
+    //appending the chart
+    appendCowsChart(data, uid, region) {
+        // generate chart
         let chartContainer = document.getElementById("chartContainer");
         this.chart = new Chart(chartContainer, { // Generate chart
             type: 'line',
             data: {
                 datasets: [{
                     data: data.dieselMyData,
-                    label: uid,
+                    label: region,
                     fill: false,
                     borderColor: this.northColor,
 

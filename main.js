@@ -34,7 +34,8 @@ window.ikkeBorder = (element, checkboxId) => compareDataPage.ikkeBorder(element,
 window.farveskift1 = () => compareDataPage.farveskift1();
 window.showFlower = () => compareDataPage.showFlower();
 window.selected = (element) => compareDataPage.selected(element);
-window.drawCharts = () => compareDataPage.drawCharts();
+window.drawCharts = () => _donutService.drawCharts();
+window.generateTable = () => chartAdd.generateTable();
 
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();
