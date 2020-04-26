@@ -612,7 +612,13 @@ th {
   width: 50%;
 }
 
-
+.doughnutDiv {
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  background: transparent url(/img/cow.svg) no-repeat center 50%;
+  background-size: 20%;
+}
 
 #divChartNord,
 #divChartSyd,

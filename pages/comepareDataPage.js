@@ -317,7 +317,9 @@ export default class CompareDataPage {
               <article id="donutChart" style="display:none;">
               <div id="divChartNord">
               <h3> i alt - Region Nordjylland</h3>
+              <div class="doughnutDiv">
               <canvas id="chartNord"></canvas>
+              </div>
               <table class=" donutTable">
               <tr>
                 <th class="donutTh tableHeadNord">Medalje</th>
@@ -352,7 +354,9 @@ export default class CompareDataPage {
 
               <div id="divChartSyd">
               <h3> i alt - Region Sønderjylland</h3>
+              <div class="doughnutDiv">
               <canvas id="chartSyd"></canvas>
+              </div>
               <table class=" donutTable">
               <tr>
                 <th class="donutTh tableHeadSyd">Medalje</th>
@@ -387,7 +391,9 @@ export default class CompareDataPage {
 
               <div id="divChartSealand">
               <h3> i alt - Region Sjælland og øer</h3>
+              <div class="doughnutDiv">
               <canvas id="chartSealand"></canvas>
+              </div>
               <table class=" donutTable">
               <tr>
                 <th class="donutTh tableHeadSealand">Medalje</th>
