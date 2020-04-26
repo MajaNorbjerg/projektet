@@ -2,27 +2,20 @@ import _donutService from "../services/donutService.js";
 import chartService from "../services/chartService.js";
 
 export default class CompareDataPage {
-    constructor() {
+  constructor() {
 
-        this.northColor = '#7d5d8a';
-        this.southColor = '#f8353c';
-        this.zeaColor = '#3cc4eb';
-        this.denmarkColor = '#efc531';
-        this.myColor = '#4bb131';
+    this.northColor = '#7d5d8a';
+    this.southColor = '#f8353c';
+    this.zeaColor = '#3cc4eb';
+    this.denmarkColor = '#efc531';
+    this.myColor = '#4bb131';
 
-        this.template();
-        this.preparedDataNord = _donutService.prepareData(_donutService._badgeDataNordjylland);
-        this.preparedDataSyd = _donutService.prepareData(_donutService._badgeDataSoenderjylland);
-        this.preparedDataSealand = _donutService.prepareData(_donutService._badgeDataSealand);
+    this.template();
+  }
 
-        // this.appendChart(this.preparedDataNord, "chartNord");
-        // this.appendChart(this.preparedDataSyd, "chartSyd");
-        // this.appendChart(this.preparedDataSealand, "chartSealand");
-    }
-
-    template() {
-        //home page
-        document.querySelector('#pagesSection').innerHTML += /*html*/ `
+  template() {
+    //Compare data page
+    document.querySelector('#pagesSection').innerHTML += /*html*/ `
             <article id="comepare-data" class="page">
             
             <header>
@@ -252,7 +245,7 @@ export default class CompareDataPage {
                             </g>
 
                  /* ------------st3 - norddanmark----------- */
-                        <g onclick="mapToChart(this, 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark')" onmouseover="border(this, 'northDenmark')" onmouseout="ikkeBorder(this, 'northDenmark')" >
+                        <g id="northMap" onclick="mapToChart(this, 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark')" onmouseover="border(this, 'northDenmark')" onmouseout="ikkeBorder(this, 'northDenmark')" >
                         <path class="st3" d="M154.3,99.7c-6.2-1.4-7.2-12-15.7-9.4c5,3.8,9.9,7.4,14.8,11C153.7,100.7,154,100.2,154.3,99.7z M83.3,139
                             c2.8,0.6,5.8,1.1,8.1,2.5c0.9,0.5,0.5,3.5,0.4,5.3c0,0.9-0.6,1.8-0.9,2.5c5.1,5.5,7,5.7,8.5,0.9c-1.5,0-3,0-4.8,0
                             c0.1-2.2,0.2-4.2,0.3-6.2c0.1-2.7,0.2-5.5,0.3-8.2c-2.4,0.3-4.9,0.6-7.3,0.9c-0.4,0.1-0.8,0.2-1.2,0.4c-0.5-0.2-1-0.4-1.4-0.7
@@ -314,7 +307,7 @@ export default class CompareDataPage {
   </tr>
   </table>
                 
-                <input type="checkbox" checked id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
+                <input class="displayNone" type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
                 <input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
                 <input class="displayNone" type="checkbox" id="zeaDenmark"> <!-- onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', chartService.zeaColor)" -->
                 <input class="displayNone" type="checkbox" id="entireDenmark"> <!-- onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', chartService.denmarkColor)" -->
@@ -326,7 +319,9 @@ export default class CompareDataPage {
               <article id="donutChart" style="display:none;">
               <div id="divChartNord">
               <h3> i alt - Region Nordjylland</h3>
+              <div class="doughnutDiv">
               <canvas id="chartNord"></canvas>
+              </div>
               <table class=" donutTable">
               <tr>
                 <th class="donutTh tableHeadNord">Medalje</th>
@@ -361,7 +356,9 @@ export default class CompareDataPage {
 
               <div id="divChartSyd">
               <h3> i alt - Region Sønderjylland</h3>
+              <div class="doughnutDiv">
               <canvas id="chartSyd"></canvas>
+              </div>
               <table class=" donutTable">
               <tr>
                 <th class="donutTh tableHeadSyd">Medalje</th>
@@ -396,7 +393,9 @@ export default class CompareDataPage {
 
               <div id="divChartSealand">
               <h3> i alt - Region Sjælland og øer</h3>
+              <div class="doughnutDiv">
               <canvas id="chartSealand"></canvas>
+              </div>
               <table class=" donutTable">
               <tr>
                 <th class="donutTh tableHeadSealand">Medalje</th>
@@ -464,8 +463,7 @@ export default class CompareDataPage {
         if (!checkBox.checked) {
             element.style.stroke = "none";
         } else {}
-
-    };
+    }
 
 /*..............................johanne................................. */ 
 
@@ -488,7 +486,7 @@ export default class CompareDataPage {
             norddanmark[i].style.fill = "#4BB131";
         }
 
-    }
+  };
 
     farveskift2() {
 
@@ -574,66 +572,15 @@ export default class CompareDataPage {
         let element = document.getElementById("arlaflower-map");
         element.classList.toggle("show");
     }
+  
 
 
-
-
-
-
-    /* ------------Indikation af hvilken knap der er valgt----------- */
-    selected(element) {
-        let selected = document.querySelector(".btn.selected");
-        selected.classList.remove("selected");
-        element.classList.add("selected");
-    }
-
-
-    appendChart(data, chart) {
-        // generate chart
-        let chartContainerNord = document.getElementById(chart);
-        let chart1 = new Chart(chartContainerNord, {
-            type: 'doughnut',
-            data: {
-                labels: data.counts,
-                datasets: [{
-                    data: data.counts,
-                    backgroundColor: data.colors
-                }]
-            },
-            options: {
-                legend: {
-                    display: false
-                }
-            }
-        });
-
-
-
-    }
-    drawCharts() {
-        let donutChart = document.getElementById("donutChart");
-        let buttonText = document.getElementById("donutChartButton")
-        console.log(donutChart.style.display)
-        if (buttonText.innerHTML === "Se medaljefordeling" || buttonText.innerHTML === "") {
-
-            buttonText.innerHTML = "Skjul medaljefordeling";
-        } else {
-            buttonText.innerHTML = "Se medaljefordeling";
-        }
-        if (donutChart.style.display == "none" || donutChart.style.display === "") {
-
-            donutChart.style.display = "flex";
-            console.log(donutChart.style.display)
-        } else {
-            donutChart.style.display = "none";
-        }
-        let hasCharts = document.querySelector('#donutChart .chartjs-size-monitor');
-        console.log(hasCharts);
-        if (!hasCharts) {
-            this.appendChart(this.preparedDataNord, "chartNord");
-            this.appendChart(this.preparedDataSyd, "chartSyd");
-            this.appendChart(this.preparedDataSealand, "chartSealand");
-        }
-    }
+  /* ------------Indikation af hvilken knap der er valgt----------- */
+  /* ------------ Helle ----------- */
+  selected(element) {
+    let selected = document.querySelector(".btn.selected");
+    selected.classList.remove("selected");
+    element.classList.add("selected");
+  }
 
 }

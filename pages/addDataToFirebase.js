@@ -1,8 +1,10 @@
+//....................... Maja .......................
 export default class AddDataPage {
     constructor() {
         this.template();
     }
 
+    // The template for the addDataPage
     template() {
         document.querySelector('#pagesSection').innerHTML += /*html*/ `
             <article id="addData" class="page">

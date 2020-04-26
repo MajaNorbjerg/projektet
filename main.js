@@ -27,8 +27,7 @@ let _selectedImgFile = "";
 window.pageChange = function () {
   _spaService.pageChange();
 }
-
-// chartservice.startChart();
+// chartAdd.mapToChart('document.querySelector("#northMap")', 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark')
 
 window.border = (element, checkboxId) => compareDataPage.border(element, checkboxId);
 window.ikkeBorder = (element, checkboxId) => compareDataPage.ikkeBorder(element, checkboxId);
@@ -39,7 +38,8 @@ window.farveskift4 = () => compareDataPage.farveskift4();
 window.farveskift5 = () => compareDataPage.farveskift5();
 window.showFlower = () => compareDataPage.showFlower();
 window.selected = (element) => compareDataPage.selected(element);
-window.drawCharts = () => compareDataPage.drawCharts();
+window.drawCharts = () => _donutService.drawCharts();
+window.generateTable = () => chartAdd.generateTable();
 
 window.createFarmer = () => dataService.createFarmer();
 // window.appendChart = () => chartService.appendChart();

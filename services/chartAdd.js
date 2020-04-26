@@ -1,5 +1,4 @@
 import sustainabilityDataService from "../services/sustainabilityData.js";
-
 import chartService from "../services/chartService.js";
 
 class ChartAdd {
@@ -8,6 +7,8 @@ class ChartAdd {
         this.farmerData = _db.collection("farmers")
         this.chart;
         this.data = 'dieselMyData';
+        this.element = document.querySelector('#northMap');
+        // this.mapToChart(this.element, 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark')
 
     }
 
@@ -115,6 +116,7 @@ class ChartAdd {
                 pointHoverBorderColor: color,
                 type: 'line'
             };
+
             chartService.chart.data.datasets.push(datasetToAdd);
             chartService.chart.update();
         } else if (!element.checked) {

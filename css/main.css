@@ -172,13 +172,9 @@ ul {
   overflow: hidden;
 }
 
-.frontPageBoks1,
-.frontPageBoks2 {
+.frontPageBoks1 {
   background: var(--gradient);
   display: block;
-}
-
-.frontPageBoks1 {
   width: 19.8%;
   height: 16em;
 }
@@ -220,6 +216,7 @@ ul {
   letter-spacing: 3px;
   color: var(--milkyWhite);
 }
+
 
 /* ---------- Compare data page stryling ---------- */
 #fromYear,
@@ -553,6 +550,10 @@ svg {
   margin: 0 5%;
 }
 
+.graphBtns:focus {
+  outline: 0;
+}
+
 .flower {
   display: block;
   position: absolute;
@@ -637,7 +638,13 @@ th {
   width: 50%;
 }
 
-
+.doughnutDiv {
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  background: transparent url(/img/cow.svg) no-repeat center 50%;
+  background-size: 20%;
+}
 
 #divChartNord,
 #divChartSyd,
