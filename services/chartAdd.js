@@ -60,7 +60,7 @@ class ChartAdd {
     }
 
 
-    mapToChart(element, checkboxId, id, color, tdtext) {
+    async mapToChart(element, checkboxId, id, color, tdtext) {
         console.log(element, checkboxId, id, color, tdtext)
         let checkBox = document.querySelector(`#${checkboxId}`);
         console.log(checkBox)
@@ -68,14 +68,14 @@ class ChartAdd {
 
         if (checkBox.checked === false) {
             checkBox.checked = true;
-            this.addDataset(checkBox, id, color, tdtext)
+            await this.addDataset(checkBox, id, color, tdtext)
             console.log('now its true')
             element.style.stroke = "#459632"
 
 
         } else if (checkBox.checked === true) {
             checkBox.checked = false;
-            this.addDataset(checkBox, id, color, tdtext)
+            await this.addDataset(checkBox, id, color, tdtext)
             console.log('now its NOT true')
             element.style.stroke = "none";
 
