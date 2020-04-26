@@ -33,6 +33,10 @@ window.pageChange = function () {
 window.border = (element, checkboxId) => compareDataPage.border(element, checkboxId);
 window.ikkeBorder = (element, checkboxId) => compareDataPage.ikkeBorder(element, checkboxId);
 window.farveskift1 = () => compareDataPage.farveskift1();
+window.farveskift2 = () => compareDataPage.farveskift2();
+window.farveskift3 = () => compareDataPage.farveskift3();
+window.farveskift4 = () => compareDataPage.farveskift4();
+window.farveskift5 = () => compareDataPage.farveskift5();
 window.showFlower = () => compareDataPage.showFlower();
 window.selected = (element) => compareDataPage.selected(element);
 window.drawCharts = () => compareDataPage.drawCharts();

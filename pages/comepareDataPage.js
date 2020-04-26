@@ -58,10 +58,10 @@ export default class CompareDataPage {
 
                 <article id="buttons">
                 <button type="button" value="carbonFootprintMyData" class="btn selected" onclick="selected(this); farveskift1(); dataInput(this.value)" ><img class="img" src="/img/blomst.svg">I alt</button>
-                <button type="button" value="digestionMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Metan</button>
-                <button type="button" value="dieselMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Diesel</button>
-                <button type="button" value="importedMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Foder</button>
-                <button type="button" value="energyMyData" class="btn" onclick="selected(this); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Energi</button>
+                <button type="button" value="digestionMyData" class="btn" onclick="selected(this); farveskift2(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Metan</button>
+                <button type="button" value="dieselMyData" class="btn" onclick="selected(this); farveskift3(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Diesel</button>
+                <button type="button" value="importedMyData" class="btn" onclick="selected(this); farveskift4(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Foder</button>
+                <button type="button" value="energyMyData" class="btn" onclick="selected(this); farveskift5(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Energi</button>
                 </article>
                 </div>
                 
@@ -77,10 +77,10 @@ export default class CompareDataPage {
                 </div>
                 <div> 
                
-                <button class="mapButtons" type="button" onclick="mapToChart(this, 'entireDenmark', 'SkosNYUR2FJDB5KYpqDQ', '#efc531')">Danmarks data</button>
+                <button class="mapButtons" type="button" onclick="mapToChart(this, 'entireDenmark', 'SkosNYUR2FJDB5KYpqDQ', '#efc531', 'DanmarksData')">Danmarks data</button>
                 </div>
                 <div>
-                <button class="mapButtons" onclick="showFlower(); mapToChart(this, 'myFarm', '9wuor7U0o7isnnv6MBzl', '#4bb131')" type="button">Din data</button>
+                <button class="mapButtons" onclick="showFlower(); mapToChart(this, 'myFarm', '9wuor7U0o7isnnv6MBzl', '#4bb131', 'DinData')" type="button">Din data</button>
                 </div>
                 </div>
 
@@ -191,7 +191,7 @@ export default class CompareDataPage {
                        
                         
                 /* ------------st2 Syddanmark----------- */
-                            <g onclick="mapToChart(this, 'southDenmark', 'CwsGcarffzaNsTnUe6ZV', '#f8353c', 'Syddanmark')" onmouseover="border(this, 'southDenmark')" onmouseout="ikkeBorder(this, 'southDenmark')">
+                            <g onclick="mapToChart(this, 'southDenmark', 'CwsGcarffzaNsTnUe6ZV', '#f8353c', 'SydDanmark')" onmouseover="border(this, 'southDenmark')" onmouseout="ikkeBorder(this, 'southDenmark')">
                             <path class="st2" d="M200.3,313.2c1.1,1.5,3.2,3.1,3,4.4c-0.7,4.8-1.9,9.5-3.4,14.2c-3.3,10.5-7.1,20.9-10.3,31.5
                             c-1.1,3.6-2.3,6.6-6.1,6.2c-3.6-0.4-3-4.2-4.1-6.8c-3.1-7.4,1.9-10.7,6.5-14.7c-1.2-1.4-2.2-2.7-3.2-3.9c0.9-2.4,1.8-4.7,2.7-7
                             l0,0c5.2-3.1,6.9-8.2,8.4-13.7c0.6-2.3,1.4-4.7,2.6-6.8C197.3,315.1,199,314.3,200.3,313.2z"/>
@@ -442,10 +442,12 @@ export default class CompareDataPage {
             </article>`
     };
 
-    /*.................johanne.................. */ 
+  /*..............................johanne................................. */ 
     
-    /* ------------map border----------- */
+    /* ------------map border----------- */ 
     border(element, checkboxId) {
+        console.log(checkboxId, element);
+        // If checkbox is checked nothing. Else element style with border.
         let checkBox = document.querySelector(`#${checkboxId}`);
         if (checkBox.checked) {
 
@@ -457,6 +459,7 @@ export default class CompareDataPage {
     };
 
     ikkeBorder(element, checkboxId) {
+        // If checkbox is checked then no element hover with border (if you have selected the region to the graph). else nothing
         let checkBox = document.querySelector(`#${checkboxId}`);
         if (!checkBox.checked) {
             element.style.stroke = "none";
@@ -464,8 +467,87 @@ export default class CompareDataPage {
 
     };
 
+/*..............................johanne................................. */ 
+
   /* ------------colorchange map---------- */
     farveskift1() {
+
+        // loops through all 'sjaellands' svg's and then style by fill with a color
+        let sjaelland = document.getElementsByClassName("st1")
+        for (let i = 0; i < sjaelland.length; i++) {
+            sjaelland[i].style.fill = "#00441B";
+        }
+
+        let syddanmark = document.getElementsByClassName("st2")
+        for (let i = 0; i < syddanmark.length; i++) {
+            syddanmark[i].style.fill = "#2A924A";
+        }
+
+        let norddanmark = document.getElementsByClassName("st3")
+        for (let i = 0; i < norddanmark.length; i++) {
+            norddanmark[i].style.fill = "#4BB131";
+        }
+
+    }
+
+    farveskift2() {
+
+        let sjaelland = document.getElementsByClassName("st1")
+        for (let i = 0; i < sjaelland.length; i++) {
+            sjaelland[i].style.fill = "#2A924A";
+        }
+
+        let syddanmark = document.getElementsByClassName("st2")
+        for (let i = 0; i < syddanmark.length; i++) {
+            syddanmark[i].style.fill = "#2A924A";
+        }
+
+        let norddanmark = document.getElementsByClassName("st3")
+        for (let i = 0; i < norddanmark.length; i++) {
+            norddanmark[i].style.fill = "#00441B";
+        }
+
+    }
+
+    farveskift3() {
+
+        let sjaelland = document.getElementsByClassName("st1")
+        for (let i = 0; i < sjaelland.length; i++) {
+            sjaelland[i].style.fill = "#4BB131";
+        }
+
+        let syddanmark = document.getElementsByClassName("st2")
+        for (let i = 0; i < syddanmark.length; i++) {
+            syddanmark[i].style.fill = "#2A924A";
+        }
+
+        let norddanmark = document.getElementsByClassName("st3")
+        for (let i = 0; i < norddanmark.length; i++) {
+            norddanmark[i].style.fill = "#00441B";
+        }
+
+    }
+
+    farveskift4() {
+
+        let sjaelland = document.getElementsByClassName("st1")
+        for (let i = 0; i < sjaelland.length; i++) {
+            sjaelland[i].style.fill = "#4BB131";
+        }
+
+        let syddanmark = document.getElementsByClassName("st2")
+        for (let i = 0; i < syddanmark.length; i++) {
+            syddanmark[i].style.fill = "#DADBDA";
+        }
+
+        let norddanmark = document.getElementsByClassName("st3")
+        for (let i = 0; i < norddanmark.length; i++) {
+            norddanmark[i].style.fill = "#00441B";
+        }
+
+    }
+
+    farveskift5() {
 
         let sjaelland = document.getElementsByClassName("st1")
         for (let i = 0; i < sjaelland.length; i++) {
@@ -479,13 +561,16 @@ export default class CompareDataPage {
 
         let norddanmark = document.getElementsByClassName("st3")
         for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#CBEAC3";
+            norddanmark[i].style.fill = "#DADBDA";
         }
 
     }
 
+    /*..............................johanne................................. */ 
+
     /* ------------flower on map - own data---------- */
     showFlower() {
+        // makes a variable: "element" by ID arlaflower-map. I use property classlist to toggle CSS class "show" on variable: "elemen"t.
         let element = document.getElementById("arlaflower-map");
         element.classList.toggle("show");
     }

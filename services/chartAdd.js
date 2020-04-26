@@ -23,14 +23,37 @@ class ChartAdd {
     }
 
 
- /*.........................johanne.............................*/ 
+    async mapToChart(element, checkboxId, id, color, tdtext) {
+        console.log(element, checkboxId, id, color, tdtext)
+        let checkBox = document.querySelector(`#${checkboxId}`);
+        console.log(checkBox)
+
+
+        if (checkBox.checked === false) {
+            checkBox.checked = true;
+            await this.addDataset(checkBox, id, color, tdtext)
+            console.log('now its true')
+            element.style.stroke = "#459632"
+
+
+        } else if (checkBox.checked === true) {
+            checkBox.checked = false;
+            await this.addDataset(checkBox, id, color, tdtext)
+            console.log('now its NOT true')
+            element.style.stroke = "none";
+
+
+        }
+        setTimeout(() => {
+            this.generateTable(color);
+        }, 300);
+    }
+
+    /*.........................johanne.............................*/ 
    
     /* ------------Table generator----------- */
     generateTable(color) {
         console.log(chartService.chart.data.datasets);
-        let newcolor = `${color}`.substring(1, color.lenght);
-        let colorID = `c${newcolor}`
-        
 
         let htmlTemplate = /*html*/ `
     <table id="graphTable">
@@ -45,8 +68,9 @@ class ChartAdd {
     // generates a "new" table each time data is contained in the data set.
         for (const data of chartService.chart.data.datasets) {
             htmlTemplate += /*html*/ `
+    
     <tr>
-    <td id="${colorID}">${data.label}</td>
+    <td class="${data.label}">${data.label}</td>
     <td> </td>
     <td> </td>
     </tr>
@@ -59,33 +83,6 @@ class ChartAdd {
     `;
 
         document.querySelector("#graphTable tbody").innerHTML = htmlTemplate
-        document.getElementById(`${colorID}`).style.background = color;
-    }
-
-    mapToChart(element, checkboxId, id, color, tdtext) {
-        console.log(element, checkboxId, id, color, tdtext)
-        let checkBox = document.querySelector(`#${checkboxId}`);
-        console.log(checkBox)
-
-
-        if (checkBox.checked === false) {
-            checkBox.checked = true;
-            this.addDataset(checkBox, id, color, tdtext)
-            console.log('now its true')
-            element.style.stroke = "#459632"
-
-
-        } else if (checkBox.checked === true) {
-            checkBox.checked = false;
-            this.addDataset(checkBox, id, color, tdtext)
-            console.log('now its NOT true')
-            element.style.stroke = "none";
-
-
-        }
-        setTimeout(() => {
-            this.generateTable(color);
-        }, 300);
     }
 
     async addDataset(element, id, color, tdtext) {
