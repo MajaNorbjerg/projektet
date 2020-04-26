@@ -12,7 +12,6 @@
   --noMedal: #E5E5E7;
   --milkyWhite: #f9f8fa;
   --ArlaRoyalPurple: #7D5D8A;
-  --ArlaSkyBlue: #3CC4EB;
   --ArlaPoppyRed: #F8353C;
   --gradient: linear-gradient(0deg, rgba(0, 108, 58, 0.8) 0%, rgba(17, 124, 56, 0.8) 37%, rgba(35, 141, 54, 0.8) 65%, rgba(75, 177, 49, 0.8) 100%);
   --fontAmatic: 'Amatic SC';
@@ -258,10 +257,14 @@ option {
 
 #regioner {
   border-bottom: 10px solid var(--arlaForrestGreen);
+  width: 49.8vw;
+  display: inline-block;
 }
 
 #lande {
   border-bottom: 10px solid #F2F0F0;
+  width: 49vw;
+  display: inline-block;
 }
 
 .tabbarLand a:hover {
@@ -604,31 +607,6 @@ th {
 #tdSecond {
   background-color: var(--ArlaPoppyRed);
   color: white;
-}
-
-.NordDanmark {
-  background-color:var(--ArlaRoyalPurple);
-  color: var(--milkyWhite)
-}
-
-.SydDanmark {
-  background-color: var(--ArlaPoppyRed);
-  color: var(--milkyWhite)
-}
-
-.Sjælland{
-  background-color: var(--ArlaSkyBlue);
-  color: var(--milkyWhite)
-}
-
-.DinData{
-  background-color: var(--arlaGrassGreen);
-  color: var(--milkyWhite)
-}
-
-.DanmarksData{
-  background-color: var(--arlaSunYellow);
-  color: var(--milkyWhite)
 }
 
 /* ---------- Donut Chart ---------- */

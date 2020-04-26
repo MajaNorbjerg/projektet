@@ -20,8 +20,8 @@ export default class CompareDataPage {
             
             <header>
             <nav class="tabbarLand">
-            <a id="regioner">Regioner</a>
-            <a id="lande">Lande</a>
+            <div id="regioner">Regioner</div>
+            <div id="lande">Lande</div>
 
           </nav>              
                 </header>
@@ -439,140 +439,140 @@ export default class CompareDataPage {
 
 
             </article>`
-    };
+  };
 
-  /*..............................johanne................................. */ 
-    
-    /* ------------map border----------- */ 
-    border(element, checkboxId) {
-        console.log(checkboxId, element);
-        // If checkbox is checked nothing. Else element style with border.
-        let checkBox = document.querySelector(`#${checkboxId}`);
-        if (checkBox.checked) {
+  /*..............................johanne................................. */
 
-        } else {
+  /* ------------map border----------- */
+  border(element, checkboxId) {
+    console.log(checkboxId, element);
+    // If checkbox is checked nothing. Else element style with border.
+    let checkBox = document.querySelector(`#${checkboxId}`);
+    if (checkBox.checked) {
 
-            element.style.stroke = "#FFCC32";
-            element.style.strokeWidth = 4
-        }
-    };
+    } else {
 
-    ikkeBorder(element, checkboxId) {
-        // If checkbox is checked then no element hover with border (if you have selected the region to the graph). else nothing
-        let checkBox = document.querySelector(`#${checkboxId}`);
-        if (!checkBox.checked) {
-            element.style.stroke = "none";
-        } else {}
+      element.style.stroke = "#FFCC32";
+      element.style.strokeWidth = 4
     }
+  };
 
-/*..............................johanne................................. */ 
+  ikkeBorder(element, checkboxId) {
+    // If checkbox is checked then no element hover with border (if you have selected the region to the graph). else nothing
+    let checkBox = document.querySelector(`#${checkboxId}`);
+    if (!checkBox.checked) {
+      element.style.stroke = "none";
+    } else {}
+  }
+
+  /*..............................johanne................................. */
 
   /* ------------colorchange map---------- */
-    farveskift1() {
+  farveskift1() {
 
-        // loops through all 'sjaellands' svg's and then style by fill with a color
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#00441B";
-        }
+    // loops through all 'sjaellands' svg's and then style by fill with a color
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+      sjaelland[i].style.fill = "#00441B";
+    }
 
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#2A924A";
-        }
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#2A924A";
+    }
 
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#4BB131";
-        }
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#4BB131";
+    }
 
   };
 
-    farveskift2() {
+  farveskift2() {
 
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#2A924A";
-        }
-
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#2A924A";
-        }
-
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#00441B";
-        }
-
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+      sjaelland[i].style.fill = "#2A924A";
     }
 
-    farveskift3() {
-
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#4BB131";
-        }
-
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#2A924A";
-        }
-
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#00441B";
-        }
-
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#2A924A";
     }
 
-    farveskift4() {
-
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#4BB131";
-        }
-
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#DADBDA";
-        }
-
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#00441B";
-        }
-
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#00441B";
     }
 
-    farveskift5() {
+  }
 
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#00441B";
-        }
+  farveskift3() {
 
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#2A924A";
-        }
-
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#DADBDA";
-        }
-
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+      sjaelland[i].style.fill = "#4BB131";
     }
 
-    /*..............................johanne................................. */ 
-
-    /* ------------flower on map - own data---------- */
-    showFlower() {
-        // makes a variable: "element" by ID arlaflower-map. I use property classlist to toggle CSS class "show" on variable: "elemen"t.
-        let element = document.getElementById("arlaflower-map");
-        element.classList.toggle("show");
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#2A924A";
     }
-  
+
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#00441B";
+    }
+
+  }
+
+  farveskift4() {
+
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+      sjaelland[i].style.fill = "#4BB131";
+    }
+
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#DADBDA";
+    }
+
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#00441B";
+    }
+
+  }
+
+  farveskift5() {
+
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+      sjaelland[i].style.fill = "#00441B";
+    }
+
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#2A924A";
+    }
+
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#DADBDA";
+    }
+
+  }
+
+  /*..............................johanne................................. */
+
+  /* ------------flower on map - own data---------- */
+  showFlower() {
+    // makes a variable: "element" by ID arlaflower-map. I use property classlist to toggle CSS class "show" on variable: "elemen"t.
+    let element = document.getElementById("arlaflower-map");
+    element.classList.toggle("show");
+  }
+
 
 
   /* ------------Indikation af hvilken knap der er valgt----------- */
