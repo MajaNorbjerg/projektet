@@ -44,7 +44,7 @@ html {
   width: 100%;
   font-weight: 200;
   background-color: var(--milkyWhite);
-  background-image: url(../img/webHeader.svg);
+  background-image: url(./img/webHeader.svg);
   background-position: fixed;
   background-repeat: no-repeat;
   background-size: 101%;
@@ -598,7 +598,7 @@ th {
   width: auto;
   height: auto;
   margin: 0 auto;
-  background: transparent url(/img/cow.svg) no-repeat center 50%;
+  background: transparent url(./img/cow.svg) no-repeat center 50%;
   background-size: 20%;
 }
 

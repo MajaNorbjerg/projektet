@@ -110,11 +110,11 @@
           let donutChart = document.getElementById("donutChart");
           let buttonText = document.getElementById("donutChartButton")
 
-          if (buttonText.innerHTML === '<img class="flower" src="/img/blomst.svg">Se medaljefordeling') {
+          if (buttonText.innerHTML === '<img class="flower" src="./img/blomst.svg">Se medaljefordeling') {
 
-              buttonText.innerHTML = '<img class="flower" src="/img/blomst.svg">Skjul medaljefordeling';
+              buttonText.innerHTML = '<img class="flower" src="./img/blomst.svg">Skjul medaljefordeling';
           } else {
-              buttonText.innerHTML = '<img class="flower" src="/img/blomst.svg">Se medaljefordeling';
+              buttonText.innerHTML = '<img class="flower" src="./img/blomst.svg">Se medaljefordeling';
           }
           if (donutChart.style.display == "none" || donutChart.style.display === "") {
 

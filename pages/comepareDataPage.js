@@ -103,7 +103,7 @@ export default class CompareDataPage {
 
         <!-- More info buttons -->
         <div id="graphBtns-wrapper">
-          <button class="graphBtns" type="button" id="donutChartButton" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
+          <button class="graphBtns" type="button" id="donutChartButton" onclick="drawCharts()"><img class="flower" src="./img/blomst.svg">Se medaljefordeling</button>
 
           <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel</button>
 
