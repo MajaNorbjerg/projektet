@@ -18,9 +18,12 @@ export default class AddDataPage {
                 <label for="farmer">Gårdens navn</label>
                 <input type="text" id="farmer" name="farmer">
 
-              
+                <!-- All the input fields -->
                 <div id="inputs">
-
+                
+                
+                
+                <!-- All inputs from 2015 -->
 
                 <form id="theInputForm2015">
 
@@ -67,7 +70,7 @@ export default class AddDataPage {
 
 
 
-
+                <!-- All inputs from 2016 -->
 
                 <form id="theInputForm2016">
 
@@ -114,6 +117,8 @@ export default class AddDataPage {
 
 
 
+            <!-- All inputs from 2017 -->
+
             <form id="theInputForm2017">
 
             <label for="year">Year number</label>
@@ -158,7 +163,7 @@ export default class AddDataPage {
 
 
 
-
+        <!-- All inputs from 2018 -->
 
         <form id="theInputForm2018">
 
@@ -205,7 +210,7 @@ export default class AddDataPage {
 
 
 
-
+    <!-- All inputs from 2019 -->
 
     <form id="theInputForm2019">
 
@@ -251,7 +256,7 @@ export default class AddDataPage {
 
 </div>
 
-
+                <!-- Submit data for all years button -->
                 <button type="button" onclick="createFarmer()">Submit all</button>
                
             
