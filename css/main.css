@@ -257,7 +257,7 @@ option {
 
 #regioner {
   border-bottom: 10px solid var(--arlaForrestGreen);
-  width: 49.8vw;
+  width: 49.8wvw;
   display: inline-block;
 }
 
@@ -575,7 +575,11 @@ article #chartContainer {
 }
 
 #chartDiv {
-  width: 50%;
+  width: 25%;
+}
+
+#graphTable {
+  width: 25%;
 }
 
 table {

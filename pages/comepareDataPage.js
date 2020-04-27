@@ -25,6 +25,7 @@ export default class CompareDataPage {
 
           </nav>              
                 </header>
+                
                 <div>
                 <h2 id="titelRegioner">Sammenlign data</h2> 
                 <article id="timePeriod"><p>Tidsperiode</p>
@@ -56,7 +57,7 @@ export default class CompareDataPage {
                 <button type="button" value="importedMyData" class="btn" onclick="selected(this); farveskift4(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Foder</button>
                 <button type="button" value="energyMyData" class="btn" onclick="selected(this); farveskift5(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Energi</button>
                 </article>
-                </div>
+                </>
                 
                 <article id="entireMap">
                
@@ -306,6 +307,8 @@ export default class CompareDataPage {
     <th id="toYearTable"></th>
   </tr>
   </table>
+
+
                 
                 <input class="displayNone" type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
                 <input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
@@ -435,7 +438,6 @@ export default class CompareDataPage {
                 <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel <br> (evt som PDF)</button>
                 
                 </div>
-
 
 
             </article>`
