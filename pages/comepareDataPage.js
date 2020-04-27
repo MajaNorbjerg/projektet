@@ -38,7 +38,7 @@ export default class CompareDataPage {
                 <h2 id="titelRegioner">Sammenlign data</h2> 
                 <article id="timePeriod"><p>Tidsperiode</p>
                 
-                <select id="fromYear" onchange="removeData()">
+                <select id="fromYear" value="2015" onchange="generateTable()">
                 <option>2015</option>
                 <option>2016</option>
                 <option>2017</option>
@@ -48,7 +48,7 @@ export default class CompareDataPage {
 
                 <p>Til</p>
 
-                <select id="toYear" onchange="removeData()">
+                <select id="toYear" value="2019" onchange="generateTable()">
                 <option >2015</option>
                 <option >2016</option>
                 <option >2017</option>
@@ -67,6 +67,42 @@ export default class CompareDataPage {
                 </article>
                 </div>
                 
+<div class="flexContainerAll">
+
+<div class="flexItem">
+
+<article>
+<div id="chartDiv"> 
+<canvas id="chartContainer"></canvas>
+</div>
+
+<table id="graphTable">
+<tr id="thFirst">
+<th></th>
+<th id="fromYearTable"></th>
+<th id="toYearTable"></th>
+</tr>
+</table>
+
+
+
+<input class="displayNone" type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
+<input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
+<input class="displayNone" type="checkbox" id="zeaDenmark"> <!-- onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', chartService.zeaColor)" -->
+<input class="displayNone" type="checkbox" id="entireDenmark"> <!-- onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', chartService.denmarkColor)" -->
+<input class="displayNone" type="checkbox" id="myFarm"> <!-- onclick="addDataset(this, '9wuor7U0o7isnnv6MBzl','dieselMyData', chartService.myColor)"-->
+
+</article>
+
+<div id="graphBtns-wrapper">
+<button class="graphBtns" type="button" id="donutChartButton" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
+
+<button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel</button>
+
+</div>
+</div>
+
+<div class="flexItem">
                 <article id="entireMap">
                
                 
@@ -76,7 +112,7 @@ export default class CompareDataPage {
                 <section id="scalebar">
                 <article id="scaletitel">
                 <h4> Reducering af kg CO2 pr. kg mælk i % </h4>
-                <article>
+                </article>
                 
                 <div id="flex-scale">
                 <article class="scaleall">
@@ -101,9 +137,9 @@ export default class CompareDataPage {
                 <svg id="map">            
                 <style type="text/css">
                     .st0{fill:#FFFFFF;stroke:#000000;stroke-width:0.5;}
-                    .st1{fill:#323232;}
-                    .st2{fill:#535353;}
-                    .st3{fill:#6E6E6E;}
+                    .st1{fill:#00441b;}
+                    .st2{fill:#2a924a;}
+                    .st3{fill:#4bb131;}
                     .st4{fill:#FFFFFF;}
                     .st5{fill:none;stroke:#000000;stroke-width:0.5;}
                 
@@ -287,44 +323,22 @@ export default class CompareDataPage {
                 <rect x="266.5" y="117.2" class="st5" width="59.7" height="59.7"/>
                 </svg>
 
-                <img id="arlaflower-map" src="./img/blomst.svg"> 
+                <img id="arlaflower-map" src="./img/blomst.svg">
 
                 <div id="mapBtns">
                 <div id="mapselectionyellow"> 
                 <div id="mapselection"></div>
                 <p>Valgt til grafen</p>
                 </div>
-                <div> 
-               
+              
                 <button class="mapButtons" type="button" onclick="mapToChart(this, 'entireDenmark', 'SkosNYUR2FJDB5KYpqDQ', '#efc531', 'DanmarksData')">Danmarks data</button>
-                </div>
-                <div>
                 <button class="mapButtons" onclick="showFlower(); mapToChart(this, 'myFarm', '9wuor7U0o7isnnv6MBzl', '#4bb131', 'DinData')" type="button">Din data</button>
-                </div>
+           
                 </div>
              
                 </article>
-
-                <article>
-                <div id="chartDiv"> 
-                <canvas id="chartContainer"></canvas>
                 </div>
-
-<table id="graphTable">
-  <tr id="thFirst">
-    <th></th>
-    <th id="fromYearTable"></th>
-    <th id="toYearTable"></th>
-  </tr>
-  </table>
-                
-                <input class="displayNone" type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
-                <input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
-                <input class="displayNone" type="checkbox" id="zeaDenmark"> <!-- onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', chartService.zeaColor)" -->
-                <input class="displayNone" type="checkbox" id="entireDenmark"> <!-- onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', chartService.denmarkColor)" -->
-                <input class="displayNone" type="checkbox" id="myFarm"> <!-- onclick="addDataset(this, '9wuor7U0o7isnnv6MBzl','dieselMyData', chartService.myColor)"-->
-                
-                </article>
+               
                 
               <!-- ----- medaljefordeling----- -->
               <article id="donutChart" style="display:none;">
@@ -440,12 +454,7 @@ export default class CompareDataPage {
               </div>
               </article>
 
-                <div id="graphBtns-wrapper">
-                <button class="graphBtns" type="button" id="donutChartButton" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
-                
-                <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel <br> (evt som PDF)</button>
-                
-                </div>
+            
 
 
 

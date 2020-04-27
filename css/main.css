@@ -172,6 +172,18 @@ ul {
   overflow: hidden;
 }
 
+.flexContainerAll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 4em;
+}
+
+.flexItem {
+  width: 30%;
+  margin: 0;
+}
+
 .frontPageBoks1 {
   background: var(--gradient);
   display: block;
@@ -244,24 +256,29 @@ option {
   font-weight: bold;
   font-size: 1.7em;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .tabbarLand a {
   display: inline-block;
   color: var(--arlaGraniteGray);
   text-align: center;
-  padding: 10px 321.37px;
+  /* padding: 10px 321.37px; */
   text-decoration: none;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  width: 50%;
 }
 
 #regioner {
   border-bottom: 10px solid var(--arlaForrestGreen);
+
 }
 
 #lande {
   border-bottom: 10px solid #F2F0F0;
+
 }
 
 .tabbarLand a:hover {
@@ -307,12 +324,13 @@ option {
   outline: 0;
 }
 
-/* .btn img {
+.btn img {
   width: 50%;
   position: absolute;
   right: 0;
   top: -2;
-} */
+}
+
 .img {
   display: none;
 }
@@ -418,9 +436,9 @@ input {
 } */
 
 svg {
-  width: 100%;
-  height: 400px;
-  /* overflow: visible; */
+  max-width: 100%;
+  height: 380px;
+  overflow: visible;
 }
 
 /* ---------- map ---------- */
@@ -448,11 +466,11 @@ svg {
   display: flex;
 }
 
-#scalebar {
+/* #scalebar {
   margin-left: 2%;
   float: right;
   margin-right: 40%;
-}
+} */
 
 #greyscale {
   background-color: #DADBDA;
@@ -472,13 +490,13 @@ svg {
 
 .mapButtons {
   background: var(--gradient);
-  width: 100%;
-  height: 25px;
+  width: 35%;
+  height: 3em;
   color: white;
-  font-size: 0.6em;
+  font-size: 0.7em;
 }
 
-#mapselectionyellow p {
+.mapButtons p {
   font-size: 0.7em;
 }
 
@@ -509,21 +527,20 @@ svg {
   align-items: center;
 }
 
-#map {
-  position: relative;
-}
 
-#entireMap {
+
+/* #entireMap {
   width: 35%;
   float: right;
   margin-top: 3%;
-}
+} */
 
 #arlaflower-map {
   width: 3%;
   position: absolute;
-  top: 650px;
-  right: 260px;
+
+  top: 630px;
+  right: 30%;
   z-index: 2;
   display: none;
 }
@@ -537,6 +554,9 @@ svg {
 #graphBtns-wrapper {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+  justify-content: space-evenly;
 }
 
 .graphBtns {
@@ -547,7 +567,7 @@ svg {
   color: #006C3A;
   font-size: 0.6em;
   font-weight: 700;
-  margin: 0 5%;
+  /* margin: 0 5%; */
 }
 
 .graphBtns:focus {
@@ -567,12 +587,16 @@ article #chartContainer {
   width: 50%;
 }
 
-.chart-size-monitor {
+/* .chart-size-monitor {
   width: 50%;
-}
+} */
 
 #chartDiv {
-  width: 50%;
+  width: 100%;
+}
+
+#graphTable {
+  width: 100%;
 }
 
 table {
