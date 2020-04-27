@@ -29,8 +29,8 @@ export default class CompareDataPage {
             
             <header>
             <nav class="tabbarLand">
-            <a id="regioner">Regioner</a>
-            <a id="lande">Lande</a>
+            <div id="regioner">Regioner</div>
+            <div id="lande">Lande</div>
 
           </nav>              
                 </header>
