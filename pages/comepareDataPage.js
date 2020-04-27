@@ -1,5 +1,6 @@
 import _donutService from "../services/donutService.js";
 import chartService from "../services/chartService.js";
+import chartAdd from "../services/chartAdd.js";
 
 export default class CompareDataPage {
   constructor() {
@@ -11,6 +12,10 @@ export default class CompareDataPage {
     this.myColor = '#4bb131';
 
     this.template();
+    chartAdd.mapToChart(document.querySelector('#northMap'), 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark');
+    // setTimeout(() => {
+    //   this.border(document.querySelector('#northMap'), 'northDenmark');
+    // })
   }
 
   template() {
@@ -307,7 +312,7 @@ export default class CompareDataPage {
   </tr>
   </table>
                 
-                <input class="displayNone" type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
+                <input type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
                 <input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
                 <input class="displayNone" type="checkbox" id="zeaDenmark"> <!-- onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', chartService.zeaColor)" -->
                 <input class="displayNone" type="checkbox" id="entireDenmark"> <!-- onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', chartService.denmarkColor)" -->
@@ -439,7 +444,7 @@ export default class CompareDataPage {
 
 
             </article>`
-    };
+  };
 
   /*..............................johanne................................. */ 
     
@@ -469,7 +474,7 @@ export default class CompareDataPage {
 /*..............................johanne................................. */ 
 
   /* ------------colorchange map---------- */
-    farveskift1() {
+  farveskift1() {
 
        
         let sjaelland = document.getElementsByClassName("st1") // makes variable sjaelland by class st1
@@ -477,95 +482,95 @@ export default class CompareDataPage {
             sjaelland[i].style.fill = "#00441B"; // style by fill with a color
         }
 
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#2A924A";
-        }
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#2A924A";
+    }
 
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#4BB131";
-        }
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#4BB131";
+    }
 
   };
 
-    farveskift2() {
+  farveskift2() {
 
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#2A924A";
-        }
-
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#2A924A";
-        }
-
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#00441B";
-        }
-
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+      sjaelland[i].style.fill = "#2A924A";
     }
 
-    farveskift3() {
-
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#4BB131";
-        }
-
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#2A924A";
-        }
-
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#00441B";
-        }
-
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#2A924A";
     }
 
-    farveskift4() {
-
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#4BB131";
-        }
-
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#DADBDA";
-        }
-
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#00441B";
-        }
-
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#00441B";
     }
 
-    farveskift5() {
+  }
 
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#00441B";
-        }
+  farveskift3() {
 
-        let syddanmark = document.getElementsByClassName("st2")
-        for (let i = 0; i < syddanmark.length; i++) {
-            syddanmark[i].style.fill = "#2A924A";
-        }
-
-        let norddanmark = document.getElementsByClassName("st3")
-        for (let i = 0; i < norddanmark.length; i++) {
-            norddanmark[i].style.fill = "#DADBDA";
-        }
-
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+      sjaelland[i].style.fill = "#4BB131";
     }
 
-    /*..............................johanne................................. */ 
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#2A924A";
+    }
+
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#00441B";
+    }
+
+  }
+
+  farveskift4() {
+
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+      sjaelland[i].style.fill = "#4BB131";
+    }
+
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#DADBDA";
+    }
+
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#00441B";
+    }
+
+  }
+
+  farveskift5() {
+
+    let sjaelland = document.getElementsByClassName("st1")
+    for (let i = 0; i < sjaelland.length; i++) {
+      sjaelland[i].style.fill = "#00441B";
+    }
+
+    let syddanmark = document.getElementsByClassName("st2")
+    for (let i = 0; i < syddanmark.length; i++) {
+      syddanmark[i].style.fill = "#2A924A";
+    }
+
+    let norddanmark = document.getElementsByClassName("st3")
+    for (let i = 0; i < norddanmark.length; i++) {
+      norddanmark[i].style.fill = "#DADBDA";
+    }
+
+  }
+
+  /*..............................johanne................................. */
 
     /* ------------flower on map - own data---------- */
     showFlower() {
