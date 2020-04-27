@@ -7,7 +7,7 @@ class ChartAdd {
         this.farmerData = _db.collection("farmers")
         this.chart;
         this.data = 'dieselMyData';
-        this.element = document.querySelector('#northMap');
+        // this.element = document.querySelector('#northMap');
         // this.mapToChart(this.element, 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark')
 
     }
@@ -34,7 +34,8 @@ class ChartAdd {
             checkBox.checked = true;
             await this.addDataset(checkBox, id, color, tdtext)
             console.log('now its true')
-            element.style.stroke = "#459632"
+            element.style.stroke = "#FFCC32";
+            element.style.strokeWidth = 4;
 
 
         } else if (checkBox.checked === true) {
@@ -50,8 +51,8 @@ class ChartAdd {
         }, 300);
     }
 
-    /*.........................johanne.............................*/ 
-   
+    /*.........................johanne.............................*/
+
     /* ------------Table generator----------- */
     generateTable(color) {
         console.log(chartService.chart.data.datasets);
@@ -66,7 +67,7 @@ class ChartAdd {
   </tr>`;
 
 
-    // generates a "new" table each time data is contained in the data set.
+        // generates a "new" table each time data is contained in the data set.
         for (const data of chartService.chart.data.datasets) {
             htmlTemplate += /*html*/ `
     
@@ -132,7 +133,7 @@ class ChartAdd {
         }
     }
 
-    /*.........................johanne & maja.............................*/ 
+    /*.........................johanne & maja.............................*/
     removeData() {
         let from = document.querySelector('#fromYear');
         let to = document.querySelector('#toYear');

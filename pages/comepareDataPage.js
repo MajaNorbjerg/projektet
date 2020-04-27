@@ -12,10 +12,14 @@ export default class CompareDataPage {
     this.myColor = '#4bb131';
 
     this.template();
-    chartAdd.mapToChart(document.querySelector('#northMap'), 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark');
+    // chartAdd.mapToChart(document.querySelector('#northMap'), 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark');
     // setTimeout(() => {
     //   this.border(document.querySelector('#northMap'), 'northDenmark');
     // })
+  }
+
+  init() {
+    chartAdd.mapToChart(document.querySelector('#northMap'), 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark');
   }
 
   template() {
@@ -66,21 +70,7 @@ export default class CompareDataPage {
                 <article id="entireMap">
                
                 
-                <img id="arlaflower-map" src="./img/blomst.svg"> 
-
-                <div id="mapBtns">
-                <div id="mapselectionyellow"> 
-                <div id="mapselection"></div>
-                <p>Valgt til grafen</p>
-                </div>
-                <div> 
                
-                <button class="mapButtons" type="button" onclick="mapToChart(this, 'entireDenmark', 'SkosNYUR2FJDB5KYpqDQ', '#efc531', 'DanmarksData')">Danmarks data</button>
-                </div>
-                <div>
-                <button class="mapButtons" onclick="showFlower(); mapToChart(this, 'myFarm', '9wuor7U0o7isnnv6MBzl', '#4bb131', 'DinData')" type="button">Din data</button>
-                </div>
-                </div>
 
     
                 <section id="scalebar">
@@ -296,6 +286,22 @@ export default class CompareDataPage {
                
                 <rect x="266.5" y="117.2" class="st5" width="59.7" height="59.7"/>
                 </svg>
+
+                <img id="arlaflower-map" src="./img/blomst.svg"> 
+
+                <div id="mapBtns">
+                <div id="mapselectionyellow"> 
+                <div id="mapselection"></div>
+                <p>Valgt til grafen</p>
+                </div>
+                <div> 
+               
+                <button class="mapButtons" type="button" onclick="mapToChart(this, 'entireDenmark', 'SkosNYUR2FJDB5KYpqDQ', '#efc531', 'DanmarksData')">Danmarks data</button>
+                </div>
+                <div>
+                <button class="mapButtons" onclick="showFlower(); mapToChart(this, 'myFarm', '9wuor7U0o7isnnv6MBzl', '#4bb131', 'DinData')" type="button">Din data</button>
+                </div>
+                </div>
              
                 </article>
 
@@ -312,7 +318,7 @@ export default class CompareDataPage {
   </tr>
   </table>
                 
-                <input type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
+                <input class="displayNone" type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
                 <input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
                 <input class="displayNone" type="checkbox" id="zeaDenmark"> <!-- onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', chartService.zeaColor)" -->
                 <input class="displayNone" type="checkbox" id="entireDenmark"> <!-- onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', chartService.denmarkColor)" -->
@@ -458,7 +464,7 @@ export default class CompareDataPage {
     } else {
 
       element.style.stroke = "#FFCC32";
-      element.style.strokeWidth = 4
+      element.style.strokeWidth = 2
     }
   };
 

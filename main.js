@@ -27,6 +27,7 @@ let _selectedImgFile = "";
 window.pageChange = function () {
   _spaService.pageChange();
 }
+compareDataPage.init();
 // chartAdd.mapToChart('document.querySelector("#northMap")', 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark')
 
 window.border = (element, checkboxId) => compareDataPage.border(element, checkboxId);
