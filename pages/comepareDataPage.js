@@ -579,7 +579,6 @@ export default class CompareDataPage {
     }
   
 
-
   /* ------------Indikation af hvilken knap der er valgt----------- */
   /* ------------ Helle ----------- */
   selected(element) {
