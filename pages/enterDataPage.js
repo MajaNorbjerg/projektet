@@ -1,8 +1,10 @@
+//....................... Maja .......................
 export default class EnterDataPage {
     constructor() {
         this.template();
     }
 
+    // Template for the page to add data
     template() {
         //home page
         document.querySelector('#pagesSection').innerHTML += /*html*/ `
