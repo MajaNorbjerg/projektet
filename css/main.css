@@ -12,8 +12,9 @@
   --noMedal: #E5E5E7;
   --milkyWhite: #f9f8fa;
   --ArlaRoyalPurple: #7D5D8A;
-  --ArlaSkyBlue: #3CC4EB;
   --ArlaPoppyRed: #F8353C;
+  --ArlaSkyBlue: #3cc4eb;
+
   --gradient: linear-gradient(0deg, rgba(0, 108, 58, 0.8) 0%, rgba(17, 124, 56, 0.8) 37%, rgba(35, 141, 54, 0.8) 65%, rgba(75, 177, 49, 0.8) 100%);
   --fontAmatic: 'Amatic SC';
 }
@@ -172,6 +173,18 @@ ul {
   overflow: hidden;
 }
 
+.flexContainerAll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 3.5em;
+}
+
+.flexItem {
+  width: 30%;
+  margin: 0;
+}
+
 .frontPageBoks1 {
   background: var(--gradient);
   display: block;
@@ -244,9 +257,11 @@ option {
   font-weight: bold;
   font-size: 1.7em;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.tabbarLand a {
+/* .tabbarLand a {
   display: inline-block;
   color: var(--arlaGraniteGray);
   text-align: center;
@@ -254,14 +269,17 @@ option {
   text-decoration: none;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
+
+} */
 
 #regioner {
   border-bottom: 10px solid var(--arlaForrestGreen);
+  width: 50%;
 }
 
 #lande {
   border-bottom: 10px solid #F2F0F0;
+  width: 50%;
 }
 
 .tabbarLand a:hover {
@@ -287,7 +305,7 @@ option {
   color: var(--arlaForrestGreen);
   font-family: 'Arla Bold';
   display: inline-block;
-  margin: 0 2%;
+  margin: 0 1%;
 }
 
 .btn {
@@ -307,12 +325,13 @@ option {
   outline: 0;
 }
 
-/* .btn img {
+.btn img {
   width: 50%;
   position: absolute;
   right: 0;
   top: -2;
-} */
+}
+
 .img {
   display: none;
 }
@@ -331,6 +350,13 @@ option {
   width: 50%;
   top: -30%;
   right: -15%;
+}
+
+#line {
+  height: 1px;
+  width: 70%;
+  margin: 1em auto 0;
+  background-color: var(--arlaStoneGray)
 }
 
 
@@ -418,9 +444,9 @@ input {
 } */
 
 svg {
-  width: 100%;
-  height: 400px;
-  /* overflow: visible; */
+  max-width: 100%;
+  height: 380px;
+  overflow: visible;
 }
 
 /* ---------- map ---------- */
@@ -448,11 +474,11 @@ svg {
   display: flex;
 }
 
-#scalebar {
+/* #scalebar {
   margin-left: 2%;
   float: right;
   margin-right: 40%;
-}
+} */
 
 #greyscale {
   background-color: #DADBDA;
@@ -472,13 +498,13 @@ svg {
 
 .mapButtons {
   background: var(--gradient);
-  width: 90px;
-  height: 25px;
+  width: 35%;
+  height: 3em;
   color: white;
-  font-size: 0.6em;
+  font-size: 0.7em;
 }
 
-#mapselectionyellow p {
+.mapButtons p {
   font-size: 0.7em;
 }
 
@@ -492,11 +518,11 @@ svg {
 
 #mapBtns {
   flex-direction: column;
-  width: 6%;
+  width: 100%;
   margin: 0 auto;
-  position: absolute;
+  /* position: absolute;
   top: 420px;
-  right: 180px;
+  right: 180px; */
   z-index: 2;
 }
 
@@ -509,21 +535,20 @@ svg {
   align-items: center;
 }
 
-#map {
-  position: relative;
-}
 
-#entireMap {
+
+/* #entireMap {
   width: 35%;
   float: right;
   margin-top: 3%;
-}
+} */
 
 #arlaflower-map {
   width: 3%;
   position: absolute;
-  top: 600px;
-  right: 360px;
+
+  top: 630px;
+  right: 30%;
   z-index: 2;
   display: none;
 }
@@ -537,6 +562,9 @@ svg {
 #graphBtns-wrapper {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+  justify-content: space-evenly;
 }
 
 .graphBtns {
@@ -547,7 +575,7 @@ svg {
   color: #006C3A;
   font-size: 0.6em;
   font-weight: 700;
-  margin: 0 5%;
+  /* margin: 0 5%; */
 }
 
 .graphBtns:focus {
@@ -567,12 +595,16 @@ article #chartContainer {
   width: 50%;
 }
 
-.chart-size-monitor {
+/* .chart-size-monitor {
   width: 50%;
-}
+} */
 
 #chartDiv {
-  width: 50%;
+  width: 100%;
+}
+
+#graphTable {
+  width: 100%;
 }
 
 table {
@@ -607,7 +639,7 @@ th {
 }
 
 .NordDanmark {
-  background-color:var(--ArlaRoyalPurple);
+  background-color: var(--ArlaRoyalPurple);
   color: var(--milkyWhite)
 }
 
@@ -616,17 +648,17 @@ th {
   color: var(--milkyWhite)
 }
 
-.Sjælland{
+.Sjælland {
   background-color: var(--ArlaSkyBlue);
   color: var(--milkyWhite)
 }
 
-.DinData{
+.DinData {
   background-color: var(--arlaGrassGreen);
   color: var(--milkyWhite)
 }
 
-.DanmarksData{
+.DanmarksData {
   background-color: var(--arlaSunYellow);
   color: var(--milkyWhite)
 }
