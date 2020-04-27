@@ -67,6 +67,8 @@ export default class CompareDataPage {
                 </article>
                 </div>
                 
+<div id="line"></div>
+
 <div class="flexContainerAll">
 
 <div class="flexItem">

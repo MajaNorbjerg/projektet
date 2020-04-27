@@ -13,6 +13,8 @@
   --milkyWhite: #f9f8fa;
   --ArlaRoyalPurple: #7D5D8A;
   --ArlaPoppyRed: #F8353C;
+  --ArlaSkyBlue: #3cc4eb;
+
   --gradient: linear-gradient(0deg, rgba(0, 108, 58, 0.8) 0%, rgba(17, 124, 56, 0.8) 37%, rgba(35, 141, 54, 0.8) 65%, rgba(75, 177, 49, 0.8) 100%);
   --fontAmatic: 'Amatic SC';
 }
@@ -175,7 +177,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-top: 4em;
+  margin-top: 3.5em;
 }
 
 .flexItem {
@@ -259,23 +261,25 @@ option {
   flex-wrap: wrap;
 }
 
-.tabbarLand a {
+/* .tabbarLand a {
   display: inline-block;
   color: var(--arlaGraniteGray);
   text-align: center;
-  /* padding: 10px 321.37px; */
+  padding: 10px 321.37px;
   text-decoration: none;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  width: 50%;
-}
+
+} */
 
 #regioner {
   border-bottom: 10px solid var(--arlaForrestGreen);
+  width: 50%;
 }
 
 #lande {
   border-bottom: 10px solid #F2F0F0;
+  width: 50%;
 }
 
 .tabbarLand a:hover {
@@ -301,7 +305,7 @@ option {
   color: var(--arlaForrestGreen);
   font-family: 'Arla Bold';
   display: inline-block;
-  margin: 0 2%;
+  margin: 0 1%;
 }
 
 .btn {
@@ -346,6 +350,13 @@ option {
   width: 50%;
   top: -30%;
   right: -15%;
+}
+
+#line {
+  height: 1px;
+  width: 70%;
+  margin: 1em auto 0;
+  background-color: var(--arlaStoneGray)
 }
 
 
