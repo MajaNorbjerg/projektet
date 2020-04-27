@@ -144,25 +144,6 @@ ul {
   padding: 10% 0;
 }
 
-/* ---------- logo styling ---------- */
-/* .logo {
-  margin: 2em auto;
-  width: 100%;
-  max-width: 300px;
-} */
-
-/* ---------- animations ---------- */
-/* fade in */
-/* @keyframes fadeIn {
-  from {
-    opacity: 0
-  }
-
-  to {
-    opacity: 1
-  }
-} */
-
 /* ---------- Frontpage styling ---------- */
 .flexContainer {
   display: flex;
@@ -255,11 +236,9 @@ select:active {
 
 option {
   background-color: var(--arlaForrestGreen);
-  /* font-family: 'Arla Ragular'; */
 }
 
 .tabbarLand {
-  /* background-color: var(--arlaForrestGreen); */
   font-family: var(--fontAmatic);
   font-weight: bold;
   font-size: 1.7em;
@@ -267,17 +246,6 @@ option {
   display: flex;
   flex-wrap: wrap;
 }
-
-/* .tabbarLand a {
-  display: inline-block;
-  color: var(--arlaGraniteGray);
-  text-align: center;
-  padding: 10px 321.37px;
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-} */
 
 #regioner {
   border-bottom: 10px solid var(--arlaForrestGreen);
@@ -371,7 +339,6 @@ option {
 /* ---------- input form stryling ---------- */
 form {
   background-color: var(--arlaGrassGreen);
-  /* padding: 2em 1em 2.5em; */
   width: 19%;
 }
 
@@ -389,6 +356,7 @@ form button {
   max-width: 350px;
 }
 
+/* ---------- buttom stryling ---------- */
 article button {
   font-weight: 200;
   text-align: center;
@@ -420,36 +388,6 @@ input {
   width: 100%;
 }
 
-/* Grid container */
-/* .grid-container {
-  display: grid;
-  grid-template-columns: 100%;
-  padding: 10px;
-}
-
-@media (min-width: 600px) {
-  .grid-container {
-    grid-template-columns: 50% 50%;
-  }
-}
-
-@media (min-width: 992px) {
-  .grid-container {
-    grid-template-columns: 33.33% 33.33% 33.33%;
-  }
-}
-
-.image-preview {
-  width: 100%;
-  height: auto;
-  margin: 1em 0;
-} */
-
-
-/* #entireMap {
-  height: 4001px;
-} */
-
 svg {
   max-width: 100%;
   height: 380px;
@@ -480,12 +418,6 @@ svg {
 #flex-scale {
   display: flex;
 }
-
-/* #scalebar {
-  margin-left: 2%;
-  float: right;
-  margin-right: 40%;
-} */
 
 #greyscale {
   background-color: #DADBDA;
@@ -527,9 +459,6 @@ svg {
   flex-direction: column;
   width: 100%;
   margin: 0 auto;
-  /* position: absolute;
-  top: 420px;
-  right: 180px; */
   z-index: 2;
 }
 
@@ -542,13 +471,6 @@ svg {
   align-items: center;
 }
 
-
-
-/* #entireMap {
-  width: 35%;
-  float: right;
-  margin-top: 3%;
-} */
 
 #arlaflower-map {
   width: 3%;
@@ -582,7 +504,6 @@ svg {
   color: #006C3A;
   font-size: 0.6em;
   font-weight: 700;
-  /* margin: 0 5%; */
 }
 
 .graphBtns:focus {
@@ -601,10 +522,6 @@ svg {
 article #chartContainer {
   width: 50%;
 }
-
-/* .chart-size-monitor {
-  width: 50%;
-} */
 
 #chartDiv {
   width: 100%;
@@ -691,7 +608,6 @@ th {
   width: 32%;
   margin: 3% 0;
 }
-
 
 table,
 th,
