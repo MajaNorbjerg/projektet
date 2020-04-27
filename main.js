@@ -3,12 +3,9 @@ import HomePage from "./pages/homePage.js"
 import EnterDataPage from "./pages/enterDataPage.js"
 import CompareDataPage from "./pages/comepareDataPage.js"
 import AddDataPage from "./pages/addDataToFirebase.js"
-
 import SpaService from "./services/spa-service.js"
 import dataService from "./services/addDataService.js"
-import chartService from "./services/chartService.js"
 import _donutService from "./services/donutService.js"
-import sustainabilityDataService from "./services/sustainabilityData.js"
 import chartAdd from "./services/chartAdd.js"
 
 // // Declare and init pages
@@ -19,16 +16,13 @@ let addDataPage = new AddDataPage();
 
 
 let _spaService = new SpaService("forside");
-let _selectedUserId = "";
-let _selectedImgFile = "";
-
 
 
 window.pageChange = function () {
   _spaService.pageChange();
 }
 compareDataPage.init();
-// chartAdd.mapToChart('document.querySelector("#northMap")', 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark')
+
 
 window.border = (element, checkboxId) => compareDataPage.border(element, checkboxId);
 window.ikkeBorder = (element, checkboxId) => compareDataPage.ikkeBorder(element, checkboxId);
@@ -41,9 +35,7 @@ window.showFlower = () => compareDataPage.showFlower();
 window.selected = (element) => compareDataPage.selected(element);
 window.drawCharts = () => _donutService.drawCharts();
 window.generateTable = () => chartAdd.generateTable();
-
 window.createFarmer = () => dataService.createFarmer();
-// window.appendChart = () => chartService.appendChart();
 window.addDataset = (element, id, color) => chartAdd.addDataset(element, id, color);
 window.removeData = () => chartAdd.removeData();
 window.mapToChart = (element, checkboxId, id, color, tdText) => chartAdd.mapToChart(element, checkboxId, id, color, tdText);

@@ -197,6 +197,13 @@ ul {
   margin: 0 .1%;
 }
 
+#boks1,
+#boks2,
+#boks4,
+#boks {
+  opacity: .8;
+}
+
 .frontPageCircle {
   background: var(--milkyWhite);
   border-radius: 50%;
