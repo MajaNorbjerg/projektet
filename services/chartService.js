@@ -21,17 +21,20 @@ class ChartService {
         let data = await sustainabilityDataService.getPreparedDataByUid(uid); // getting prepared data from the service
         let region = "NordDanmark";
         // call append functions with the dataset: data
-        this.appendCowsChart(data, uid, region);
+        this.appendChart(data, uid, region);
 
     }
     //appending the chart
-    appendCowsChart(data, uid, region) {
+    appendChart(data, uid, region) {
         // generate chart
         let chartContainer = document.getElementById("chartContainer");
         this.chart = new Chart(chartContainer, { // Generate chart
             type: 'line',
             data: {
-                datasets: [
+                datasets: [ // The datasets is empty on load
+
+
+                    // INSPRIATION
                     //     {
                     //     data: data.dieselMyData,
                     //     label: region,
@@ -45,7 +48,7 @@ class ChartService {
                     //     // }
                     // }
                 ],
-                labels: data.years
+                labels: data.years // The graph labels
             }
         });
     }

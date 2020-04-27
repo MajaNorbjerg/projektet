@@ -1,23 +1,12 @@
 import _donutService from "../services/donutService.js";
-import chartService from "../services/chartService.js";
 import chartAdd from "../services/chartAdd.js";
 
 export default class CompareDataPage {
   constructor() {
-
-    this.northColor = '#7d5d8a';
-    this.southColor = '#f8353c';
-    this.zeaColor = '#3cc4eb';
-    this.denmarkColor = '#efc531';
-    this.myColor = '#4bb131';
-
     this.template();
-    // chartAdd.mapToChart(document.querySelector('#northMap'), 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark');
-    // setTimeout(() => {
-    //   this.border(document.querySelector('#northMap'), 'northDenmark');
-    // })
   }
 
+  // function to run after page is loaded. Adds data to the chart.
   init() {
     chartAdd.mapToChart(document.querySelector('#northMap'), 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark');
   }
@@ -25,118 +14,136 @@ export default class CompareDataPage {
   template() {
     //Compare data page
     document.querySelector('#pagesSection').innerHTML += /*html*/ `
-            <article id="comepare-data" class="page">
+      <article id="comepare-data" class="page">
             
-            <header>
-            <nav class="tabbarLand">
+        <header>
+          <nav class="tabbarLand">
             <div id="regioner">Regioner</div>
             <div id="lande">Lande</div>
 
           </nav>              
-                </header>
+        </header>
+
+
+
+        <div>
+          <h2 id="titelRegioner">Sammenlign data</h2> 
+
+          <!-- Choose timeperiod -->
+          <article id="timePeriod"><p>Tidsperiode</p>
                 
-                <div>
-                <h2 id="titelRegioner">Sammenlign data</h2> 
-                <article id="timePeriod"><p>Tidsperiode</p>
+            <select id="fromYear" value="2015" onchange="generateTable()">
+              <option>2015</option>
+              <option>2016</option>
+              <option>2017</option>
+              <option>2018</option>
+              <option>2019</option>
+            </select>
+
+            <p>Til</p>
+
+            <select id="toYear" value="2019" onchange="generateTable()">
+              <option >2015</option>
+              <option >2016</option>
+              <option >2017</option>
+              <option >2018</option>
+              <option selected>2019</option>
+            </select>
+
+          </article>
+
+
+          <!-- Data buttons -->
+          <article id="buttons">
+            <button type="button" value="carbonFootprintMyData" class="btn selected" onclick="selected(this); farveskift1(); dataInput(this.value)" ><img class="img" src="/img/blomst.svg">I alt</button>
+            <button type="button" value="digestionMyData" class="btn" onclick="selected(this); farveskift2(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Metan</button>
+            <button type="button" value="dieselMyData" class="btn" onclick="selected(this); farveskift3(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Diesel</button>
+            <button type="button" value="importedMyData" class="btn" onclick="selected(this); farveskift4(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Foder</button>
+            <button type="button" value="energyMyData" class="btn" onclick="selected(this); farveskift5(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Energi</button>
+          </article>
+        </div>
                 
-                <select id="fromYear" value="2015" onchange="generateTable()">
-                <option>2015</option>
-                <option>2016</option>
-                <option>2017</option>
-                <option>2018</option>
-                <option>2019</option>
-                </select>
+        <div id="line"></div>
 
-                <p>Til</p>
+        
+        <!-- Content -->
+        <div class="flexContainerAll">
 
-                <select id="toYear" value="2019" onchange="generateTable()">
-                <option >2015</option>
-                <option >2016</option>
-                <option >2017</option>
-                <option >2018</option>
-                <option selected>2019</option>
-                </select>
 
-                </article>
+        <!-- Chart area -->
+        <div class="flexItem">
 
-                <article id="buttons">
-                <button type="button" value="carbonFootprintMyData" class="btn selected" onclick="selected(this); farveskift1(); dataInput(this.value)" ><img class="img" src="/img/blomst.svg">I alt</button>
-                <button type="button" value="digestionMyData" class="btn" onclick="selected(this); farveskift2(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Metan</button>
-                <button type="button" value="dieselMyData" class="btn" onclick="selected(this); farveskift3(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Diesel</button>
-                <button type="button" value="importedMyData" class="btn" onclick="selected(this); farveskift4(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Foder</button>
-                <button type="button" value="energyMyData" class="btn" onclick="selected(this); farveskift5(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Energi</button>
-                </article>
-                </>
+        <article>
+
+          <!-- Chart -->
+          <div id="chartDiv"> 
+            <canvas id="chartContainer"></canvas>
+          </div>
+
+
+          <!-- Table -->
+          <table id="graphTable">
+            <tr id="thFirst">
+              <th></th>
+              <th id="fromYearTable"></th>
+              <th id="toYearTable"></th>
+            </tr>
+          </table>
+
+
+          <!-- Invisible checkboxes -->
+          <input class="displayNone" type="checkbox" id="northDenmark" >
+          <input class="displayNone" type="checkbox" id="southDenmark" >
+          <input class="displayNone" type="checkbox" id="zeaDenmark">
+          <input class="displayNone" type="checkbox" id="entireDenmark">
+          <input class="displayNone" type="checkbox" id="myFarm">
+
+        </article>
+
+
+        <!-- More info buttons -->
+        <div id="graphBtns-wrapper">
+          <button class="graphBtns" type="button" id="donutChartButton" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
+
+          <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel</button>
+
+        </div>
+      </div>
+
+
+      <!-- Map area -->
+      <div class="flexItem">
+        <article id="entireMap">
+
+
+        <!-- Scale for the map -->
+        <section id="scalebar">
+          <article id="scaletitel">
+            <h4> Reducering af kg CO2 pr. kg mælk i % </h4>
+          </article>
                 
-<div id="line"></div>
-
-<div class="flexContainerAll">
-
-<div class="flexItem">
-
-<article>
-<div id="chartDiv"> 
-<canvas id="chartContainer"></canvas>
-</div>
-
-<table id="graphTable">
-<tr id="thFirst">
-<th></th>
-<th id="fromYearTable"></th>
-<th id="toYearTable"></th>
-</tr>
-</table>
-
-
-
-<input class="displayNone" type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
-<input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
-<input class="displayNone" type="checkbox" id="zeaDenmark"> <!-- onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', chartService.zeaColor)" -->
-<input class="displayNone" type="checkbox" id="entireDenmark"> <!-- onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', chartService.denmarkColor)" -->
-<input class="displayNone" type="checkbox" id="myFarm"> <!-- onclick="addDataset(this, '9wuor7U0o7isnnv6MBzl','dieselMyData', chartService.myColor)"-->
-
-</article>
-
-<div id="graphBtns-wrapper">
-<button class="graphBtns" type="button" id="donutChartButton" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
-
-<button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel</button>
-
-</div>
-</div>
-
-<div class="flexItem">
-                <article id="entireMap">
-               
+          <div id="flex-scale">
+            <article class="scaleall">
+              <div class="scale" id="greyscale"></div>
+              <p> < 1 </p>
+            </article>
+            <article class="scaleall">
+              <div class="scale" id="lightgreenscale"></div>
+              <p> 1 - 2 </p>
+            </article>
+            <article class="scaleall">
+              <div class="scale" id="greenscale"></div>
+              <p> 3 - 4 </p>
+            </article>
+            <article class="scaleall">
+              <div class="scale" id="darkgreenscale"></div>
+              <p> > 4 </p>
+            </article>
+          </div>
+        </section>
                 
-               
 
-    
-                <section id="scalebar">
-                <article id="scaletitel">
-                <h4> Reducering af kg CO2 pr. kg mælk i % </h4>
-                </article>
-                
-                <div id="flex-scale">
-                <article class="scaleall">
-                <div class="scale" id="greyscale"></div>
-                <p> < 1 </p>
-                </article>
-                <article class="scaleall">
-                <div class="scale" id="lightgreenscale"></div>
-                <p> 1 - 2 </p>
-                </article>
-                <article class="scaleall">
-                <div class="scale" id="greenscale"></div>
-                <p> 3 - 4 </p>
-                </article>
-                <article class="scaleall">
-                <div class="scale" id="darkgreenscale"></div>
-                <p> > 4 </p>
-                </article>
-                </div>
-                </section>
-                
+                <!-- Map - SVG -->
                 <svg id="map">            
                 <style type="text/css">
                     .st0{fill:#FFFFFF;stroke:#000000;stroke-width:0.5;}
@@ -326,138 +333,143 @@ export default class CompareDataPage {
                 <rect x="266.5" y="117.2" class="st5" width="59.7" height="59.7"/>
                 </svg>
 
-                <img id="arlaflower-map" src="./img/blomst.svg">
 
-                <div id="mapBtns">
-                <div id="mapselectionyellow"> 
-                <div id="mapselection"></div>
-                <p>Valgt til grafen</p>
-                </div>
+        <!-- My farm flower -->
+        <img id="arlaflower-map" src="./img/blomst.svg">
+
+
+        <!-- Buttons below map to ad data -->
+        <div id="mapBtns">
+        <div id="mapselectionyellow"> 
+          <div id="mapselection"></div>
+          <p>Valgt til grafen</p>
+        </div>
               
-                <button class="mapButtons" type="button" onclick="mapToChart(this, 'entireDenmark', 'SkosNYUR2FJDB5KYpqDQ', '#efc531', 'DanmarksData')">Danmarks data</button>
-                <button class="mapButtons" onclick="showFlower(); mapToChart(this, 'myFarm', '9wuor7U0o7isnnv6MBzl', '#4bb131', 'DinData')" type="button">Din data</button>
+        <button class="mapButtons" type="button" onclick="mapToChart(this, 'entireDenmark', 'SkosNYUR2FJDB5KYpqDQ', '#efc531', 'DanmarksData')">Danmarks data</button>
+        <button class="mapButtons" onclick="showFlower(); mapToChart(this, 'myFarm', '9wuor7U0o7isnnv6MBzl', '#4bb131', 'DinData')" type="button">Din data</button>
            
-                </div>
+      </div>
              
-                </article>
-                </div>
+    </article>
+  </div>
                
                 
-              <!-------- medaljefordeling - Helle-------->
-              <article id="donutChart">
-              <div id="divChartNord">
-              <h3> i alt - Region Nordjylland</h3>
-              <div class="doughnutDiv">
-              <canvas id="chartNord"></canvas>
-              </div>
-              <table class=" donutTable">
-              <tr>
-                <th class="donutTh tableHeadNord">Medalje</th>
-                <th class="donutTh tableHeadNord">Antal</th>
-              </tr>
-              <tr>
-                <td class="donutTd">Guld</td>
-                <td class="donutTd">13</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Sølv</td>
-                <td class="donutTd">14</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Bronce</td>
-                <td class="donutTd">20</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Ingen</td>
-                <td class="donutTd">53</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Endnu ingen data</td>
-                <td class="donutTd">0</td>
-                <tr>
-                <td class="donutTd">Total</td>
-                <td class="donutTd">100</td>
-              </tr>
-              </tr>
-            </table> 
-              </div>
+  <!-- ----- medaljefordeling----- -->
+  <article id="donutChart" style="display:none;">
+    <div id="divChartNord">
+      <h3> i alt - Region Nordjylland</h3>
+      <div class="doughnutDiv">
+        <canvas id="chartNord"></canvas>
+      </div>
+        <table class=" donutTable">
+          <tr>
+            <th class="donutTh tableHeadNord">Medalje</th>
+            <th class="donutTh tableHeadNord">Antal</th>
+          </tr>
+          <tr>
+            <td class="donutTd">Guld</td>
+            <td class="donutTd">13</td>
+          </tr>
+          <tr>
+            <td class="donutTd">Sølv</td>
+            <td class="donutTd">14</td>
+          </tr>
+          <tr>
+            <td class="donutTd">Bronce</td>
+            <td class="donutTd">20</td>
+          </tr>
+          <tr>
+            <td class="donutTd">Ingen</td>
+            <td class="donutTd">53</td>
+          </tr>
+          <tr>
+            <td class="donutTd">Endnu ingen data</td>
+            <td class="donutTd">0</td>
+          <tr>
+            <td class="donutTd">Total</td>
+            <td class="donutTd">100</td>
+          </tr>
+          </tr>
+        </table> 
+      </div>
 
-              <div id="divChartSyd">
-              <h3> i alt - Region Sønderjylland</h3>
-              <div class="doughnutDiv">
-              <canvas id="chartSyd"></canvas>
-              </div>
-              <table class=" donutTable">
-              <tr>
-                <th class="donutTh tableHeadSyd">Medalje</th>
-                <th class="donutTh tableHeadSyd">Antal</th>
-              </tr>
-              <tr>
-                <td class="donutTd">Guld</td>
-                <td class="donutTd">25</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Sølv</td>
-                <td class="donutTd">17</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Bronce</td>
-                <td class="donutTd">38</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Ingen</td>
-                <td class="donutTd">20</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Endnu ingen data</td>
-                <td class="donutTd">0</td>
-                <tr>
-                <td class="donutTd">Total</td>
-                <td class="donutTd">100</td>
-              </tr>
-              </tr>
-            </table>
-              </div>
+      <div id="divChartSyd">
+        <h3> i alt - Region Sønderjylland</h3>
+        <div class="doughnutDiv">
+          <canvas id="chartSyd"></canvas>
+        </div>
+        <table class=" donutTable">
+          <tr>
+            <th class="donutTh tableHeadSyd">Medalje</th>
+            <th class="donutTh tableHeadSyd">Antal</th>
+          </tr>
+          <tr>
+            <td class="donutTd">Guld</td>
+            <td class="donutTd">25</td>
+          </tr>
+          <tr>
+            <td class="donutTd">Sølv</td>
+            <td class="donutTd">17</td>
+          </tr>
+          <tr>
+            <td class="donutTd">Bronce</td>
+            <td class="donutTd">38</td>
+          </tr>
+          <tr>
+            <td class="donutTd">Ingen</td>
+            <td class="donutTd">20</td>
+          </tr>
+          <tr>
+            <td class="donutTd">Endnu ingen data</td>
+            <td class="donutTd">0</td>
+          <tr>
+            <td class="donutTd">Total</td>
+            <td class="donutTd">100</td>
+          </tr>
+          </tr>
+        </table>
+      </div>
 
-              <div id="divChartSealand">
-              <h3> i alt - Region Sjælland og øer</h3>
-              <div class="doughnutDiv">
-              <canvas id="chartSealand"></canvas>
-              </div>
-              <table class=" donutTable">
-              <tr>
-                <th class="donutTh tableHeadSealand">Medalje</th>
-                <th class="donutTh tableHeadSealand">Antal</th>
-              </tr>
-              <tr>
-                <td class="donutTd">Guld</td>
-                <td class="donutTd">17</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Sølv</td>
-                <td class="donutTd">21</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Bronce</td>
-                <td class="donutTd">37</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Ingen</td>
-                <td class="donutTd">25</td>
-              </tr>
-              <tr>
-                <td class="donutTd">Endnu ingen data</td>
-                <td class="donutTd">0</td>
-                <tr>
-                <td class="donutTd">Total</td>
-                <td class="donutTd">100</td>
-              </tr>
-              </tr>
-            </table>
-              </div>
-              </article>
+             
+      <div id="divChartSealand">
+        <h3> i alt - Region Sjælland og øer</h3>
+          <div class="doughnutDiv">
+            <canvas id="chartSealand"></canvas>
+          </div>
+          <table class=" donutTable">
+            <tr>
+              <th class="donutTh tableHeadSealand">Medalje</th>
+              <th class="donutTh tableHeadSealand">Antal</th>
+            </tr>
+            <tr>
+              <td class="donutTd">Guld</td>
+              <td class="donutTd">17</td>
+            </tr>
+            <tr>
+              <td class="donutTd">Sølv</td>
+              <td class="donutTd">21</td>
+            </tr>
+            <tr>
+              <td class="donutTd">Bronce</td>
+              <td class="donutTd">37</td>
+            </tr>
+            <tr>
+              <td class="donutTd">Ingen</td>
+              <td class="donutTd">25</td>
+            </tr>
+            <tr>
+              <td class="donutTd">Endnu ingen data</td>
+              <td class="donutTd">0</td>
+            <tr>
+              <td class="donutTd">Total</td>
+              <td class="donutTd">100</td>
+            </tr>
+            </tr>
+          </table>
+        </div>
+      </article>
 
-            </article>`
+    </article>`
   };
 
   /*..............................johanne................................. */
