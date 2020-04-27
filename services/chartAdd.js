@@ -81,13 +81,15 @@ class ChartAdd {
   <tbody>
     <tr id="thFirst">
     <th></th>
-    <th id="fromYearTable">${from.value}</th>
-    <th id="toYearTable">${to.value}</th>
+    <th id="fromYearTable">${from.value}</th> <!-- Gets the value of the "from" selectbox -->
+    <th id="toYearTable">${to.value}</th> <!-- Gets the value of the "to" selectbox -->
   </tr>`;
 
 
-        let labels = chartService.chart.data.labels;
-        let fromIndex = labels.indexOf(from.value);
+        let labels = chartService.chart.data.labels; // variable made from the graph, data in graph, and the labels in graph (an Array)
+        let fromIndex = labels.indexOf(from.value); // Gets the index number of "from"
+        console.log(labels.indexOf(from.value)); // Gets the index number of "to"
+        
         let toIndex = labels.indexOf(to.value);
 
         // generates a "new" table each time data is contained in the data set.
@@ -96,11 +98,11 @@ class ChartAdd {
             htmlTemplate += /*html*/ `
     
     <tr>
-    <!-- data.label as class on td to make backgroundcolor that matches the regions in the table-->
-      <!-- data.label in td to add regions name by tdtext-->
-    <td class="${data.label}">${data.label}</td> 
-    <td> ${data.data[fromIndex]}</td>
-    <td>${data.data[toIndex]}</td>
+    
+
+    <td class="${data.label}">${data.label}</td> <!-- data.label as class on td to make backgroundcolor that matches the regions in the table. data.label in td to add regions name by tdtext-->
+    <td> ${data.data[fromIndex]}</td>  <!-- Gets the data from the graph thats matches the year in "from" selectbox -->
+    <td>${data.data[toIndex]}</td>  <!-- Gets the data from the graph thats matches the year in "to" selectbox -->
     </tr>
     `;
         }
@@ -110,7 +112,7 @@ class ChartAdd {
   </table>
     `;
 
-        //Change the HTML content of table with htmltemplate with id="#graphTable# and tbody
+        //Change the HTML content of table with htmltemplate with id="#graphTable and tbody
         document.querySelector("#graphTable tbody").innerHTML = htmlTemplate
     }
 
@@ -169,6 +171,7 @@ class ChartAdd {
         document.getElementById("fromYearTable").innerHTML = +from.value;
         document.getElementById("toYearTable").innerHTML = +to.value;
 
+        // Change labes of chart
         chartService.chart.options = {
 
             scales: {
