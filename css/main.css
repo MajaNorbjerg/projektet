@@ -122,12 +122,12 @@ ul {
   text-transform: uppercase;
 }
 
-/* Change the color of links on hover */
+/* Change the bottom border of links on hover */
 .tabbar a:hover {
   border-bottom: 3px solid var(--arlaForrestGreen);
 }
 
-/* Add a color to the active/current link */
+/* Add a bottom border to the active/current link */
 .tabbar a.active {
   border-bottom: 3px solid var(--arlaForrestGreen);
   color: var(--milkyWhite);
@@ -153,7 +153,7 @@ ul {
 
 /* ---------- animations ---------- */
 /* fade in */
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
     opacity: 0
   }
@@ -161,7 +161,7 @@ ul {
   to {
     opacity: 1
   }
-}
+} */
 
 /* ---------- Frontpage styling ---------- */
 .flexContainer {
