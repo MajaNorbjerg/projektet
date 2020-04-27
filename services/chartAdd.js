@@ -7,46 +7,41 @@ class ChartAdd {
         this.farmerData = _db.collection("farmers")
         this.chart;
         this.data = 'dieselMyData';
-        // this.element = document.querySelector('#northMap');
-        // this.mapToChart(this.element, 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark')
-
     }
 
+    //....................... Maja .......................
+    // Changes the data input for the chart. (Not fully inplemented)
     dataInput(data) {
         this.data = data;
         console.log(this.data)
 
-        // chartService.chart.data.labels.push(label);
         chartService.chart.data.datasets.forEach((dataset) => {
             console.log(dataset.label)
         });
         chartService.chart.update();
     }
 
-
+    //....................... Maja .......................
+    // Add data to the chart and table based on a click on a region on the map
     async mapToChart(element, checkboxId, id, color, tdtext) {
-        console.log(element, checkboxId, id, color, tdtext)
-        let checkBox = document.querySelector(`#${checkboxId}`);
-        console.log(checkBox)
+        let checkBox = document.querySelector(`#${checkboxId}`); // One checkbox for each region
 
 
-        if (checkBox.checked === false) {
-            checkBox.checked = true;
-            await this.addDataset(checkBox, id, color, tdtext)
-            console.log('now its true')
-            element.style.stroke = "#FFCC32";
+        if (checkBox.checked === false) { // If the checkbox isn´t checked
+            checkBox.checked = true; // check it
+            await this.addDataset(checkBox, id, color, tdtext) // Run addDataset function
+            element.style.stroke = "#FFCC32"; // Give the region a stroke
             element.style.strokeWidth = 4;
 
 
-        } else if (checkBox.checked === true) {
-            checkBox.checked = false;
-            await this.addDataset(checkBox, id, color, tdtext)
-            console.log('now its NOT true')
-            element.style.stroke = "none";
+        } else if (checkBox.checked === true) { // If checkbox is checked
+            checkBox.checked = false; // Uncheck it
+            await this.addDataset(checkBox, id, color, tdtext) // Run addDataset function
+            element.style.stroke = "none"; // Remove stroke from region
 
 
         }
-        setTimeout(() => {
+        setTimeout(() => { // genereate the Table
             this.generateTable(color);
         }, 300);
     }
@@ -89,7 +84,7 @@ class ChartAdd {
         let labels = chartService.chart.data.labels; // variable made from the graph, data in graph, and the labels in graph (an Array)
         let fromIndex = labels.indexOf(from.value); // Gets the index number of "from"
         console.log(labels.indexOf(from.value)); // Gets the index number of "to"
-        
+
         let toIndex = labels.indexOf(to.value);
 
         // generates a "new" table each time data is contained in the data set.
@@ -116,24 +111,14 @@ class ChartAdd {
         document.querySelector("#graphTable tbody").innerHTML = htmlTemplate
     }
 
+    //....................... Maja .......................
     async addDataset(element, id, color, tdtext) {
-        console.log(element, id, color);
-        console.log(element.checked);
-        // console.log(data)
 
-
-
-        if (element.checked) {
-
-            // let doc = await this.farmerData.doc(`${id}`).get()
-            // let data = doc.data(); // save the data in a variable
-            // data.id = doc.id;
-
-            // user 2 - Ep7o7EToQtZzdKnEDy2ahirFHc43
+        if (element.checked) { // If the checkbox is checked
             let uidCompare = id; // matching an uid from the database
             let dataCompare = await sustainabilityDataService.getPreparedDataByUid(uidCompare); // getting prepared data from the service
 
-            // creating the dataset to add
+            // Creating the dataset to add
             let datasetToAdd = {
                 label: `${tdtext}`,
                 data: dataCompare[this.data],
@@ -147,104 +132,22 @@ class ChartAdd {
                 type: 'line'
             };
 
-            chartService.chart.data.datasets.push(datasetToAdd);
-            chartService.chart.update();
-        } else if (!element.checked) {
+            chartService.chart.data.datasets.push(datasetToAdd); // Pushing the dataset to the chart
+            chartService.chart.update(); // Updates the chart
+
+
+        } else if (!element.checked) { // If checkbox not checked
 
             chartService.chart.data.datasets.forEach((dataset) => {
-                if (dataset.label.includes(tdtext)) {
+                if (dataset.label.includes(tdtext)) { // Find the dataset with the tdtext
                     let arr = chartService.chart.data.datasets
                     let index = arr.indexOf(dataset)
-                    arr.splice(index, 1);
+                    arr.splice(index, 1); // And remove it from the chart
                 }
             });
-            chartService.chart.update();
+            chartService.chart.update(); // Update the chart
         }
     }
-
-    /*.........................johanne & maja.............................*/
-    removeData() {
-        let from = document.querySelector('#fromYear'); //makes variable: "from" by Id #fromYear
-        let to = document.querySelector('#toYear'); //makes variable: "to" by Id #toYear
-
-        //Return the value property of the variabels from and to in id's fromYearTable and toYearTable.
-        document.getElementById("fromYearTable").innerHTML = +from.value;
-        document.getElementById("toYearTable").innerHTML = +to.value;
-
-        // Change labes of chart
-        chartService.chart.options = {
-
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        min: from.value,
-                        max: to.value
-                    }
-                }]
-
-            }
-        };
-        chartService.chart.update();
-
-
-        /* -----------  fra tidslinje til tabel ----- */
-
-        /* function myFunction() {
-        var x = document.getElementById("mySelect").value;
-        document.getElementById("demo").innerHTML = "You selected: " + x;
-      } */
-
-        // console.log(element.id)
-        // if (element.id === 'fromYear') {
-
-        //     if (element.value === 2017) {
-        //         chartService.chart.data.labels.slice(1, 3);
-        //         chartService.chart.data.datasets.forEach((dataset) => {
-        //             console.log(dataset.data)
-        //         });
-
-        //     }
-
-        //     chartService.chart.data.labels.shift();
-
-        //     // let spliced = arr.slice(0, 3)
-        //     // console.log(arr, spliced)
-        //     chartService.chart.data.datasets.forEach((dataset) => {
-        //         console.log(dataset.data)
-        //         dataset.data.shift();
-
-        //     });
-
-        // } else if (element.id === 'toYear') {
-        //     console.log(element.id)
-
-
-        //     chartService.chart.data.labels.pop();
-        //     chartService.chart.data.labels.pop();
-        //     // let spliced = arr.slice(0, 3)
-        //     // console.log(arr, spliced)
-        //     chartService.chart.data.datasets.forEach((dataset) => {
-        //         console.log(dataset.data)
-
-        //         dataset.data.pop();
-        //         dataset.data.pop();
-        //     });
-        // }
-        // // fromYear
-        // // toYear
-
-        // chartService.chart.update();
-    }
-
-    // mapToChart(element, checkboxId, id, color, tdtext, r) {
-    //     let checkBox = document.querySelector(`#${checkboxId}`);
-    //     console.log(checkboxId);
-    // }
-
-
-
-
-
 }
 const chartAdd = new ChartAdd();
 export default chartAdd;
