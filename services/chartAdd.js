@@ -53,7 +53,7 @@ class ChartAdd {
     /*.........................johanne.............................*/ 
    
     /* ------------Table generator----------- */
-    generateTable(color) {
+    generateTable() {
         console.log(chartService.chart.data.datasets);
 
         let htmlTemplate = /*html*/ `
@@ -71,7 +71,9 @@ class ChartAdd {
             htmlTemplate += /*html*/ `
     
     <tr>
-    <td class="${data.label}">${data.label}</td>
+    <!-- data.label as class on td to make backgroundcolor that matches the regions in the table-->
+      <!-- data.label in td to add regions name by tdtext-->
+    <td class="${data.label}">${data.label}</td> 
     <td> </td>
     <td> </td>
     </tr>
@@ -83,6 +85,7 @@ class ChartAdd {
   </table>
     `;
 
+    //Change the HTML content of table with htmltemplate with id="#graphTable# and tbody
         document.querySelector("#graphTable tbody").innerHTML = htmlTemplate
     }
 
@@ -134,10 +137,10 @@ class ChartAdd {
 
     /*.........................johanne & maja.............................*/ 
     removeData() {
-        let from = document.querySelector('#fromYear');
-        let to = document.querySelector('#toYear');
+        let from = document.querySelector('#fromYear'); //makes variable: "from" by Id #fromYear
+        let to = document.querySelector('#toYear'); //makes variable: "to" by Id #toYear
 
-        //Return the value property of the variabels from and to
+        //Return the value property of the variabels from and to in id's fromYearTable and toYearTable.
         document.getElementById("fromYearTable").innerHTML = +from.value;
         document.getElementById("toYearTable").innerHTML = +to.value;
 

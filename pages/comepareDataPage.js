@@ -446,11 +446,10 @@ export default class CompareDataPage {
     /* ------------map border----------- */ 
     border(element, checkboxId) {
         console.log(checkboxId, element);
-        // If checkbox is checked nothing. Else element style with border.
-        let checkBox = document.querySelector(`#${checkboxId}`);
-        if (checkBox.checked) {
+        let checkBox = document.querySelector(`#${checkboxId}`); // makes a variable "checkBox" by ID "chechboxID"
+        if (checkBox.checked) {  // If checkbox is checked nothing, because no border needed when region is selected.
 
-        } else {
+        } else { // Else element style with border.
 
             element.style.stroke = "#FFCC32";
             element.style.strokeWidth = 4
@@ -465,15 +464,17 @@ export default class CompareDataPage {
         } else {}
     }
 
+    // the above is made to not overwrite the green border on clickevent (look at chartAdd.js, mapToChart() )
+
 /*..............................johanne................................. */ 
 
   /* ------------colorchange map---------- */
     farveskift1() {
 
-        // loops through all 'sjaellands' svg's and then style by fill with a color
-        let sjaelland = document.getElementsByClassName("st1")
-        for (let i = 0; i < sjaelland.length; i++) {
-            sjaelland[i].style.fill = "#00441B";
+       
+        let sjaelland = document.getElementsByClassName("st1") // makes variable sjaelland by class st1
+        for (let i = 0; i < sjaelland.length; i++) {  // loops through all 'sjaellands' svg's
+            sjaelland[i].style.fill = "#00441B"; // style by fill with a color
         }
 
         let syddanmark = document.getElementsByClassName("st2")
@@ -568,9 +569,8 @@ export default class CompareDataPage {
 
     /* ------------flower on map - own data---------- */
     showFlower() {
-        // makes a variable: "element" by ID arlaflower-map. I use property classlist to toggle CSS class "show" on variable: "elemen"t.
-        let element = document.getElementById("arlaflower-map");
-        element.classList.toggle("show");
+        let element = document.getElementById("arlaflower-map"); // makes a variable: "element" by ID arlaflower-map. 
+        element.classList.toggle("show"); // I use property classlist to toggle CSS class "show" on variable: "element".
     }
   
 
