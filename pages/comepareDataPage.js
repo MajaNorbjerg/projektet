@@ -605,11 +605,15 @@ export default class CompareDataPage {
   }
 
 
-  /* ------------Indikation af hvilken knap der er valgt----------- */
+
+  /* ------------Indication of wich button is selected----------- */
   /* ------------ Helle ----------- */
+  // Finding the element with class "selected"
   selected(element) {
     let selected = document.querySelector(".btn.selected");
+    // Removes the class 
     selected.classList.remove("selected");
+    // Adds the class "selected" to the button wich has been selected
     element.classList.add("selected");
   }
 
