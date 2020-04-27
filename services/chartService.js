@@ -31,18 +31,20 @@ class ChartService {
         this.chart = new Chart(chartContainer, { // Generate chart
             type: 'line',
             data: {
-                datasets: [{
-                    data: data.dieselMyData,
-                    label: region,
-                    fill: false,
-                    borderColor: this.northColor,
+                datasets: [
+                    //     {
+                    //     data: data.dieselMyData,
+                    //     label: region,
+                    //     fill: false,
+                    //     borderColor: this.northColor,
 
-                    //     pointBackgroundColor: this.northColor,
-                    //     pointBorderColor: this.northColor,
-                    //     pointHoverBackgroundColor: this.northColor,
-                    //     pointHoverBorderColor: this.northColor,
+                    //     //     pointBackgroundColor: this.northColor,
+                    //     //     pointBorderColor: this.northColor,
+                    //     //     pointHoverBackgroundColor: this.northColor,
+                    //     //     pointHoverBorderColor: this.northColor,
+                    //     // }
                     // }
-                }],
+                ],
                 labels: data.years
             }
         });

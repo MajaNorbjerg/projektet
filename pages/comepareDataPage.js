@@ -1,5 +1,6 @@
 import _donutService from "../services/donutService.js";
 import chartService from "../services/chartService.js";
+import chartAdd from "../services/chartAdd.js";
 
 export default class CompareDataPage {
   constructor() {
@@ -11,6 +12,14 @@ export default class CompareDataPage {
     this.myColor = '#4bb131';
 
     this.template();
+    // chartAdd.mapToChart(document.querySelector('#northMap'), 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark');
+    // setTimeout(() => {
+    //   this.border(document.querySelector('#northMap'), 'northDenmark');
+    // })
+  }
+
+  init() {
+    chartAdd.mapToChart(document.querySelector('#northMap'), 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark');
   }
 
   template() {
@@ -30,7 +39,7 @@ export default class CompareDataPage {
                 <h2 id="titelRegioner">Sammenlign data</h2> 
                 <article id="timePeriod"><p>Tidsperiode</p>
                 
-                <select id="fromYear" onchange="removeData()">
+                <select id="fromYear" value="2015" onchange="generateTable()">
                 <option>2015</option>
                 <option>2016</option>
                 <option>2017</option>
@@ -40,7 +49,7 @@ export default class CompareDataPage {
 
                 <p>Til</p>
 
-                <select id="toYear" onchange="removeData()">
+                <select id="toYear" value="2019" onchange="generateTable()">
                 <option >2015</option>
                 <option >2016</option>
                 <option >2017</option>
@@ -59,30 +68,54 @@ export default class CompareDataPage {
                 </article>
                 </>
                 
+<div id="line"></div>
+
+<div class="flexContainerAll">
+
+<div class="flexItem">
+
+<article>
+<div id="chartDiv"> 
+<canvas id="chartContainer"></canvas>
+</div>
+
+<table id="graphTable">
+<tr id="thFirst">
+<th></th>
+<th id="fromYearTable"></th>
+<th id="toYearTable"></th>
+</tr>
+</table>
+
+
+
+<input class="displayNone" type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
+<input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
+<input class="displayNone" type="checkbox" id="zeaDenmark"> <!-- onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', chartService.zeaColor)" -->
+<input class="displayNone" type="checkbox" id="entireDenmark"> <!-- onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', chartService.denmarkColor)" -->
+<input class="displayNone" type="checkbox" id="myFarm"> <!-- onclick="addDataset(this, '9wuor7U0o7isnnv6MBzl','dieselMyData', chartService.myColor)"-->
+
+</article>
+
+<div id="graphBtns-wrapper">
+<button class="graphBtns" type="button" id="donutChartButton" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
+
+<button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel</button>
+
+</div>
+</div>
+
+<div class="flexItem">
                 <article id="entireMap">
                
                 
-                <img id="arlaflower-map" src="./img/blomst.svg"> 
-
-                <div id="mapBtns">
-                <div id="mapselectionyellow"> 
-                <div id="mapselection"></div>
-                <p>Valgt til grafen</p>
-                </div>
-                <div> 
                
-                <button class="mapButtons" type="button" onclick="mapToChart(this, 'entireDenmark', 'SkosNYUR2FJDB5KYpqDQ', '#efc531', 'DanmarksData')">Danmarks data</button>
-                </div>
-                <div>
-                <button class="mapButtons" onclick="showFlower(); mapToChart(this, 'myFarm', '9wuor7U0o7isnnv6MBzl', '#4bb131', 'DinData')" type="button">Din data</button>
-                </div>
-                </div>
 
     
                 <section id="scalebar">
                 <article id="scaletitel">
                 <h4> Reducering af kg CO2 pr. kg mælk i % </h4>
-                <article>
+                </article>
                 
                 <div id="flex-scale">
                 <article class="scaleall">
@@ -107,9 +140,9 @@ export default class CompareDataPage {
                 <svg id="map">            
                 <style type="text/css">
                     .st0{fill:#FFFFFF;stroke:#000000;stroke-width:0.5;}
-                    .st1{fill:#323232;}
-                    .st2{fill:#535353;}
-                    .st3{fill:#6E6E6E;}
+                    .st1{fill:#00441b;}
+                    .st2{fill:#2a924a;}
+                    .st3{fill:#4bb131;}
                     .st4{fill:#FFFFFF;}
                     .st5{fill:none;stroke:#000000;stroke-width:0.5;}
                 
@@ -292,31 +325,23 @@ export default class CompareDataPage {
                
                 <rect x="266.5" y="117.2" class="st5" width="59.7" height="59.7"/>
                 </svg>
+
+                <img id="arlaflower-map" src="./img/blomst.svg">
+
+                <div id="mapBtns">
+                <div id="mapselectionyellow"> 
+                <div id="mapselection"></div>
+                <p>Valgt til grafen</p>
+                </div>
+              
+                <button class="mapButtons" type="button" onclick="mapToChart(this, 'entireDenmark', 'SkosNYUR2FJDB5KYpqDQ', '#efc531', 'DanmarksData')">Danmarks data</button>
+                <button class="mapButtons" onclick="showFlower(); mapToChart(this, 'myFarm', '9wuor7U0o7isnnv6MBzl', '#4bb131', 'DinData')" type="button">Din data</button>
+           
+                </div>
              
                 </article>
-
-                <article>
-                <div id="chartDiv"> 
-                <canvas id="chartContainer"></canvas>
                 </div>
-
-<table id="graphTable">
-  <tr id="thFirst">
-    <th></th>
-    <th id="fromYearTable"></th>
-    <th id="toYearTable"></th>
-  </tr>
-  </table>
-
-
-                
-                <input class="displayNone" type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
-                <input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
-                <input class="displayNone" type="checkbox" id="zeaDenmark"> <!-- onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', chartService.zeaColor)" -->
-                <input class="displayNone" type="checkbox" id="entireDenmark"> <!-- onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', chartService.denmarkColor)" -->
-                <input class="displayNone" type="checkbox" id="myFarm"> <!-- onclick="addDataset(this, '9wuor7U0o7isnnv6MBzl','dieselMyData', chartService.myColor)"-->
-                
-                </article>
+               
                 
               <!-- ----- medaljefordeling----- -->
               <article id="donutChart" style="display:none;">
@@ -432,12 +457,7 @@ export default class CompareDataPage {
               </div>
               </article>
 
-                <div id="graphBtns-wrapper">
-                <button class="graphBtns" type="button" id="donutChartButton" onclick="drawCharts()"><img class="flower" src="/img/blomst.svg">Se medaljefordeling</button>
-                
-                <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel <br> (evt som PDF)</button>
-                
-                </div>
+            
 
 
             </article>`
@@ -448,11 +468,10 @@ export default class CompareDataPage {
   /* ------------map border----------- */
   border(element, checkboxId) {
     console.log(checkboxId, element);
-    // If checkbox is checked nothing. Else element style with border.
-    let checkBox = document.querySelector(`#${checkboxId}`);
-    if (checkBox.checked) {
+    let checkBox = document.querySelector(`#${checkboxId}`); // makes a variable "checkBox" by ID "chechboxID"
+    if (checkBox.checked) { // If checkbox is checked nothing, because no border needed when region is selected.
 
-    } else {
+    } else { // Else element style with border.
 
       element.style.stroke = "#FFCC32";
       element.style.strokeWidth = 4
@@ -467,15 +486,17 @@ export default class CompareDataPage {
     } else {}
   }
 
+  // the above is made to not overwrite the green border on clickevent (look at chartAdd.js, mapToChart() )
+
   /*..............................johanne................................. */
 
   /* ------------colorchange map---------- */
   farveskift1() {
 
-    // loops through all 'sjaellands' svg's and then style by fill with a color
-    let sjaelland = document.getElementsByClassName("st1")
-    for (let i = 0; i < sjaelland.length; i++) {
-      sjaelland[i].style.fill = "#00441B";
+
+    let sjaelland = document.getElementsByClassName("st1") // makes variable sjaelland by class st1
+    for (let i = 0; i < sjaelland.length; i++) { // loops through all 'sjaellands' svg's
+      sjaelland[i].style.fill = "#00441B"; // style by fill with a color
     }
 
     let syddanmark = document.getElementsByClassName("st2")
@@ -570,9 +591,8 @@ export default class CompareDataPage {
 
   /* ------------flower on map - own data---------- */
   showFlower() {
-    // makes a variable: "element" by ID arlaflower-map. I use property classlist to toggle CSS class "show" on variable: "elemen"t.
-    let element = document.getElementById("arlaflower-map");
-    element.classList.toggle("show");
+    let element = document.getElementById("arlaflower-map"); // makes a variable: "element" by ID arlaflower-map. 
+    element.classList.toggle("show"); // I use property classlist to toggle CSS class "show" on variable: "element".
   }
 
 
