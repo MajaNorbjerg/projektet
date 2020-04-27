@@ -12,10 +12,6 @@ export default class CompareDataPage {
     this.myColor = '#4bb131';
 
     this.template();
-    // chartAdd.mapToChart(document.querySelector('#northMap'), 'northDenmark', '7OIHxbSLJcSF2sXVtxTA', '#7d5d8a', 'NordDanmark');
-    // setTimeout(() => {
-    //   this.border(document.querySelector('#northMap'), 'northDenmark');
-    // })
   }
 
   init() {
@@ -88,11 +84,11 @@ export default class CompareDataPage {
 
 
 
-<input class="displayNone" type="checkbox" id="northDenmark" > <!-- onclick="addDataset(this, '7OIHxbSLJcSF2sXVtxTA','dieselMyData', chartService.northColor)" -->
-<input class="displayNone" type="checkbox" id="southDenmark" > <!-- onclick="addDataset(this, 'CwsGcarffzaNsTnUe6ZV','dieselMyData', chartService.southColor)" -->
-<input class="displayNone" type="checkbox" id="zeaDenmark"> <!-- onclick="addDataset(this, 'ZpCPJdBCL6aurufSlCCY','dieselMyData', chartService.zeaColor)" -->
-<input class="displayNone" type="checkbox" id="entireDenmark"> <!-- onclick="addDataset(this, 'SkosNYUR2FJDB5KYpqDQ','dieselMyData', chartService.denmarkColor)" -->
-<input class="displayNone" type="checkbox" id="myFarm"> <!-- onclick="addDataset(this, '9wuor7U0o7isnnv6MBzl','dieselMyData', chartService.myColor)"-->
+<input class="displayNone" type="checkbox" id="northDenmark" >
+<input class="displayNone" type="checkbox" id="southDenmark" >
+<input class="displayNone" type="checkbox" id="zeaDenmark">
+<input class="displayNone" type="checkbox" id="entireDenmark">
+<input class="displayNone" type="checkbox" id="myFarm">
 
 </article>
 
