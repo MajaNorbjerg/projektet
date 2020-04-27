@@ -1,10 +1,11 @@
-export default class HomePage {
-    constructor() {
-        this.template();
-    }
+  /*.............................. Helle ................................. */
+  export default class HomePage {
+      constructor() {
+          this.template();
+      }
 
-    template() {
-        document.querySelector('#pagesSection').innerHTML += /*html*/ `
+      template() {
+          document.querySelector('#pagesSection').innerHTML += /*html*/ `
             <article id="forside" class="page">
             <h1>Arlagården Plus</h1>
             <div class="flexContainer">
@@ -24,5 +25,5 @@ export default class HomePage {
             </ul>
             </div>
             </article>`
-    }
-}
+      }
+  }

@@ -343,8 +343,8 @@ export default class CompareDataPage {
                 </div>
                
                 
-              <!-- ----- medaljefordeling----- -->
-              <article id="donutChart" style="display:none;">
+              <!-------- medaljefordeling - Helle-------->
+              <article id="donutChart">
               <div id="divChartNord">
               <h3> i alt - Region Nordjylland</h3>
               <div class="doughnutDiv">
@@ -456,9 +456,6 @@ export default class CompareDataPage {
             </table>
               </div>
               </article>
-
-            
-
 
             </article>`
   };
@@ -597,11 +594,14 @@ export default class CompareDataPage {
 
 
 
-  /* ------------Indikation af hvilken knap der er valgt----------- */
+  /* ------------Indication of wich button is selected----------- */
   /* ------------ Helle ----------- */
+  // Finding the element with class "selected"
   selected(element) {
     let selected = document.querySelector(".btn.selected");
+    // Removes the class 
     selected.classList.remove("selected");
+    // Adds the class "selected" to the button wich has been selected
     element.classList.add("selected");
   }
 
