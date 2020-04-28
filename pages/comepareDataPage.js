@@ -55,11 +55,11 @@ export default class CompareDataPage {
 
           <!-- Data buttons -->
           <article id="buttons">
-            <button type="button" value="carbonFootprintMyData" class="btn selected" onclick="selected(this); farveskift1(); dataInput(this.value)" ><img class="img" src="/img/blomst.svg">I alt</button>
-            <button type="button" value="digestionMyData" class="btn" onclick="selected(this); farveskift2(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Metan</button>
-            <button type="button" value="dieselMyData" class="btn" onclick="selected(this); farveskift3(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Diesel</button>
-            <button type="button" value="importedMyData" class="btn" onclick="selected(this); farveskift4(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Foder</button>
-            <button type="button" value="energyMyData" class="btn" onclick="selected(this); farveskift5(); dataInput(this.value)"><img class="img" src="/img/blomst.svg">Energi</button>
+            <button type="button" value="carbonFootprintMyData" class="btn" onclick="selected(this); farveskift1(); dataInput(this.value)" ><img class="img" src="./img/blomst.svg">I alt</button>
+            <button type="button" value="digestionMyData" class="btn" onclick="selected(this); farveskift2(); dataInput(this.value)"><img class="img" src="./img/blomst.svg">Metan</button>
+            <button type="button" value="dieselMyData" class="btn selected" onclick="selected(this); farveskift3(); dataInput(this.value)"><img class="img" src="./img/blomst.svg">Diesel</button>
+            <button type="button" value="importedMyData" class="btn" onclick="selected(this); farveskift4(); dataInput(this.value)"><img class="img" src="./img/blomst.svg">Foder</button>
+            <button type="button" value="energyMyData" class="btn" onclick="selected(this); farveskift5(); dataInput(this.value)"><img class="img" src="./img/blomst.svg">Energi</button>
           </article>
         </div>
                 
@@ -105,7 +105,7 @@ export default class CompareDataPage {
         <div id="graphBtns-wrapper">
           <button class="graphBtns" type="button" id="donutChartButton" onclick="drawCharts()"><img class="flower" src="./img/blomst.svg">Se medaljefordeling</button>
 
-          <button class="graphBtns" type="button"><img class="flower" src="/img/blomst.svg">Eksporter som excel</button>
+          <button class="graphBtns" type="button"><img class="flower" src="./img/blomst.svg">Eksporter som excel</button>
 
         </div>
       </div>
